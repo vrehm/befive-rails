@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
           <div class="card-form">
-            <h3 class= "text-center">Connexion</h3>
+            <h3>Connexion</h3>
             <br>
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-inputs">
@@ -14,6 +14,10 @@
               <div class="form-actions">
                 <%= f.button :submit, "Connexion", class: "btn btn-primary" %>
               </div>
+              <br>
+              <br>
+              <p>Pas encore membre ?</p>
+              <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "btn btn-success" %>
             <% end %>
           </div>
         </div>
