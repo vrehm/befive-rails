@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <div class="left-container">
+    <div class="card text-center">
+      <%= image_tag "user.png", class: "avatar-large"%>
+      <h5>Hedi JABRI</h5>
+      <h6>Défenseur</h6>
+      <%= image_tag "logo.png", class: "text-marged logo-s"%>
+      <p class="blue-dark text-large text-semi-bold">Dream Team</p>
+      <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Paris (75)</p>
+      <div class="bottom-right-icon">
+        <%= link_to "#" do %>
+          <i class="fa fa-cog grey-dark text-large"></i>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="title-card text-center">
+        <h6>INFOS</h6>
+      </div>
+      <br>
+      <br>
+      <p class="blue-dark text-small">Age : <span class="grey-dark text-small"> 30 ans</span></p>
+      <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
+      <p class="blue-dark text-small">Homme du match : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-male text-large blue"></i></p>
+    </div>
+  </div>
+  <div class="center-container">
+    <div class="card">
+      <div class="progress progress-bar-custom">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
+          <span class="sr-only">33% Complete</span>
+        </div>
+      </div>
+      <hr>
+      <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Créer votre équipe</p>
+      <hr>
+      <p class="step text-small text-semi-bold"> <i class="fa fa-check-circle grey-normal text-large icon" aria-hidden="true"></i> Invitez vos membres</p>
+      <hr>
+      <p class="step text-small text-semi-bold"> <i class="fa fa-check-circle grey-normal text-large icon" aria-hidden="true"></i> Créer un nouvel évenement</p>
+      <hr>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="card text-center">
+      <div class="title-card">
+        <h6>PROCHAIN MATCH</h6>
+      </div>
+      <br>
+      <br>
+      <p class="blue-dark text-small"><i class="fa fa-calendar icon blue text-large"></i> Aucun match de planifié</p>
+    </div>
+    <br>
+    <div class="card-image">
+      <div class="title-card text-center">
+        <h6>MON EQUIPE</h6>
+      </div>
+      <%= image_tag "team.png", class: "image-team"%>
+      <div class="logo-inside">
+        <%= image_tag "logo.png", style:"width: 50px" %>
+      </div>
+      <br>
+      <br>
+      <div class="text-center">
+        <br>
+        <p class="blue-dark text-large text-semi-bold">Dream Team</p>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Paris (75)</p>
+      </div>
+    </div>
+  </div>
+</div>

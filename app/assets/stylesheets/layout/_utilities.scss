@@ -3,28 +3,107 @@
  * These are examples of utilities classes
  * Feel free to change them and create your own
  * ------------------------------------- */
+// General
+body {
+  background: $background;
+}
+hr {
+	margin: 10px 0;
+}
 
-// Paddings
+// Wrappers and containers
+.wrapper {
+	width: 100%;
+	margin: 0px auto;
+	padding: 0px 80px 60px 80px;
+	display: flex;
+	flex-wrap: wrap;
+  justify-content: center;
+}
+
+.left-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+  width: 27%;
+}
+
+.center-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+  width: 46%;
+}
+
+.right-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+  width: 27%;
+}
+
+// Paddings & Margins
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
 }
-
-// Backgrounds
-.bg-black {
-  background: #4a4a4a;
-}
-.bg-grey {
-  background: #aeaeae;
-}
-.bg-blue {
-  background: #00a3e1;
-}
-.bg-dark-blue {
-  background: #3b5998;
+.icon {
+	margin: 0 4px;
 }
 
 // Colors
 .white {
   color: $white-light;
+}
+.blue-dark {
+	color: $blue-dark
+}
+.blue {
+		color: $blue;
+}
+.grey-dark {
+	color: $grey-dark;
+}
+.grey-normal {
+	color: $grey-normal;
+}
+.grey {
+	color: $grey;
+}
+.green {
+	color: $green;
+}
+.red {
+	color: $red;
+}
+
+// Text Styles
+.text-large {
+	font-size: 15px;
+}
+.text-small {
+	font-size: 13px;
+}
+.text-marged {
+	margin: 15px;
+}
+.text-semi-bold {
+	font-weight: 500;
+}
+
+// Logos
+.logo-s {
+	width: 25px;
+}
+
+// Custom Progress bar
+.progress-bar-custom {
+	height: 20px
+}
+.step-done {
+	text-decoration: line-through;
+	color: $grey-normal;
+}
+.step {
+	color: $blue-dark
 }

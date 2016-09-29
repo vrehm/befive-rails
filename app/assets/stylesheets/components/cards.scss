@@ -1,0 +1,70 @@
+// Dashboard Cars
+.card {
+  background-color: white;
+  padding: 30px 20px;
+  min-height: 120px;
+  width: 95%;
+  border-radius: 3px;
+  margin: 0px auto;
+  position: relative;
+  border: 1px solid $grey;
+  h1, h2, h3, h4, h5, h6 {
+    color: $blue-dark
+  }
+}
+.title-card {
+  width: 100%;
+  background: $grey-lighter;
+  border-bottom: solid 1px $grey-light;
+  height: 50px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px 0px;
+  border-radius: 3px 3px 0 0;
+}
+.bottom-card {
+  width: 100%;
+  background: $grey-lighter;
+  border-top: solid 1px $grey-light;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 15px 20px;
+  border-radius: 0 0 3px 3px;
+}
+.bottom-right-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+}
+
+// Team Cards
+.card-image {
+  background-color: white;
+  padding: 30px 0px;
+  min-height: 120px;
+  width: 95%;
+  border-radius: 3px;
+  margin: 0px auto;
+  position: relative;
+  border: 1px solid $grey;
+  h1, h2, h3, h4, h5, h6 {
+    color: $blue-dark
+  }
+}
+.image-team {
+  width: 100%;
+  height: 180px;
+  margin-top: 20px;
+  position: relative;
+}
+.logo-inside {
+  background: white;
+  padding: 13px;
+  position: absolute;
+  top: 188px;
+  left: 105px;
+  border-radius: 3px;
+}
