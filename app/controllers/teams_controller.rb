@@ -28,6 +28,7 @@ class TeamsController < ApplicationController
       @team.user = current_user
       if @team.save
         current_user.has_team = true
+        current_user.manager = true
         current_user.save
         flash[:notice] = "Félicitations #{current_user.first_name}, #{@team.name} à bien été crée !"
         redirect_to root_path
