@@ -3,11 +3,23 @@
   <div class="left-container">
     <div class="card text-center">
       <%= image_tag "user.png", class: "avatar-large"%>
-      <h5><%= current_user.first_name.capitalize %> <%= current_user.last_name.upcase %></h5>
-      <h6><%= current_user.position.capitalize %></h6>
+      <% if current_user.first_name && current_user.last_name %>
+        <h5><%= current_user.first_name.capitalize %> <%= current_user.last_name.upcase %></h5>
+      <% else %>
+        <h5>Prénom Nom</h5>
+      <% end %>
+      <% if current_user.position %>
+        <h6><%= current_user.position.capitalize %></h6>
+      <% else %>
+        <h6>Position</h6>
+      <% end %>
       <%= image_tag "logo.png", class: "text-marged logo-s"%>
-      <p class="blue-dark text-large text-semi-bold">Dream Team</p>
-      <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
+        <p class="blue-dark text-large text-semi-bold">Dream Team</p>
+      <% if current_user.position %>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
+      <% else %>
+          <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
+      <% end %>
       <div class="bottom-right-icon">
         <%= link_to edit_user_registration_path(current_user) do %>
           <i class="fa fa-cog grey-dark text-large"></i>
@@ -21,7 +33,7 @@
       </div>
       <br>
       <br>
-      <p class="blue-dark text-small">Age : <span class="grey-dark text-small"> 30 ans</span></p>
+      <p class="blue-dark text-small">Age : <span class="grey-dark text-small"></span></p>
       <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
       <p class="blue-dark text-small">Homme du match : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-male text-large blue"></i></p>
     </div>
