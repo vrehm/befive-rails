@@ -10,7 +10,9 @@
   <br>
   <div class="text-center">
     <br>
-    <p class="blue-dark text-large text-semi-bold">Dream Team</p>
+    <% if current_user.has_team %>
+      <p class="blue-dark text-large text-semi-bold">Mon équipe</p>
+    <% end %>
     <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Paris (75)</p>
   </div>
 </div>

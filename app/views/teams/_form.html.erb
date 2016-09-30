@@ -1,0 +1,10 @@
+<%= simple_form_for(@team) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Nom de l'équipe" %>
+  <%= f.input :city, label: "Ville" %>
+  <br>
+  <div class="center">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+  <br>
+<% end %>

@@ -11,8 +11,10 @@
     <h6>Position</h6>
   <% end %>
   <%= image_tag "logo.png", class: "text-marged logo-s"%>
-    <p class="blue-dark text-large text-semi-bold">Dream Team</p>
-  <% if current_user.position %>
+  <% if current_user.has_team %>
+    <p class="blue-dark text-large text-semi-bold">Mon équipe</p>
+  <% end %>
+  <% if current_user.city %>
     <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
   <% else %>
       <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
