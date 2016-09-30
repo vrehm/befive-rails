@@ -1,0 +1,25 @@
+<div class="card text-center">
+  <%= image_tag "user.png", class: "avatar-large"%>
+  <% if current_user.first_name && current_user.last_name %>
+    <h5><%= current_user.first_name.capitalize %> <%= current_user.last_name.upcase %></h5>
+  <% else %>
+    <h5>Prénom Nom</h5>
+  <% end %>
+  <% if current_user.position %>
+    <h6><%= current_user.position.capitalize %></h6>
+  <% else %>
+    <h6>Position</h6>
+  <% end %>
+  <%= image_tag "logo.png", class: "text-marged logo-s"%>
+    <p class="blue-dark text-large text-semi-bold">Dream Team</p>
+  <% if current_user.position %>
+    <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
+  <% else %>
+      <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
+  <% end %>
+  <div class="bottom-right-icon">
+    <%= link_to edit_user_registration_path(current_user) do %>
+      <i class="fa fa-cog grey-dark text-large"></i>
+    <% end %>
+  </div>
+</div>
