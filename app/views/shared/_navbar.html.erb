@@ -1,6 +1,6 @@
 <div class="navbar-blue">
   <!-- Logo -->
-  <%= link_to pages_dashboard_path, class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo-befive.png" %>
   <% end %>
 
@@ -25,7 +25,7 @@
         <div class="dropdown">
           <%= image_tag "user-grey.svg", class: "avatar navbar-img-user" %>
           <%= link_to "#", class: "dropdown-toggle navbar-link navbar-link-user", id: "navbar-menu", "data-toggle" => "dropdown" do %>
-            Hedi <i class="fa fa-caret-down" aria-hidden="true"></i>
+            <%= current_user.first_name %> <i class="fa fa-caret-down" aria-hidden="true"></i>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
             <li>

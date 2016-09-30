@@ -2,19 +2,9 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Montserrat:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Montserrat:400,100,300,700,500");
 $base-font: "Avenir Next", "Open Sans", "sans-serif";
-$header-font: "Montserrat", "sans-serif";
-
-// Local fonts (uncomment following lines)
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+$header-font: "Montserrat", "Open Sans", "sans-serif";
 
 // Font-size and line-height
 $base-size: 16px;
