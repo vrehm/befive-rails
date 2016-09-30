@@ -3,10 +3,14 @@
     <h6>MEMBRES</h6>
   </div>
   <br>
-  <%= link_to "#", class: "link-unstyled" do %>
-    <div class="list-card-m">
-      <%= image_tag "user.png", class:"avatar-m float-left" %>
-      <span class="blue-dark text-semi-bold text-small">Hedi JABRI <br><span class="grey-dark text-normal"> Défenseur - Organisateur </span></span>
-    </div>
+  <% @team.members.each do |member| %>
+    <%= link_to "#", class: "link-unstyled" do %>
+      <div class="list-card-m">
+        <%= image_tag "user.png", class:"avatar-m float-left" %>
+        <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
+        <br>
+        <span class="grey-dark text-normal"> Position - Organisateur </span></span>
+      </div>
+    <% end %>
   <% end %>
 </div>

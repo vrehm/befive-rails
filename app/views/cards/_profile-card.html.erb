@@ -12,7 +12,7 @@
   <% end %>
   <%= image_tag "logo.png", class: "text-marged logo-s"%>
   <% if current_user.has_team %>
-    <p class="blue-dark text-large text-semi-bold">Mon équipe</p>
+    <p class="blue-dark text-large text-semi-bold"><%= current_user.members.first.team.name %></p>
   <% end %>
   <% if current_user.city %>
     <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>

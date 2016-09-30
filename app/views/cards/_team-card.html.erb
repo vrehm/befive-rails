@@ -11,8 +11,8 @@
   <div class="text-center">
     <br>
     <% if current_user.has_team %>
-      <p class="blue-dark text-large text-semi-bold">Mon équipe</p>
+      <p class="blue-dark text-large text-semi-bold"><%= current_user.members.first.team.name %></p>
     <% end %>
-    <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Paris (75)</p>
+    <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.members.first.team.city %></p>
   </div>
 </div>

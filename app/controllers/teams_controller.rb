@@ -27,6 +27,10 @@ class TeamsController < ApplicationController
       @team = Team.new(team_params)
       @team.user = current_user
       if @team.save
+        member = Member.new
+        member.user = current_user
+        member.team = @team
+        member.save
         current_user.has_team = true
         current_user.manager = true
         current_user.save
