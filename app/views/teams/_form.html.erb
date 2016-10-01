@@ -1,5 +1,6 @@
 <%= simple_form_for(@team) do |f| %>
   <%= f.error_notification %>
+  <%= f.input :photo, as: :attachinary %>
   <%= f.input :name, label: "Nom de l'équipe" %>
   <%= f.input :city, label: "Ville" %>
   <br>
