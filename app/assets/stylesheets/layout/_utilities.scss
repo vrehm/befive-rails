@@ -41,6 +41,18 @@ hr {
 	margin: 0px auto;
   width: 27%;
 }
+.center-container-m {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+  width: 40%;
+}
+.right-container-m {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+  width: 32%;
+}
 
 // Paddings & Margins
 .padded {

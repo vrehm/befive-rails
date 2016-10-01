@@ -16,3 +16,26 @@
     font-weight: 400;
   }
 }
+// Devise Forms Edit
+.card-form-white {
+  background-color: white;
+  padding: 30px 60px;
+  min-height: 120px;
+  width: 95%;
+  border-radius: 3px;
+  margin: 0px auto;
+  position: relative;
+  border: 1px solid $grey;
+  h1, h2, h3, h4, h5, h6 {
+    color: $blue-dark
+  }
+  label {
+    font-weight: 500;
+    color: $blue-dark;
+    font-size: 15px;
+  }
+  input[type="text"], input[type="email"], input[type="password"], textarea {
+  height: 30px;
+  font-size: 15px;
+  }
+}
