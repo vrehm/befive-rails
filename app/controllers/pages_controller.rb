@@ -4,8 +4,6 @@ class PagesController < ApplicationController
   def home
     if user_signed_in? && current_user.members.size > 0
       @team = current_user.members.first.team
-    else
-      @team = "Mon équipe"
     end
   end
 end

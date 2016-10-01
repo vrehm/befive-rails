@@ -3,6 +3,9 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def index
+    if current_user.has_team
+      @team = current_user.members.first.team
+    end
     @teams = Team.all
   end
 
