@@ -9,12 +9,13 @@
               <%= f.error_notification %>
 
               <div class="form-inputs">
-                <%= f.input :email, required: false, label: "Email"%>
-                <%= f.input :password, required: false, label: "Mot de passe"  %>
-                <%= f.input :password_confirmation, required: false, label: "Mot de passe confirmation" %>
+                <%= f.input :email, required: false, placeholder: "Email", label: false %>
+                <%= f.input :first_name, placeholder: "Prénom", label: false %>
+                <%= f.input :last_name, placeholder: "Nom", label: false %>
+                <%= f.input :password, required: false, placeholder: "Entrer votre mot de passe", label: "Mot de passe"  %>
+                <%= f.input :password_confirmation, required: false, placeholder: "Confirmer votre mot de passe", label: false %>
                 <br>
               </div>
-
               <div class="form-actions">
                 <%= f.button :submit, "Inscription", class: "btn btn-lg btn-success" %>
               </div>

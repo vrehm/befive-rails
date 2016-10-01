@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="left-container">
+    <div class="card-image">
+      <div class="title-card text-center">
+        <h6>MON EQUIPE</h6>
+      </div>
+      <br>
+      <%= link_to "#", class: "link-unstyled" do %>
+        <div class="list-card-m">
+          <%= image_tag "logo.png", style:"width: 50px", class:"float-left" %>
+          <span class="blue-dark text-semi-bold text-small"><%= @team.name %>
+          <br>
+          <span class="grey-dark text-normal"> <%= @team.city %> </span></span>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <%= render "/cards/members-card" %>
+  </div>
+  <div class="center-container">
+    <div class="card-image-untitle-large">
+      <% if @team.photo? %>
+        <%= cl_image_tag @team.photo.path, class: "image-team-untitle-large", width: 1000, height: 600, crop: :fill %>
+      <% else %>
+        <%= image_tag "team.png", class: "image-team-untitle-large"%>
+      <% end %>
+      <div class="logo-inside-untitle-large">
+        <%= image_tag "logo.png", style:"width: 50px" %>
+      </div>
+      <br>
+      <br>
+      <div class="text-center">
+        <br>
+          <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
+      </div>
+      <div class="bottom-right-icon">
+        <% if @team.user == current_user %>
+          <%= link_to edit_team_path(@team) do %>
+            <i class="fa fa-cog grey-dark text-large"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  <div class="right-container">
+    <%= render "/cards/next-match-card" %>
+  </div>
+</div>

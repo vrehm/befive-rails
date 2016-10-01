@@ -2,7 +2,7 @@
 .banner {
   color: $white-light;
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover !important;
   display: flex;
   align-items: center;

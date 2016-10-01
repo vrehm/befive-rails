@@ -1,14 +1,17 @@
 <div class="wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="card">
-            <h3 class= "text-center">Nouvelle équipe</h3>
-            <br>
-            <%= render 'form' %>
-          </div>
-        </div>
+  <div class="left-container">
+    <%= render 'cards/profile-card' %>
+  </div>
+  <div class="center-container">
+    <div class="card-form-white">
+      <div class="title-card text-center">
+        <h6 class="uppercase">nouvelle équipe</h6>
       </div>
+      <br>
+      <br>
+      <%= render 'form' %>
     </div>
+  </div>
+  <div class="right-container">
   </div>
 </div>
