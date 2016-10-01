@@ -2,7 +2,11 @@
   <div class="title-card text-center">
     <h6>MON EQUIPE</h6>
   </div>
-  <%= image_tag "team.png", class: "image-team"%>
+  <% if current_user.members.first.team.photo? %>
+    <%= cl_image_tag current_user.members.first.team.photo.path, class: "image-team", width: 800, height: 500, crop: :fill %>
+  <% else %>
+    <%= image_tag "team.png", class: "image-team"%>
+  <% end %>
   <div class="logo-inside">
     <%= image_tag "logo.png", style:"width: 50px" %>
   </div>

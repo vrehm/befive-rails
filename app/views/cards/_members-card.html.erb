@@ -6,7 +6,11 @@
   <% @team.members.each do |member| %>
     <%= link_to "#", class: "link-unstyled" do %>
       <div class="list-card-m">
-        <%= image_tag "user.png", class:"avatar-m float-left" %>
+        <% if member.user.avatar? %>
+          <%= cl_image_tag member.user.avatar.path, class: "avatar-m float-left", width: 100, height: 100, crop: :fill %>
+        <% else %>
+            <%= image_tag "user.png", class:"avatar-m float-left" %>
+        <% end %>
         <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
         <br>
         <span class="grey-dark text-normal"> Position - Organisateur </span></span>

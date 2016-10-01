@@ -23,7 +23,11 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-item">
         <div class="dropdown">
-          <%= image_tag "user-grey.svg", class: "avatar navbar-img-user" %>
+          <% if current_user.avatar? %>
+            <%= cl_image_tag current_user.avatar.path, class: "avatar navbar-img-user", width: 60, height: 60, crop: :fill %>
+          <% else %>
+            <%= image_tag "user-grey.svg", class: "avatar navbar-img-user" %>
+          <% end %>
           <%= link_to "#", class: "dropdown-toggle navbar-link navbar-link-user", id: "navbar-menu", "data-toggle" => "dropdown" do %>
             <% if current_user.first_name %>
             <%= current_user.first_name %> <i class="fa fa-caret-down" aria-hidden="true"></i>
