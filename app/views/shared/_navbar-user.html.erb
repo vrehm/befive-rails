@@ -1,33 +1,41 @@
 <div class="navbar-user">
   <div class="navbar-user-left hidden-xs hidden-sm">
-    <!-- Text link -->
-    <%= link_to root_path, class: "navbar-user-item navbar-user-link" do %>
-      <i class="fa fa-home" aria-hidden="true"></i> Acceuil
+    <div class="<%= 'link-active' if current_page?(root_path) %>">
+      <!-- Text link -->
+      <%= link_to root_path, class: "navbar-user-item navbar-user-link" do %>
+        <i class="fa fa-home" aria-hidden="true"></i> Tableau de Bord
+      <% end %>
+    </div>
+    <% if current_user.has_team %>
+      <div class="<%= 'link-active' if current_page?(team_path(current_user.members.first.team)) %>">
+        <!-- Text link -->
+        <%= link_to team_path(current_user.members.first.team), class: "navbar-user-item navbar-user-link" do %>
+          <i class="fa fa-users" aria-hidden="true"></i> Membres
+        <% end %>
+      </div>
     <% end %>
     <% if current_user.has_team %>
-      <!-- Text link -->
-      <%= link_to team_path(current_user.members.first.team), class: "navbar-user-item navbar-user-link" do %>
-        <i class="fa fa-users" aria-hidden="true"></i> Membres
-      <% end %>
+      <div>
+        <!-- Text link -->
+        <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>
+          <i class="fa fa-calendar" aria-hidden="true"></i> Evénements
+        <% end %>
+      </div>
     <% end %>
     <% if current_user.has_team %>
+      <div>
+        <!-- Text link -->
+        <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>
+          <i class="fa fa-comments" aria-hidden="true"></i> Teamtalk
+        <% end %>
+      </div>
+    <% end %>
+    <div class="<%= 'link-active' if current_page?(teams_path) %>">
       <!-- Text link -->
-      <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>
-        <i class="fa fa-calendar" aria-hidden="true"></i> Evénements
+      <%= link_to teams_path, class: "navbar-user-item navbar-user-link" do %>
+        <i class="fa fa-globe" aria-hidden="true"></i> Réseau
       <% end %>
-    <% end %>
-
-    <% if current_user.has_team %>
-      <!-- Text link -->
-      <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>
-        <i class="fa fa-comments" aria-hidden="true"></i> Teamtalk
-      <% end %>
-    <% end %>
-
-    <!-- Text link -->
-    <%= link_to teams_path, class: "navbar-user-item navbar-user-link" do %>
-      <i class="fa fa-globe" aria-hidden="true"></i> Réseau
-    <% end %>
+    </div>
   </div>
 
   <!-- Right Navigation -->

@@ -1,0 +1,46 @@
+<div class="card-teams">
+	<div class="card-team-left">
+		<% if team.photo? %>
+	    <%= cl_image_tag team.photo.path, class: "image-team-s", width: 1000, height: 600, crop: :fill %>
+	  <% else %>
+	    <%= image_tag "team.png", class: "image-team-s", crop: :fill %>
+	  <% end %>
+    <div class="logo-inside-s">
+      <%= image_tag "logo.png" %>
+    </div>
+    <div class="text-center">
+			<br>
+			<br>
+      <p class="blue-dark text-large"><%= team.name %> </br >
+				<span class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= team.city %></span>
+      </p>
+  	</div>
+	</div>
+	<div class="card-team-right">
+		<div class="float-right">
+			<%= link_to "#" do %>
+				<i class="fa fa-plus-circle text-xl blue margin-left"></i>
+			<% end %>
+		</div>
+		<br>
+		<br>
+		<div class="text-left clear">
+			<p class="grey-dark text-small"><span class="blue-dark text-small">Date de création :</span>  <%= team.created_at.strftime("%Y") %></p>
+		  <p class="grey-dark text-small"><span class="blue-dark text-small">Matchs joués :</span>  0  <i class="fa fa-futbol-o blue margin-left"></i></p>
+		  <p class="grey-dark text-small"><span class="blue-dark text-small">Nombre de membres :</span>  <%= team.members.size %>  <i class="fa fa-male blue text-large margin-left"></i></p>
+		  <p class="grey-dark text-small"><span class="blue-dark text-small">Centre :</span> Urban Aubervilliers</p>
+		</div>
+		<div class="bottom-card-s">
+			<div class="float-right">
+				<%= link_to team_path(team), class: "btn btn-primary text-small" do %>
+          Voir <i class="fa fa-arrow-right margin-left"></i>
+        <% end %>
+			</div>
+			<div class="float-left">
+				<%= link_to "#", class: "btn btn-default text-small" do %>
+          Contacter <i class="fa fa-envelope blue margin-left"></i>
+        <% end %>
+			</div>
+		</div>
+	</div>
+</div>

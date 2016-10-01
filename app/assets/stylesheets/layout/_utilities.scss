@@ -78,6 +78,9 @@ hr {
   float: left;
 }
 
+.clear {
+  clear: both;
+}
 // Colors
 .white {
   color: $white-light;
@@ -105,6 +108,9 @@ hr {
 }
 
 // Text Styles
+.text-xl {
+	font-size: 18px;
+}
 .text-large {
 	font-size: 15px;
 }

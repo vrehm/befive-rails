@@ -2,7 +2,7 @@
   <div class="left-container">
     <div class="card-image">
       <div class="title-card text-center">
-        <h6>MON EQUIPE</h6>
+        <h6 class="uppercase">l'équipe</h6>
       </div>
       <br>
       <%= link_to "#", class: "link-unstyled" do %>
@@ -31,16 +31,23 @@
       <br>
       <div class="text-center">
         <br>
-          <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
+        <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
+        <% if current_user.has_team == false %>
+          <div class="bottom-right-icon">
+            <%= link_to edit_team_path(@team), class: "btn btn-primary text-small" do %>
+              Rejoindre <i class="fa fa-plus-circle white"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <div class="bottom-right-icon">
-        <% if @team.user == current_user %>
+      <% if @team.user == current_user %>
+        <div class="bottom-right-icon">
           <%= link_to edit_team_path(@team) do %>
             <i class="fa fa-cog grey-dark text-large"></i>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
   </div>

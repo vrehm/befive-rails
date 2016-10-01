@@ -5,7 +5,10 @@
     <%= render "/cards/infos-card" %>
   </div>
   <div class="center-container">
-
+    <% @teams.each do |team| %>
+      <%= render 'cards/team-card-large', team: team %>
+      <br>
+    <% end %>
   </div>
   <div class="right-container">
     <div class="card text-center">

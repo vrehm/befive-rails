@@ -48,11 +48,11 @@
   font-size: 14px;
   font-weight: 500;
   &:hover {
-    color: $blue;
+    color: $blue-dark;
     text-decoration: none;
   }
   &:focus {
-    color: $blue;
+    color: $blue-dark;
     text-decoration: none;
   }
 }
@@ -106,4 +106,17 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+// Navbar link active
+.link-active a {
+  color: $blue-dark;
+  &:hover {
+    color: $blue-dark;
+    text-decoration: none;
+  }
+  &:focus {
+    color: $blue-dark;
+    text-decoration: none;
+  }
 }

@@ -13,7 +13,16 @@
         <% end %>
         <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
         <br>
-        <span class="grey-dark text-normal"> Position - Organisateur </span></span>
+        <span class="grey-dark text-normal">
+          <% if member.user.position? %>
+            <%= member.user.position.capitalize %> -
+          <% else %>
+           Position -
+          <% end %>
+          <% if member.user.manager? %>
+             Organisateur
+          <% end %>
+         </span>
       </div>
     <% end %>
   <% end %>
