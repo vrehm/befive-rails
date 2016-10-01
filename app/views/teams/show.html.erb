@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <br>
-    <% if @team.members.where("pending = ?", true) %>
+    <% if @team.members.where("pending = ?", true) > 0 %>
       <%= render 'cards/pending-members-card', team: @team %>
       <br>
     <% end %>
