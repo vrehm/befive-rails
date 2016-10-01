@@ -10,7 +10,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-
+    @members = @team.members.where("validated = ?", true)
+    @members_pending = @team.members.where("pending = ?", true)
   end
 
   def new
@@ -24,7 +25,7 @@ class TeamsController < ApplicationController
 
   def create
     if current_user.has_team
-      flash[:alert] = "Action impossible, vous êtes déjà memebre d'une équipe"
+      flash[:alert] = "Action impossible, vous êtes déjà membre d'une équipe"
       redirect_to root_path
     else
       @team = Team.new(team_params)
@@ -33,6 +34,7 @@ class TeamsController < ApplicationController
         member = Member.new
         member.user = current_user
         member.team = @team
+        member.validated = true
         member.save
         current_user.has_team = true
         current_user.manager = true

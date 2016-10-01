@@ -17,11 +17,17 @@
   	</div>
 	</div>
 	<div class="card-team-right">
-		<div class="float-right">
-			<%= link_to "#" do %>
-				<i class="fa fa-plus-circle text-xl blue margin-left"></i>
-			<% end %>
-		</div>
+		<% if current_user.members.first.pending == true %>
+			<div class="text-center">
+				<span class="blue-dark text-small">Demande envoyée <i class="fa fa-paper-plane margin-left blue"></i></span>
+			</div>
+		<% else %>
+			<div class="float-right">
+				<%= link_to "#" do %>
+					<i class="fa fa-plus-circle text-xl blue margin-left"></i>
+				<% end %>
+			</div>
+		<% end %>
 		<br>
 		<br>
 		<div class="text-left clear">
@@ -36,11 +42,19 @@
           Voir <i class="fa fa-arrow-right margin-left"></i>
         <% end %>
 			</div>
-			<div class="float-left">
-				<%= link_to "#", class: "btn btn-default text-small" do %>
-          Contacter <i class="fa fa-envelope blue margin-left"></i>
-        <% end %>
-			</div>
+			<% if current_user.members.first.pending == true %>
+				<div class="float-left">
+					<%= link_to "#", class: "btn btn-default text-small" do %>
+						<span class="red">Annuler <i class="fa fa-times margin-left"></i></span>
+					<% end %>
+				</div>
+			<% else %>
+				<div class="float-left">
+					<%= link_to "#", class: "btn btn-default text-small" do %>
+	          Contacter <i class="fa fa-envelope blue margin-left"></i>
+	        <% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

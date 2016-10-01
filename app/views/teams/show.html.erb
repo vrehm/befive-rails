@@ -15,6 +15,10 @@
       <% end %>
     </div>
     <br>
+    <% if @team.members.where("pending = ?", true) %>
+      <%= render 'cards/pending-members-card', team: @team %>
+      <br>
+    <% end %>
     <%= render "/cards/members-card" %>
   </div>
   <div class="center-container">
@@ -33,9 +37,15 @@
         <br>
         <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
-        <% if current_user.has_team == false %>
+        <% if current_user.members.first.pending && current_user.members.first.team == @team %>
           <div class="bottom-right-icon">
-            <%= link_to edit_team_path(@team), class: "btn btn-primary text-small" do %>
+            <%= link_to "#", class: "btn btn-default text-small", method: :delete do %>
+              <span class="red">Annuler la demande <i class="fa fa-times"></i></span>
+            <% end %>
+          </div>
+        <% elsif current_user.has_team == false %>
+          <div class="bottom-right-icon">
+            <%= link_to members_path(team_id: @team.id), class: "btn btn-primary text-small", method: :post do %>
               Rejoindre <i class="fa fa-plus-circle white"></i>
             <% end %>
           </div>

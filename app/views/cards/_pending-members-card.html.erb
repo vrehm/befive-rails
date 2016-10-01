@@ -1,9 +1,9 @@
 <div class="card-image">
   <div class="title-card text-center">
-    <h6>MEMBRES</h6>
+    <h6>DEMANDES EN ATTENTE</h6>
   </div>
   <br>
-  <% @members.each do |member| %>
+  <% @members_pending.each do |member| %>
     <%= link_to "#", class: "link-unstyled" do %>
       <div class="list-card-m">
         <% if member.user.avatar? %>
@@ -19,10 +19,17 @@
           <% else %>
            Position
           <% end %>
-          <% if member.user.manager? %>
-              - Organisateur
-          <% end %>
          </span>
+         <% if current_user == @team.user %>
+          <div class="float-right">
+            <%= link_to "#" do %>
+              <i class="fa fa-times-circle margin-right text-xl red" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to "#" do %>
+              <i class="fa fa-check-circle margin-left text-xl green" aria-hidden="true"></i>
+            <% end %>
+          </div>
+         <% end %>
       </div>
     <% end %>
   <% end %>

@@ -22,14 +22,18 @@
     <div class="left-container">
       <%= render "cards/profile-card" %>
       <br>
-      <%= render "/cards/infos-card" %>
+      <%= render "cards/infos-card" %>
     </div>
     <div class="center-container">
-      <div class="card-empty">
-        <%= link_to new_team_path, class: "btn btn-default text-small blue-dark" do %>
-          Créer une équipe <i class="fa fa-plus-circle blue margin-left"></i>
-        <% end %>
-      </div>
+      <% if current_user.members.first.pending == true %>
+        <%= render 'cards/team-card-large', team: @team %>
+      <% else %>
+        <div class="card-empty">
+          <%= link_to new_team_path, class: "btn btn-default text-small blue-dark" do %>
+            Créer une équipe <i class="fa fa-plus-circle blue margin-left"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="right-container">
       <div class="card-image-untitle">
