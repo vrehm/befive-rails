@@ -17,7 +17,7 @@
   	</div>
 	</div>
 	<div class="card-team-right">
-		<% if current_user.members.first.pending == true %>
+		<% if current_user.members.where("pending = ?", true).size > 0 %>
 			<div class="text-center">
 				<span class="blue-dark text-small">Demande envoyée <i class="fa fa-paper-plane margin-left blue"></i></span>
 			</div>
@@ -42,7 +42,7 @@
           Voir <i class="fa fa-arrow-right margin-left"></i>
         <% end %>
 			</div>
-			<% if current_user.members.first.pending == true %>
+			<% if current_user.members.where("pending = ?", true).size > 0 %>
 				<div class="float-left">
 					<%= link_to "#", class: "btn btn-default text-small" do %>
 						<span class="red">Annuler <i class="fa fa-times margin-left"></i></span>

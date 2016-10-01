@@ -12,7 +12,7 @@ class MembersController < ApplicationController
       member.pending = true
       if member.save
         flash[:notice] = "La demande pour devenir membre de l'équipe #{team.name} à bien été envoyée !"
-        redirect_to team_path(team)
+        redirect_to root_path
       else
         flash[:alert] = "Vous ne pouvez pas devenir membre de cette équipe"
         redirect_to team_path(team)

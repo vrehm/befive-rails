@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <br>
-    <% if @team.members.where("pending = ?", true) > 0 %>
+    <% if @team.members.where("pending = ?", true).size > 0 %>
       <%= render 'cards/pending-members-card', team: @team %>
       <br>
     <% end %>
@@ -37,7 +37,7 @@
         <br>
         <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
-        <% if current_user.members.first.pending && current_user.members.first.team == @team %>
+        <% if current_user.members.where("pending = ?", true).size > 0 && current_user.members.first.team == @team %>
           <div class="bottom-right-icon">
             <%= link_to "#", class: "btn btn-default text-small", method: :delete do %>
               <span class="red">Annuler la demande <i class="fa fa-times"></i></span>
