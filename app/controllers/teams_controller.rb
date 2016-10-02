@@ -66,7 +66,21 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-
+    if current_user == @team.user
+      current_user.has_team = false
+      current_user.manager = false
+      current_user.save
+      @team.members.each do |member|
+        member.user.has_team = false
+        member.user.save
+      end
+      @team.destroy
+      flash[:notice] = "L'équipe #{@team.name} à bien été supprimée !"
+      redirect_to root_path
+    else
+      flash[:alert] = "Action impossible, vous n'etes pas l'organisateur de cette équipe"
+      redirect_to root_path
+    end
   end
 
   private

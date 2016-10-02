@@ -52,7 +52,12 @@
             <% if current_user.manager %>
               <li>
                 <%= link_to edit_team_path(current_user.teams.first) do %>
-                  <i class="fa fa-pencil"></i> <%= t(".profile", default: "Editer équipe") %>
+                  <i class="fa fa-pencil"></i> <%= t(".profile", default: "Editer l'équipe") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to team_path(current_user.teams.first), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer cette équipe ?" } do %>
+                  <i class="fa fa-times red"></i> <%= t(".profile", default: "Supprimer l'équipe") %>
                 <% end %>
               </li>
             <% else %>
