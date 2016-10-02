@@ -1,9 +1,13 @@
 <div class="card-teams">
 	<div class="card-team-left">
 		<% if team.photo? %>
-	    <%= cl_image_tag team.photo.path, class: "image-team-s", width: 1000, height: 600, crop: :fill %>
+			<%= link_to team_path(team) do %>
+	    	<%= cl_image_tag team.photo.path, class: "image-team-s", width: 1000, height: 600, crop: :fill %>
+			<% end %>
 	  <% else %>
-	    <%= image_tag "team.png", class: "image-team-s", crop: :fill %>
+			<%= link_to team_path(team) do %>
+		    <%= image_tag "team.png", class: "image-team-s", crop: :fill %>
+			<% end %>
 	  <% end %>
     <div class="logo-inside-s">
       <%= image_tag "logo.png" %>

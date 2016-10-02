@@ -15,7 +15,7 @@
     <h6>Position</h6>
   <% end %>
   <%= image_tag "logo.png", class: "text-marged logo-s"%>
-  <% if current_user.has_team %>
+  <% if current_user.members.size > 0 %>
     <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
   <% end %>
   <% if current_user.city %>

@@ -57,7 +57,7 @@
               </li>
             <% else %>
               <li>
-                <%= link_to "#" do %>
+                <%= link_to member_path(current_user.members.first.id), method: :delete, data: { confirm: "Etes vous sur de ne plus vouloir faire parti de #{current_user.members.first.team.name} ?"} do %>
                   <i class="fa fa-refresh"></i> Changer d'équipe
                 <% end %>
               </li>
