@@ -19,9 +19,9 @@
     <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
   <% end %>
   <% if current_user.city %>
-    <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
+    <p class="grey-dark text-small margin-bottom"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
   <% else %>
-      <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
+      <p class="grey-dark text-small margin-bottom"><i class="fa fa-map-marker"></i> Ville</p>
   <% end %>
   <div class="bottom-right-icon">
     <%= link_to edit_user_registration_path(current_user) do %>

@@ -26,6 +26,7 @@
     </div>
     <div class="center-container">
       <% if current_user.members.where("pending = ?", true).size > 0 %>
+        <p class="grey-dark text-small text-center">Vous avez une demande en cours...</p>
         <%= render 'cards/team-card-large', team: @team %>
       <% else %>
       <div class="card-empty">
@@ -45,8 +46,12 @@
         <br>
         <div class="text-center">
           <br>
-          <%= link_to teams_path, class: "btn btn-primary text-small" do %>
-            Rejoindre une équipe <i class="fa fa-share white margin-left"></i>
+          <%= link_to teams_path, class: "btn btn-primary text-small margin-bottom-s" do %>
+            <% if current_user.members.where("pending = ?", true).size > 0 %>
+              Voir les équipes <i class="fa fa-share white margin-left"></i>
+            <% else %>
+              Rejoindre une équipe <i class="fa fa-share white margin-left"></i>
+            <% end %>
           <% end %>
           <br>
         </div>

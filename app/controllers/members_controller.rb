@@ -4,6 +4,9 @@ class MembersController < ApplicationController
     if current_user.has_team
       flash[:alert] = "Action impossible, vous êtes déjà membre d'une équipe"
       redirect_to root_path
+    elsif current_user.members.where("pending = ?", true).size > 0
+      flash[:alert] = "Action impossible, vous avez déjà une demande en cours"
+      redirect_to root_path
     else
       team = Team.find(params[:team_id])
       member = Member.new
@@ -25,6 +28,15 @@ class MembersController < ApplicationController
   end
 
   def destroy
-
+    member = Member.find(params[:id])
+    team = member.team
+    if member.user == current_user || team.user == current_user 
+      member.destroy
+      flash[:notice] = "La demande à bien été annulée !"
+      redirect_to root_path
+    else
+      flash[:alert] = "Action impossible, vous n'êtes pas l'auteur de cette demande"
+      redirect_to root_path
+    end
   end
 end

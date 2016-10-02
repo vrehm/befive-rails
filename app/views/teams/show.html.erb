@@ -39,7 +39,7 @@
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
         <% if current_user.members.where("pending = ?", true).size > 0 && current_user.members.first.team == @team %>
           <div class="bottom-right-icon">
-            <%= link_to "#", class: "btn btn-default text-small", method: :delete do %>
+            <%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
               <span class="red">Annuler la demande <i class="fa fa-times"></i></span>
             <% end %>
           </div>

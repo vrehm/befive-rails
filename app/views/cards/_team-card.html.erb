@@ -3,9 +3,13 @@
     <h6>MON EQUIPE</h6>
   </div>
   <% if @team.photo? %>
-    <%= cl_image_tag @team.photo.path, class: "image-team", width: 800, height: 500, crop: :fill %>
+    <%= link_to team_path(current_user.members.first.team) do %>
+      <%= cl_image_tag @team.photo.path, class: "image-team", width: 800, height: 500, crop: :fill %>
+    <% end %>
   <% else %>
-    <%= image_tag "team.png", class: "image-team"%>
+    <%= link_to team_path(current_user.members.first.team) do %>
+      <%= image_tag "team.png", class: "image-team"%>
+    <% end %>
   <% end %>
   <div class="logo-inside">
     <%= image_tag "logo.png", style:"width: 50px" %>

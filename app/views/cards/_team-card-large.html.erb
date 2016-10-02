@@ -42,9 +42,9 @@
           Voir <i class="fa fa-arrow-right margin-left"></i>
         <% end %>
 			</div>
-			<% if current_user.members.where("pending = ?", true).size > 0 %>
+			<% if current_user.members.where("pending = ?", true).first && current_user.members.where("pending = ?", true).first.team == team %>
 				<div class="float-left">
-					<%= link_to "#", class: "btn btn-default text-small" do %>
+					<%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
 						<span class="red">Annuler <i class="fa fa-times margin-left"></i></span>
 					<% end %>
 				</div>
