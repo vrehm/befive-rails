@@ -3,10 +3,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user.members.size > 0
-      @team = current_user.members.first.team
-    end
-    @teams = Team.all
+    @teams = policy_scope(Team).order(created_at: :desc)
   end
 
   def show
@@ -15,78 +12,53 @@ class TeamsController < ApplicationController
   end
 
   def new
-    if current_user.has_team
-      flash[:alert] = "Action impossible, vous êtes déjà memebre d'une équipe"
-      redirect_to root_path
-    else
-      @team = Team.new
-    end
+    @team = Team.new
+    authorize @team
   end
 
   def create
-    if current_user.has_team
-      flash[:alert] = "Action impossible, vous êtes déjà membre d'une équipe"
+    @team = current_user.teams.build(team_params)
+    authorize @team
+    member = current_user.members.build(team: @team, validated: true)
+    if @team.save && member.save
+      current_user.update(has_team: true, manager: true)
+      current_user.save
+      flash[:notice] = "Félicitations #{current_user.first_name}, #{@team.name} à bien été crée !"
       redirect_to root_path
     else
-      @team = Team.new(team_params)
-      @team.user = current_user
-      if @team.save
-        member = Member.new
-        member.user = current_user
-        member.team = @team
-        member.validated = true
-        member.save
-        current_user.has_team = true
-        current_user.manager = true
-        current_user.save
-        flash[:notice] = "Félicitations #{current_user.first_name}, #{@team.name} à bien été crée !"
-        redirect_to root_path
-      else
-        render 'new'
-      end
+      render 'new'
     end
   end
 
   def edit
-
   end
 
   def update
-    if current_user == @team.user
-      if @team.update(team_params)
-        flash[:notice] = "Modification réussie"
-        redirect_to root_path
-      else
-        render 'edit'
-      end
-    else
-      flash[:alert] = "Action impossible, vous n'etes pas l'organisateur de cette équipe"
+    if @team.update(team_params)
+      flash[:notice] = "Modification réussie"
       redirect_to root_path
+    else
+      render 'edit'
     end
   end
 
   def destroy
-    if current_user == @team.user
-      current_user.has_team = false
-      current_user.manager = false
-      current_user.save
-      @team.members.each do |member|
-        member.user.has_team = false
-        member.user.save
-      end
-      @team.destroy
-      flash[:notice] = "L'équipe #{@team.name} à bien été supprimée !"
-      redirect_to root_path
-    else
-      flash[:alert] = "Action impossible, vous n'etes pas l'organisateur de cette équipe"
-      redirect_to root_path
+    current_user.update(has_team: false, manager: false)
+    current_user.save
+    @team.members.each do |member|
+      member.user.has_team = false
+      member.user.save
     end
+    @team.destroy
+    flash[:notice] = "L'équipe #{@team.name} à bien été supprimée !"
+    redirect_to root_path
   end
 
   private
 
   def set_team
     @team = Team.find(params[:id])
+    authorize @team
   end
 
   def team_params
