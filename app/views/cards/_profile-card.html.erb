@@ -15,10 +15,10 @@
     <h6>Position</h6>
   <% end %>
   <%= image_tag "logo.png", class: "text-marged logo-s"%>
-  <% if current_user.members.size > 0 %>
-    <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
+  <% if current_user.has_team %>
+    <p class="blue-dark text-large text-semi-bold"><%= current_user.members.first.team.name %></p>
   <% end %>
-  <% if current_user.city %>
+  <% if current_user.city == nil %>
     <p class="grey-dark text-small margin-bottom"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
   <% else %>
       <p class="grey-dark text-small margin-bottom"><i class="fa fa-map-marker"></i> Ville</p>
