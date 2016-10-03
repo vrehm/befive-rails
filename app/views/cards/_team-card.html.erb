@@ -24,7 +24,7 @@
     <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.members.first.team.city %></p>
   </div>
   <div class="bottom-right-icon">
-    <% if current_user.manager %>
+    <% if policy(@team).update? %>
       <%= link_to edit_team_path(@team) do %>
         <i class="fa fa-cog grey-dark text-large"></i>
       <% end %>

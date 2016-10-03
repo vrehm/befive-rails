@@ -38,7 +38,7 @@ class MembersController < ApplicationController
       flash[:notice] = "La demande a bien été refusé !"
       redirect_to team_path(team)
     else
-      flash[:notice] = "Votre demande pour devenir membre de #{team.name} a bien été annulé !"
+      flash[:notice] = "Vous n'êtes plus membre de #{team.name} !"
       redirect_to root_path
     end
   end

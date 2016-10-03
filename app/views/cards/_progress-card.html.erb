@@ -14,7 +14,7 @@
     <hr>
   </div>
 <% else %>
-  <% if current_user.city.size > 0 && current_user.avatar && current_user.position %>
+  <% if current_user.city =! nil && current_user.avatar && current_user.position %>
 
   <% else %>
   <div class="card">

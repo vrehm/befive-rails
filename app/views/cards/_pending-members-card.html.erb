@@ -20,7 +20,7 @@
            Position
           <% end %>
          </span>
-         <% if current_user == @team.user %>
+         <% if policy(member).update? %>
           <div class="float-right">
             <%= link_to member_path(member.id), class: "link-unstyled", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
               <i class="fa fa-times-circle margin-right text-xl red" aria-hidden="true"></i>
