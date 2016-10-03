@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003145520) do
+ActiveRecord::Schema.define(version: 20161003154840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20161003145520) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "logos", force: :cascade do |t|
@@ -51,10 +58,12 @@ ActiveRecord::Schema.define(version: 20161003145520) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "logo_id"
+    t.integer  "location_id"
+    t.index ["location_id"], name: "index_teams_on_location_id", using: :btree
     t.index ["logo_id"], name: "index_teams_on_logo_id", using: :btree
     t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
   end
@@ -85,6 +94,7 @@ ActiveRecord::Schema.define(version: 20161003145520) do
 
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
+  add_foreign_key "teams", "locations"
   add_foreign_key "teams", "logos"
   add_foreign_key "teams", "users"
 end

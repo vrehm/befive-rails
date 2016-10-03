@@ -4,6 +4,7 @@
   <%= f.input :name, label: "Nom de l'équipe" %>
   <%= f.input :city, label: "Ville" %>
   <%= f.input :logo_id, collection: @logos, label_method: :color, value_method: :id, label: "Couleur de votre logo", include_blank: false, prompt: "Selectionner une couleur"%>
+  <%= f.input :location_id, collection: @locations, label_method: :name, value_method: :id, label: "Centre Foot 5 favori", include_blank: false, prompt: "Selectionner un centre"%>
   <br>
   <div class="text-center">
     <%= f.button :submit, class: "btn btn-primary" %>

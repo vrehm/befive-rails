@@ -42,7 +42,9 @@
       <p class="grey-dark text-small"><span class="blue-dark text-small">Date de création :</span>  <%= team.created_at.strftime("%Y") %></p>
       <p class="grey-dark text-small"><span class="blue-dark text-small">Matchs joués :</span>  0  <i class="fa fa-futbol-o blue margin-left"></i></p>
       <p class="grey-dark text-small"><span class="blue-dark text-small">Nombre de membres :</span>  <%= team.members.size %>  <i class="fa fa-male blue text-large margin-left"></i></p>
-      <p class="grey-dark text-small"><span class="blue-dark text-small">Centre :</span> Urban Aubervilliers</p>
+      <% if team.location %>
+        <p class="grey-dark text-small"><span class="blue-dark text-small">Centre favori :</span> <%= team.location.name %></p>
+      <% end %>
     </div>
     <div class="bottom-card-s">
       <div class="float-right">

@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
 
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :set_logos, only: [:create, :edit, :update]
+  before_action :set_locations, only: [:create, :edit, :update]
 
   def index
     @teams = policy_scope(Team).order(created_at: :desc)
@@ -18,7 +19,6 @@ class TeamsController < ApplicationController
   end
 
   def create
-    set_logos
     @team = current_user.teams.build(team_params)
     authorize @team
     member = current_user.members.build(team: @team, validated: true)
@@ -33,7 +33,6 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    set_logos
   end
 
   def update
@@ -65,10 +64,13 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name, :city, :photo, :logo_id)
+    params.require(:team).permit(:name, :city, :photo, :logo_id, :location_id)
   end
 
   def set_logos
     @logos = Logo.all
+  end
+  def set_locations
+    @locations = Location.all
   end
 end
