@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :teams
-  resources :members, only: [ :create, :update, :destroy ]
+  scope '(:locale)', locale: /fr|en/ do
+    resources :teams
+    resources :members, only: [ :create, :update, :destroy ]
 
-  root to: 'pages#home'
-
+    root to: 'pages#home'
+  end
 end

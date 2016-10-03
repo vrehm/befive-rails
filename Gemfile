@@ -13,6 +13,8 @@ gem 'cloudinary'
 gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
+gem 'devise-i18n'
 
 gem 'sass-rails'
 gem 'jquery-rails'
