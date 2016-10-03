@@ -29,33 +29,11 @@
         <p class="grey-dark text-small text-center">Vous avez une demande en cours...</p>
         <%= render 'cards/team-card-large', team: @team %>
       <% else %>
-      <div class="card-empty">
-        <%= link_to new_team_path, class: "btn btn-default text-small blue-dark" do %>
-          Créer une équipe <i class="fa fa-plus-circle blue margin-left"></i>
-        <% end %>
-      </div>
+        <%= render 'cards/empty-card' %>
       <% end %>
     </div>
     <div class="right-container">
-      <div class="card-image-untitle">
-        <%= image_tag "team.png", class: "image-team-untitle"%>
-        <div class="logo-inside-untitle">
-          <%= image_tag "logo.png", style:"width: 50px" %>
-        </div>
-        <br>
-        <br>
-        <div class="text-center">
-          <br>
-          <%= link_to teams_path, class: "btn btn-primary text-small margin-bottom-s" do %>
-            <% if current_user.members.where("pending = ?", true).size > 0 %>
-              Voir les équipes <i class="fa fa-share white margin-left"></i>
-            <% else %>
-              Rejoindre une équipe <i class="fa fa-share white margin-left"></i>
-            <% end %>
-          <% end %>
-          <br>
-        </div>
-      </div>
+      <%= render 'cards/join-team-card' %>
     </div>
   </div>
   <% end %>

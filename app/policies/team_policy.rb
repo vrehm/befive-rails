@@ -10,11 +10,7 @@ class TeamPolicy < ApplicationPolicy
   end
 
   def create?
-    if user.has_team
-      false
-    else
-      true
-    end
+    user.has_team ? false : true
   end
 
   def update?
