@@ -7,7 +7,11 @@
       <br>
       <%= link_to "#", class: "link-unstyled" do %>
         <div class="list-card-m">
-          <%= image_tag "logo.png", style:"width: 50px", class:"float-left" %>
+          <% if @team.logo %>
+            <%= image_tag @team.logo.image, style:"width: 50px", class:"float-left" %>
+          <% else %>
+            <%= image_tag "logo.png", style:"width: 50px", class:"float-left" %>
+          <% end %>
           <span class="blue-dark text-semi-bold text-small"><%= @team.name %>
           <br>
           <span class="grey-dark text-normal"> <%= @team.city %> </span></span>
@@ -29,7 +33,11 @@
         <%= image_tag "team.png", class: "image-team-untitle-large"%>
       <% end %>
       <div class="logo-inside-untitle-large">
-        <%= image_tag "logo.png", style:"width: 50px" %>
+        <% if @team.logo %>
+          <%= image_tag @team.logo.image, style:"width: 50px" %>
+        <% else %>
+          <%= image_tag "logo.png", style:"width: 50px" %>
+        <% end %>
       </div>
       <br>
       <br>

@@ -14,7 +14,11 @@
   <% else %>
     <h6>Position</h6>
   <% end %>
-  <%= image_tag "logo.png", class: "text-marged logo-s"%>
+  <% if current_user.has_team && current_user.members.first.team.logo %>
+    <%= image_tag current_user.members.first.team.logo.image, class: "text-marged logo-s"%>
+  <% else %>
+    <%= image_tag "logo.png", class: "text-marged logo-s"%>
+  <% end %>
   <% if current_user.has_team %>
     <p class="blue-dark text-large text-semi-bold"><%= current_user.members.first.team.name %></p>
     <% else %>

@@ -10,7 +10,11 @@
       <% end %>
     <% end %>
     <div class="logo-inside-s">
-      <%= image_tag "logo.png" %>
+      <% if team.logo %>
+        <%= image_tag team.logo.image %>
+      <% else %>
+        <%= image_tag "logo.png" %>
+      <% end %>
     </div>
     <div class="text-center">
       <br>

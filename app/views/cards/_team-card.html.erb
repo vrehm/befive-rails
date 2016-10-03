@@ -12,7 +12,11 @@
     <% end %>
   <% end %>
   <div class="logo-inside">
-    <%= image_tag "logo.png", style:"width: 50px" %>
+    <% if @team.logo %>
+      <%= image_tag @team.logo.image, style:"width: 50px" %>
+    <% else %>
+      <%= image_tag "logo.png", style:"width: 50px" %>
+    <% end %>
   </div>
   <br>
   <br>

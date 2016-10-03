@@ -44,7 +44,11 @@
       <!-- Team picture and dropdown -->
       <div class="navbar-user-item">
         <div class="dropdown">
-          <%= image_tag "logo.png", class: "avatar-square navbar-user-img-user" %>
+          <% if current_user.members.first.team.logo %>
+            <%= image_tag current_user.members.first.team.logo.image, class: "avatar-square navbar-user-img-user margin-right" %>
+          <% else %>
+            <%= image_tag "logo.png", class: "avatar-square navbar-user-img-user margin-right" %>
+          <% end %>
           <%= link_to "#", class: "dropdown-toggle navbar-user-link navbar-user-link-user", id: "navbar-user-menu", "data-toggle" => "dropdown" do %>
             <%= current_user.members.first.team.name %> <i class="fa fa-caret-down" aria-hidden="true"></i>
           <% end %>

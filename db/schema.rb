@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001181445) do
+ActiveRecord::Schema.define(version: 20161003145520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20161001181445) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
+  create_table "logos", force: :cascade do |t|
+    t.string   "color"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "team_id"
@@ -47,6 +54,8 @@ ActiveRecord::Schema.define(version: 20161001181445) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "logo_id"
+    t.index ["logo_id"], name: "index_teams_on_logo_id", using: :btree
     t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
   end
 
@@ -76,5 +85,6 @@ ActiveRecord::Schema.define(version: 20161001181445) do
 
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
+  add_foreign_key "teams", "logos"
   add_foreign_key "teams", "users"
 end

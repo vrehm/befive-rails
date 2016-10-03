@@ -4,6 +4,7 @@ class Team < ApplicationRecord
 
   belongs_to :user
   has_many :members, dependent: :destroy
+  belongs_to :logo
 
   validates :name, presence: true
   validates :city, presence: true
