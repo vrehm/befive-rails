@@ -16,6 +16,7 @@
           <%= f.input :last_name %>
           <%= f.input :position %>
           <%= f.input :city %>
+          <%= f.input :birthdate, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 12, order: [:day, :month, :year] %>
           <%= f.input :avatar, as: :attachinary %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
