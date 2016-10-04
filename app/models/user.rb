@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :teams, :through => :members
   has_many :teams, dependent: :destroy
   has_many :members, dependent: :destroy
+  has_many :invitations, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

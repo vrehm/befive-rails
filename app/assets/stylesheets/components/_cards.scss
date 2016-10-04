@@ -22,6 +22,14 @@
   left: 0px;
   padding: 10px 0px;
   border-radius: 3px 3px 0 0;
+  .title-card-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 .bottom-card {
   width: 100%;

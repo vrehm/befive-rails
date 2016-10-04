@@ -1,0 +1,25 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="modalInvitations">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title text-center"><%= image_tag @team.logo.image, style:"width: 30px", class: "margin-right" %> <%= @team.name %></h5>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [ @team, @invitation ] do |f| %>
+          <div class="modal-invitation-content">
+            <p class="text-center grey-dark">Envoyer une invitation par mail <br>pour permettre à vos membres de vous rejoindre </p>
+            <br>
+            <%= f.input :email %>
+            <%= f.input :last_name, label: "Nom" %>
+            <%= f.input :first_name, label: "Prénom" %>
+          </div>
+          <div class="text-center">
+            <br>
+            <%= f.button :submit, "Envoyer", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

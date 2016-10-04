@@ -8,9 +8,9 @@
       <%= link_to "#", class: "link-unstyled" do %>
         <div class="list-card-m">
           <% if @team.logo %>
-            <%= image_tag @team.logo.image, style:"width: 50px", class:"float-left" %>
+            <%= image_tag @team.logo.image, style:"width: 45px", class:"float-left" %>
           <% else %>
-            <%= image_tag "logo.png", style:"width: 50px", class:"float-left" %>
+            <%= image_tag "logo.png", style:"width: 45px", class:"float-left" %>
           <% end %>
           <span class="blue-dark text-semi-bold text-small"><%= @team.name %>
           <br>
@@ -93,3 +93,5 @@
     <%= render "/cards/next-match-card" %>
   </div>
 </div>
+<!-- Modal Invitations-->
+<%= render 'modal-invitation' %>

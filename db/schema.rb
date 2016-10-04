@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003154840) do
+ActiveRecord::Schema.define(version: 20161004191703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20161003154840) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "team_id"
+    t.index ["team_id"], name: "index_invitations_on_team_id", using: :btree
+    t.index ["user_id"], name: "index_invitations_on_user_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|
@@ -92,6 +104,8 @@ ActiveRecord::Schema.define(version: 20161003154840) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "invitations", "teams"
+  add_foreign_key "invitations", "users"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
   add_foreign_key "teams", "locations"

@@ -1,0 +1,15 @@
+// Invitations modal
+.modal-invitation-content {
+  margin: 20px 140px;
+  p {
+    font-size: 14px;
+  }
+  label {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  input[type="text"], input[type="email"] {
+    height: 30px;
+    font-size: 14px;
+  }
+}
