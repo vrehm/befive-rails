@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   before_action :set_locations, only: [:create, :edit, :update]
 
   def index
-    @teams = policy_scope(Team).order(created_at: :desc)
+    @teams = policy_scope(Team).order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
