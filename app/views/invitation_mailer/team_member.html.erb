@@ -3,4 +3,4 @@
 <p><%= @invitation.user.first_name %> veut que vous rejoignez son équipe <%= @invitation.user.teams.first.name %> sur Befive</p>
 <p>Befive permet aux équipes de Foot 5 d'organiser facilement tous leurs matchs </p>
 
-<p><%= link_to "Rejoindre #{@invitation.user.teams.first.name}", team_url(@invitation.user.teams.first) %></p>
+<p><%= link_to "Rejoindre #{@invitation.user.teams.first.name}", new_user_registration_url %></p>

@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   before_action :set_teams, only: [:new, :create]
-  
+
   def create
     @invitation = Invitation.new(invitation_params)
     @invitation.user = current_user
