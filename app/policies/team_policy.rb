@@ -5,6 +5,10 @@ class TeamPolicy < ApplicationPolicy
     end
   end
 
+  def search?
+    true
+  end
+
   def new?
     create?
   end

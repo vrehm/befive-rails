@@ -1,0 +1,29 @@
+/* Search form */
+.search {
+  flex: 0 1 1;
+  display: flex;
+  justify-content: left;
+  position: relative;
+  padding: 0 12px;
+  margin-bottom: 18px;
+}
+.search-input {
+  flex: 0 1 73%;
+  margin-right: 15px;
+  transition: all 0.15s ease;
+  height: 35px;
+  line-height: 30px;
+  font-weight: lighter;
+  color: #666666;
+  border: 1px solid #E6E6E6;
+  border-radius: 3px;
+  padding: 3px 20px;
+  font-size: 14px;
+  outline: none;
+}
+.search-input:focus  {
+  border: 1px solid #CCCCCC;
+}
+.search-results {
+  margin-left: 20px;
+}

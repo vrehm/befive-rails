@@ -16,6 +16,7 @@ gem "coffee-rails"
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'devise-i18n'
 gem 'will_paginate', '~> 3.1.0'
+gem 'pg_search'
 
 
 gem 'sass-rails'

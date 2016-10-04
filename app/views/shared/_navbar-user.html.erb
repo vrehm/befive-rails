@@ -30,7 +30,7 @@
         <% end %>
       </div>
     <% end %>
-    <div class="<%= 'link-active' if current_page?(teams_path) %>">
+    <div class="<%= 'link-active' if current_page?(teams_path) || current_page?(search_teams_path) %>">
       <!-- Text link -->
       <%= link_to teams_path, class: "navbar-user-item navbar-user-link" do %>
         <i class="fa fa-globe" aria-hidden="true"></i> Réseau

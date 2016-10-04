@@ -5,7 +5,13 @@ class TeamsController < ApplicationController
   before_action :set_locations, only: [:create, :edit, :update]
 
   def index
-    @teams = policy_scope(Team).order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
+    @teams = policy_scope(Team).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+  end
+
+  def search
+    @search_params = params[:query]
+    @search_results = policy_scope(Team).global_search(@search_params).paginate(:page => params[:page], :per_page => 8)
+    authorize @search_results
   end
 
   def show

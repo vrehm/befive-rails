@@ -7,11 +7,12 @@
   <div class="center-container">
     <form action="/teams/search" class="search">
       <input type="text" name="query" class="search-input" placeholder="Rechercher une équipe par nom, ville, centre...">
-      <button type="submit" class="btn btn-primary text-small">
+      <button type="submit" class="btn btn-primary text-small ">
         <i class="fa fa-search margin-right"></i> Rechercher
       </button>
     </form>
-    <% @teams.each do |team| %>
+    <p class="text-small grey-dark search-results"><%= @search_results.count %> Résultats pour "<%= @search_params.capitalize %>"</p>
+    <% @search_results.each do |team| %>
       <%= render 'cards/team-card-large', team: team %>
       <br>
     <% end %>
@@ -27,5 +28,5 @@
   </div>
   <br>
   <br>
-  <%= will_paginate @teams, class: "pagination" %>
+  <%= will_paginate @search_results, class: "pagination" %>
 </div>

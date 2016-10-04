@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope '(:locale)', locale: /fr|en/ do
-    resources :teams
+    resources :teams do
+      collection do
+        get 'search', to: "teams#search"
+      end
+    end
+
     resources :members, only: [ :create, :update, :destroy ]
 
     root to: 'pages#home'
