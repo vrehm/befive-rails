@@ -9,11 +9,7 @@ class InvitationPolicy < ApplicationPolicy
   end
 
   def create?
-    if user.manager
-      record.team == user.teams.first
-    else
-      false
-    end
+    user.teams.first == record.team
   end
 
 end

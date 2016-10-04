@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @invitation = Invitation.new
+    @invitation = Invitation.new(user: current_user, team: current_user.teams.first)
     @members = @team.members.where("validated = ?", true)
     @members_pending = @team.members.where("pending = ?", true)
   end

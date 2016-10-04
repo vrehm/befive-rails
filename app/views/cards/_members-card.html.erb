@@ -1,7 +1,11 @@
 <div class="card-image">
   <div class="title-card">
     <h6 class="text-center">MEMBRES</h6>
-    <i class="fa fa-plus-circle text-xl blue title-card-icon" data-toggle="modal" data-target="#modalInvitations"></i>
+    <% if current_user.manager %>
+      <% if policy(@invitation).create? %>
+        <i class="fa fa-plus-circle text-xl blue title-card-icon" data-toggle="modal" data-target="#modalInvitations"></i>
+      <% end %>
+    <% end %>
   </div>
   <br>
   <% @members.each do |member| %>

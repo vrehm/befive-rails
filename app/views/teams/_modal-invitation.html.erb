@@ -3,7 +3,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h5 class="modal-title text-center"><%= image_tag @team.logo.image, style:"width: 30px", class: "margin-right" %> <%= @team.name %></h5>
+        <% if @team.logo %>
+          <h5 class="modal-title text-center"><%= image_tag @team.logo.image, style:"width: 30px", class: "margin-right" %> <%= @team.name %></h5>
+        <% else %>
+        <h5 class="modal-title text-center"><%= image_tag "logo.png", style:"width: 30px", class:"margin-right" %> <%= @team.name %></h5>
+        <% end %>
       </div>
       <div class="modal-body">
         <%= simple_form_for [ @team, @invitation ] do |f| %>
@@ -11,8 +15,8 @@
             <p class="text-center grey-dark">Envoyer une invitation par mail <br>pour permettre à vos membres de vous rejoindre </p>
             <br>
             <%= f.input :email %>
-            <%= f.input :last_name, label: "Nom" %>
             <%= f.input :first_name, label: "Prénom" %>
+            <%= f.input :last_name, label: "Nom" %>
           </div>
           <div class="text-center">
             <br>

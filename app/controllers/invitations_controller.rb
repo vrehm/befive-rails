@@ -1,17 +1,14 @@
 class InvitationsController < ApplicationController
   before_action :set_teams, only: [:new, :create]
-
-  def new
-    @invitation = Invitation.new
-  end
-
+  
   def create
     @invitation = Invitation.new(invitation_params)
     @invitation.user = current_user
     @invitation.team = @team
     authorize @invitation
     if @invitation.save
-      flash[:notice] = "L'invitation a bien été envoyée par mail à #{@invitation.first_name} #{@invitation.first_name}"
+      InvitationMailer.team_member(@invitation.id).deliver_now
+      flash[:notice] = "L'invitation a bien été envoyée par mail à #{@invitation.first_name} #{@invitation.last_name}"
       redirect_to team_path(@team)
     else
       flash[:notice] = "L'invitation n'a pas pu être envoyée"
