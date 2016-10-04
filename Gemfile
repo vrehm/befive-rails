@@ -18,7 +18,6 @@ gem 'devise-i18n'
 gem 'will_paginate', '~> 3.1.0'
 gem 'pg_search'
 
-
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -26,6 +25,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem "letter_opener", group: :development
 
 group :development, :test do
   gem 'binding_of_caller'
