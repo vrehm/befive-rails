@@ -28,13 +28,15 @@
     <% if current_user.members.where("pending = ?", true).first && current_user.members.where("pending = ?", true).first.team == team %>
         <span class="blue-dark text-small">Demande envoyée <i class="fa fa-paper-plane margin-left blue"></i></span>
     <% end %>
-    <% if current_user.has_relationship?(team) %>
-      <%= link_to relationship_path(current_user.relationships.where(team: team).first), method: :delete, class: "float-right" do %>
-        <i class="fa fa-minus-circle text-xl blue margin-left"></i>
-      <% end %>
-    <% else %>
-      <%= link_to relationships_path(team_id: team.id), method: :post, class: "float-right" do %>
-        <i class="fa fa-plus-circle text-xl blue margin-left"></i>
+    <% if current_user.has_team == false || current_user.members.first.team =! team %>
+      <% if current_user.has_relationship?(team) %>
+        <%= link_to relationship_path(current_user.relationships.where(team: team).first), method: :delete, class: "float-right" do %>
+          <i class="fa fa-minus-circle text-xl blue margin-left"></i>
+        <% end %>
+      <% else %>
+        <%= link_to relationships_path(team_id: team.id), method: :post, class: "float-right" do %>
+          <i class="fa fa-plus-circle text-xl blue margin-left"></i>
+        <% end %>
       <% end %>
     <% end %>
     <br>

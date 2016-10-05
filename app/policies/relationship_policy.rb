@@ -8,7 +8,8 @@ class RelationshipPolicy < ApplicationPolicy
   def create?
     true
   end
+
   def destroy?
-    true
+    create?
   end
 end
