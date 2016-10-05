@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
 
   def index
     @teams = policy_scope(Team).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+    @relationships = current_user.relationships.order(created_at: :desc)
   end
 
   def search
@@ -15,7 +16,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @invitation = Invitation.new(user: current_user, team: current_user.teams.first)
+    @invitation = Invitation.new(user: current_user, team: @team)
     @members = @team.members.where("validated = ?", true)
     @members_pending = @team.members.where("pending = ?", true)
   end

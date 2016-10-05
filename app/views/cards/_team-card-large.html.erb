@@ -25,16 +25,17 @@
     </div>
   </div>
   <div class="card-team-right">
-    <% if current_user.members.where("pending = ?", true).size > 0 %>
-      <div class="text-center">
+    <% if current_user.members.where("pending = ?", true).first && current_user.members.where("pending = ?", true).first.team == team %>
         <span class="blue-dark text-small">Demande envoyée <i class="fa fa-paper-plane margin-left blue"></i></span>
-      </div>
+    <% end %>
+    <% if current_user.has_relationship?(team) %>
+      <%= link_to relationship_path(current_user.relationships.where(team: team).first), method: :delete, class: "float-right" do %>
+        <i class="fa fa-minus-circle text-xl blue margin-left"></i>
+      <% end %>
     <% else %>
-      <div class="float-right">
-        <%= link_to "#" do %>
-          <i class="fa fa-plus-circle text-xl blue margin-left"></i>
-        <% end %>
-      </div>
+      <%= link_to relationships_path(team_id: team.id), method: :post, class: "float-right" do %>
+        <i class="fa fa-plus-circle text-xl blue margin-left"></i>
+      <% end %>
     <% end %>
     <br>
     <br>
@@ -58,12 +59,18 @@
             <span class="red">Annuler <i class="fa fa-times margin-left"></i></span>
           <% end %>
         </div>
-      <% else %>
+      <% elsif policy(Member).create? %>
         <div class="float-left">
+          <%= link_to members_path(team_id: team.id), class: "btn btn-default text-small", method: :post do %>
+            Rejoindre <i class="fa fa-plus-circle blue"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <!-- <div class="float-left">
           <%= link_to "#", class: "btn btn-default text-small" do %>
             Contacter <i class="fa fa-envelope blue margin-left"></i>
           <% end %>
-        </div>
+        </div> -->
       <% end %>
     </div>
   </div>

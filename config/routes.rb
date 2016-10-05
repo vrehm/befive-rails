@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
 
     resources :members, only: [ :create, :update, :destroy ]
+    resources :relationships, only: [ :create, :destroy ]
     root to: 'pages#home'
 
   end

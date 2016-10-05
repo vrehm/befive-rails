@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :members, dependent: :destroy
   has_many :invitations, dependent: :destroy
+  has_many :relationships, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -13,6 +14,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  def has_relationship?(team)
+    team.relationships.where(user: self).any?
+  end
 
   after_create :send_welcome_email
 

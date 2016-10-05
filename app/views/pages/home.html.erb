@@ -5,6 +5,18 @@
       <%= render "/cards/profile-card" %>
       <br>
       <%= render "/cards/infos-card" %>
+      <br>
+      <div class="card-image">
+        <div class="title-card text-center">
+          <h6 class="uppercase">réseau (<%= @relationships.count %>)</h6>
+        </div>
+        <br>
+        <% @relationships.each do |relationship| %>
+          <%= link_to team_path(relationship.team), class: "link-unstyled" do %>
+            <%= render 'cards/team-list', team: relationship.team %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="center-container">
       <%= render "/cards/progress-card" %>

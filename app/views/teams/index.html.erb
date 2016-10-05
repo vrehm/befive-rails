@@ -17,12 +17,16 @@
     <% end %>
   </div>
   <div class="right-container">
-    <div class="card text-center">
-      <div class="title-card">
-        <h6 class="uppercase">réseau</h6>
+    <div class="card-image">
+      <div class="title-card text-center">
+        <h6 class="uppercase">réseau (<%= @relationships.count %>)</h6>
       </div>
       <br>
-      <br>
+      <% @relationships.each do |relationship| %>
+        <%= link_to team_path(relationship.team), class: "link-unstyled" do %>
+          <%= render 'cards/team-list', team: relationship.team %>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <br>

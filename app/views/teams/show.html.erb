@@ -5,18 +5,7 @@
         <h6 class="uppercase">l'équipe</h6>
       </div>
       <br>
-      <%= link_to "#", class: "link-unstyled" do %>
-        <div class="list-card-m">
-          <% if @team.logo %>
-            <%= image_tag @team.logo.image, style:"width: 45px", class:"float-left" %>
-          <% else %>
-            <%= image_tag "logo.png", style:"width: 45px", class:"float-left" %>
-          <% end %>
-          <span class="blue-dark text-semi-bold text-small"><%= @team.name %>
-          <br>
-          <span class="grey-dark text-normal"> <%= @team.city %> </span></span>
-        </div>
-      <% end %>
+      <%= render 'cards/team-list', team: @team %>
     </div>
     <br>
     <% if @team.members.where("pending = ?", true).size > 0 %>
@@ -45,6 +34,11 @@
         <br>
         <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
+        <!-- <div class="bottom-left-icon">
+          <%= link_to "#", class: "btn btn-default text-small" do %>
+            Contacter <i class="fa fa-envelope blue margin-left"></i>
+          <% end %>
+        </div> -->
         <% if current_user.members.where("pending = ?", true).size > 0 && current_user.members.first.team == @team %>
           <div class="bottom-right-icon">
             <%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
