@@ -3,7 +3,7 @@
     <div class="card-image">
       <div class="title-card text-center">
         <h6 class="uppercase">l'équipe</h6>
-        <% if current_user.has_team == false || current_user.members.first.team =! @team %>
+        <% if current_user.has_team == false || current_user.members.first.team != @team %>
           <% if current_user.has_relationship?(@team) %>
             <%= link_to relationship_path(current_user.relationships.where(team: @team).first), method: :delete do %>
               <i class="fa fa-minus-circle text-xl blue title-card-icon"></i>
