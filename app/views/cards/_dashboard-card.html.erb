@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="title-card">
+    <h6 class="uppercase">tableau de bord</h6>
+    <% if policy(Event).create? %>
+      <%= link_to new_event_path, class: "title-card-btn btn btn-primary text-small" do %>
+        Ajouter un évenement <i class="fa fa-plus-circle white margin-left"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <br>
+  <span class= "time-dashboard"><%= Date.today.strftime("%l:%M") %></span>
+  <p class="uppercase blue-dark text-xl text-semi-bold"> <%= Date.today.strftime("%A") %> <span class="uppercase blue-dark text-xl text-normal"><%= Date.today.strftime("%e %b") %></span></p>
+  <p class="grey-medium text-small"><i class="fa fa-calendar blue margin-right"></i> 0 Evenement aujourd'hui</p>
+  <hr>
+</div>
