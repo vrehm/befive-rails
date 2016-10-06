@@ -27,6 +27,12 @@ hr {
 	margin: 0px auto;
   width: 27%;
 }
+.left-container-large {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
+  width: 70%;
+}
 
 .center-container {
 	display: flex;
@@ -102,6 +108,9 @@ hr {
 }
 .grey-normal {
 	color: $grey-normal;
+}
+.grey-medium {
+	color: $grey-medium;
 }
 .grey {
 	color: $grey;

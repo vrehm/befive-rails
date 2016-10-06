@@ -1,2 +1,54 @@
-<p><%= @event.category %></p>
-<p><%= @event.datetime %></p>
+<div class="wrapper">
+  <div class="left-container-large">
+    <div class="card">
+      <div class="title-card ">
+        <%= link_to events_path, class: "btn btn-default text-small margin-left" do %>
+          Tous les events <i class="fa fa-calendar blue margin-left" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <br>
+      <br>
+      <div class="calendar-date">
+        <div class="month">
+          <%= @event.datetime.strftime("%b") %>.
+        </div>
+        <h4 class="day"><%= @event.datetime.strftime("%e") %></h4>
+      </div>
+      <%= image_tag @event.location.image, class: "float-right", style:"width: 80px" %>
+      <div class="event-info">
+        <h4 class="uppercase"><%= @event.category %></h4>
+        <p class="time"><%= @event.datetime.strftime("%l h %M") %></p>
+        <br>
+        <p class="grey-medium text-small">
+          <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
+           Lieu: </span> <%= @event.location.name.capitalize %>
+        </p>
+        <hr>
+        <p class="grey-medium text-small">
+          <span class="margin-right grey-dark"><i class="fa fa-calendar text-large icon margin-left" aria-hidden="true"></i>
+           Date: </span><%= @event.datetime.strftime("%e %b %Y à %lh%M ") %>
+        </p>
+        <hr>
+        <p class="grey-medium text-small">
+          <span class="margin-right grey-dark"><i class="fa fa-bullhorn text-large icon" aria-hidden="true"></i>
+           Réponses: </span>
+           0 <i class="fa fa-check-circle green text-large icon margin-left" aria-hidden="true"></i>
+           0 <i class="fa fa-minus-circle red text-large icon margin-left" aria-hidden="true"></i>
+           0 <i class="fa fa-question-circle grey-normal text-large icon margin-left" aria-hidden="true"></i>
+        </p>
+        <hr>
+        <br>
+        <h6 class="uppercase">serez vous présent ?</h6>
+        <%= link_to "#", class: "btn btn-default text-small margin-right" do %>
+          Refuser <i class="fa fa-minus-circle red text-large margin-left" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "#", class: "btn btn-success text-small" do %>
+          Accepter <i class="fa fa-check-circle white text-large margin-left" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="right-container">
+    <%= render 'cards/next-match-card' %>
+  </div>
+</div>
