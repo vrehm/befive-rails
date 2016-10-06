@@ -123,6 +123,9 @@ hr {
 }
 
 // Text Styles
+.text-xxl {
+	font-size: 22px;
+}
 .text-xl {
 	font-size: 18px;
 }
@@ -140,6 +143,9 @@ hr {
 }
 .text-normal {
 	font-weight: 400;
+}
+.text-light {
+	font-weight: 300;
 }
 .uppercase {
 	text-transform: uppercase;

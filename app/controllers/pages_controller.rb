@@ -7,6 +7,8 @@ class PagesController < ApplicationController
       @members = @team.members.where("validated = ?", true)
       @invitation = Invitation.new(user: current_user, team: current_user.teams.first)
       @relationships = current_user.relationships.order(created_at: :desc)
+      @user_events = Event.where(team: current_user.members.first.team)
+      @today_user_events = @user_events.where("created_at >= ?", Time.zone.now.beginning_of_day)
     end
   end
 end
