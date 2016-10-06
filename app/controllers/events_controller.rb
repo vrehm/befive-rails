@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
+    @team = current_user.members.first.team
   end
 
   def show

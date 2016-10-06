@@ -16,7 +16,7 @@
   width: 100%;
   background: $grey-lighter;
   border-bottom: solid 1px $grey-light;
-  height: 50px;
+  height: 52px;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -64,7 +64,27 @@
     background: $grey;
   }
 }
-
+.list-card-s {
+  width: 100%;
+  height: 50px;
+  padding: 15px 30px;
+  cursor: pointer;
+  &:hover {
+    background: $grey;
+  }
+}
+.list-active {
+  background: $grey;
+  border-left: 8px solid $blue;
+  cursor: pointer;
+}
+.list-inactive {
+  border-left: 8px solid white;
+  &:hover {
+    background: $grey;
+    border-left: 8px solid $blue;
+  }
+}
 // Empty Cards
 .card-empty {
   background-color: transparent;
@@ -76,4 +96,7 @@
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center;
+}
+.card-no-padding {
+  padding: 30px 0px;
 }

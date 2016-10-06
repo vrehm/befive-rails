@@ -1,5 +1,59 @@
-<% @events.each do |event| %>
-  <%= link_to event_path(event) do %>
-    <p><%= event.datetime %> <%= event.category %></p>
-  <% end %>
-<% end %>
+<div class="wrapper">
+  <div class="left-container">
+    <div class="card card-no-padding">
+      <div class="title-card text-center">
+        <h6 class="uppercase">évenements</h6>
+      </div>
+      <br>
+      <div class="list-card-s list-active">
+        <p class="blue-dark text-large">A venir </p class="grey-dark text-large">
+      </div>
+      <div class="list-card-s list-inactive">
+        <p class="blue-dark text-large">Passé</p class="grey-dark text-large">
+      </div>
+    </div>
+    <br>
+  </div>
+  <div class="center-container">
+    <% @events.each do |event| %>
+    <div class="card">
+      <%= link_to event_path(event), class: "link-unstyled" do %>
+        <div class="calendar-date-s">
+          <div class="month-s">
+            <%= event.datetime.strftime("%b") %>.
+          </div>
+          <h5 class="day-s"><%= event.datetime.strftime("%e") %></h5>
+        </div>
+        <%= image_tag event.location.image, class: "float-right", style:"width: 60px" %>
+        <div class="event-info-s">
+          <h5 class="uppercase"><%= event.category %></h5>
+          <p class="time-s"><%= event.datetime.strftime("%l h %M") %></p>
+          <br>
+          <p class="grey-medium text-small">
+            <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
+             Lieu: </span> <%= event.location.name.capitalize %>
+          </p>
+          <hr>
+          <p class="grey-medium text-small">
+            <span class="margin-right grey-dark"><i class="fa fa-calendar text-large icon margin-left" aria-hidden="true"></i>
+             Date: </span><%= event.datetime.strftime("%e %b %Y à %lh%M ") %>
+          </p>
+          <hr>
+          <p class="grey-medium text-small">
+            <span class="margin-right grey-dark"><i class="fa fa-bullhorn text-large icon" aria-hidden="true"></i>
+             Réponses: </span>
+             0 <i class="fa fa-check-circle green text-large icon margin-left" aria-hidden="true"></i>
+             0 <i class="fa fa-minus-circle red text-large icon margin-left" aria-hidden="true"></i>
+             0 <i class="fa fa-question-circle grey-normal text-large icon margin-left" aria-hidden="true"></i>
+          </p>
+          <hr>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <% end %>
+  </div>
+  <div class="right-container">
+    <%= render 'cards/team-card' %>
+  </div>
+</div>

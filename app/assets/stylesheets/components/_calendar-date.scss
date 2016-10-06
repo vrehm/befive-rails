@@ -34,3 +34,40 @@
   font-weight: 300;
   font-size: 18px;
 }
+// Calendar date small
+.calendar-date-s {
+  width: 50px;
+  height: 55px;
+  text-align: center;
+  box-shadow: 0 1px 2px $grey;
+  border-radius: 3px;
+  padding: 0px;
+  margin-right: 10px;
+  float: left;
+}
+.month-s {
+  background: $blue;
+  width: 50px;
+  border-top-left-radius: 3px;
+  border-radius: 3px 3px 0px 0px;
+  overflow: hidden;
+  padding: 2px 0px;
+  color: $white-light;
+  font-size: 11px;
+  border: 1px solid #2f9be7;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.day-s {
+  border: 1px solid #d8d8d8;
+  border-radius: 0px 0px 3px 3px;
+  padding: 8px;
+  margin: 0px;
+  border-bottom-width: 3px;
+  border-top-width: 0px;
+}
+.time-s {
+  color: $grey-dark;
+  font-weight: 300;
+  font-size: 15px;
+}
