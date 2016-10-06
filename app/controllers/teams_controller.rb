@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
 
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :set_logos, only: [:create, :edit, :update]
-  before_action :set_locations, only: [:create, :edit, :update]
+  before_action :set_logos, only: [:new, :create, :edit, :update]
+  before_action :set_locations, only: [:new, :create, :edit, :update]
 
   def index
     @teams = policy_scope(Team).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
