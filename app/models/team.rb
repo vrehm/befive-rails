@@ -14,6 +14,7 @@ class Team < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :invitations, dependent: :destroy
   has_many :relationships, dependent: :destroy
+  has_many :events, dependent: :destroy
   belongs_to :logo
   belongs_to :location
 

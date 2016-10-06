@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :invitations, dependent: :destroy
   has_many :relationships, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

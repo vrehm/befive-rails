@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
+    resources :events
     root to: 'pages#home'
 
   end

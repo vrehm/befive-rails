@@ -1,0 +1,11 @@
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :category, collection: ["Match Ligue", "Match Amical", "Tournoi", "Entrainement", "Autre"], label: "Type d'évenement", prompt: "Selectionner un évenement" %>
+  <%= f.input :datetime, label: "Date" %>
+  <%= f.input :location_id, collection: @locations, label_method: :name, value_method: :id, label: "Lieu", include_blank: false, prompt: "Selectionner un centre"%>
+  <%= f.input :address, label: "Adresse" %>
+  <br>
+  <div class="text-center">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

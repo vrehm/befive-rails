@@ -79,6 +79,7 @@ class TeamsController < ApplicationController
   def set_logos
     @logos = Logo.all
   end
+
   def set_locations
     @locations = Location.all
   end

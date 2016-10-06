@@ -13,16 +13,13 @@
           <i class="fa fa-users" aria-hidden="true"></i> Membres
         <% end %>
       </div>
-    <% end %>
-    <% if current_user.has_team %>
-      <div>
+
+      <div class="<%= 'link-active' if current_page?(events_path) %>">
         <!-- Text link -->
-        <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>
+        <%= link_to events_path, class: "navbar-user-item navbar-user-link" do %>
           <i class="fa fa-calendar" aria-hidden="true"></i> Evénements
         <% end %>
       </div>
-    <% end %>
-    <% if current_user.has_team %>
       <div>
         <!-- Text link -->
         <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>

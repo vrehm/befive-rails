@@ -10,7 +10,7 @@
                 <h3>Bonjour <%= @invitation.first_name %> !</h3>
 
                 <p><%= @invitation.user.first_name %> vous invite a rejoindre son équipe  <%= @invitation.user.teams.first.name %> sur Befive</p>
-                <p><%= link_to "Voir mon équipe #{@invitation.user.teams.first.name}", root_url(@invitation.user.teams.first) %></p>
+                <p><%= link_to "Voir mon équipe #{@invitation.user.teams.first.name}", root_url %></p>
                 <br>
               </div>
             </div>
