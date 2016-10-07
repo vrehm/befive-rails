@@ -10,24 +10,28 @@
         <% end %>
       </div>
       <br>
-      <div class="list-card-s list-active-blue">
+      <div class="list-card-s list-active border-left-blue" data-target="#next">
         <p class="blue-dark text-large">A venir </p class="grey-dark text-large">
       </div>
-      <div class="list-card-s list-inactive-red">
+      <div class="list-card-s border-left-red" data-target="#last">
         <p class="blue-dark text-large">Passé</p class="grey-dark text-large">
       </div>
     </div>
     <br>
   </div>
   <div class="center-container">
-    <% @next_events.each do |event| %>
+    <div id="next" class="events_list">
+      <% @next_events.each do |event| %>
+        <%= render 'cards/events_list', event: event %>
+        <br>
+      <% end %>
+    </div>
+    <div id="last" class="events_list hidden">
+      <% @last_events.each do |event| %>
       <%= render 'cards/events_list', event: event %>
       <br>
-    <% end %>
-    <% @last_events.each do |event| %>
-      <%= render 'cards/events_list', event: event %>
-      <br>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="right-container">
     <%= render 'cards/team-card' %>

@@ -81,30 +81,19 @@
     background: $grey;
   }
 }
-.list-active-blue {
+.list-active {
   background: $grey;
   border-left: 8px solid $blue;
   cursor: pointer;
 }
-.list-inactive-blue {
+
+.border-left-blue {
   border-left: 8px solid $blue;
-  &:hover {
-    background: $grey;
-    border-left: 8px solid $blue;
-  }
 }
-.list-active-red {
-  background: $grey;
+.border-left-red {
   border-left: 8px solid $red;
-  cursor: pointer;
 }
-.list-inactive-red {
-  border-left: 8px solid $red;
-  &:hover {
-    background: $grey;
-    border-left: 8px solid $red;
-  }
-}
+
 // Empty Cards
 .card-empty {
   background-color: transparent;
