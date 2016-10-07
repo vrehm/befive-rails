@@ -25,6 +25,11 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
+
 gem "letter_opener", group: :development
 
 group :development, :test do

@@ -5,9 +5,9 @@ class EventsController < ApplicationController
   def index
     @team = current_user.members.first.team
     @user_events = policy_scope(Event).where(team: current_user.members.first.team)
-    @next_events = @user_events.where("datetime >= ?", DateTime.now.beginning_of_day).order(datetime: :asc)
+    @next_events = @user_events.where("date >= ?", Date.today).order(date: :asc)
     @next_event = @next_events.first
-    @last_events = @user_events.where("datetime < ?", DateTime.now.beginning_of_day).order(datetime: :asc)
+    @last_events = @user_events.where("date < ?", Date.today).order(date: :asc)
   end
 
   def show
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:category, :datetime, :address, :location_id)
+    params.require(:event).permit(:category, :date, :time, :address, :location_id)
   end
 
   def set_locations

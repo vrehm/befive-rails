@@ -9,14 +9,14 @@
   <div class="event">
     <div class="calendar-date">
       <div class="month">
-        <%= @event.datetime.strftime("%b") %>.
+        <%= @event.date.strftime("%b") %>.
       </div>
-      <h4 class="day"><%= @event.datetime.strftime("%e") %></h4>
+      <h4 class="day"><%= @event.date.strftime("%e") %></h4>
     </div>
     <%= image_tag @event.location.image, class: "float-right", style:"width: 80px" %>
     <div class="event-info">
       <h4 class="uppercase"><%= @event.category %></h4>
-      <p class="time"><%= @event.datetime.strftime("%l h %M") %></p>
+      <p class="time"><%= @event.time.strftime("%l h %M") %></p>
       <br>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
@@ -25,7 +25,7 @@
       <hr>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-calendar text-large icon margin-left" aria-hidden="true"></i>
-         Date: </span><%= @event.datetime.strftime("%e %b %Y à %lh%M ") %>
+         Date: </span><%= @event.date.strftime("%e %b %Y") %>
       </p>
       <hr>
       <p class="grey-medium text-small">

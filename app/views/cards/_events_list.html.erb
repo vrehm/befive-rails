@@ -2,14 +2,14 @@
   <%= link_to event_path(event), class: "link-unstyled" do %>
     <div class="calendar-date-s">
       <div class="month-s">
-        <%= event.datetime.strftime("%b") %>.
+        <%= event.date.strftime("%b") %>.
       </div>
-      <h5 class="day-s"><%= event.datetime.strftime("%e") %></h5>
+      <h5 class="day-s"><%= event.date.strftime("%e") %></h5>
     </div>
     <%= image_tag event.location.image, class: "float-right", style:"width: 60px" %>
     <div class="event-info-s">
       <h5 class="uppercase"><%= event.category %></h5>
-      <p class="time-s"><%= event.datetime.strftime("%l h %M") %></p>
+      <p class="time-s"><%= event.time.strftime("%l h %M") %></p>
       <br>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
       <hr>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-calendar text-large icon margin-left" aria-hidden="true"></i>
-         Date: </span><%= event.datetime.strftime("%e %b %Y à %lh%M ") %>
+         Date: </span><%= event.date.strftime("%e %b %Y") %>
       </p>
       <hr>
       <p class="grey-medium text-small">

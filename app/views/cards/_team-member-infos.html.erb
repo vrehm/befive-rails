@@ -40,7 +40,7 @@
     </div>
     <br>
     <br>
-    <% if current_user.birthdate %>
+    <% if member.user.birthdate %>
       <p class="blue-dark text-small">Année : <span class="grey-dark text-small"><%= member.user.birthdate.year %></span></p>
     <% else %>
       <p class="blue-dark text-small">Année : <span class="grey-dark text-small"></span></p>
