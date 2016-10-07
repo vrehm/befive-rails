@@ -1,10 +1,11 @@
-<div class="list-card-m">
+<div class="list-card-m list-active" data-target="#team-show">
   <% if team.logo %>
     <%= image_tag team.logo.image, style:"width: 45px", class:"float-left" %>
   <% else %>
     <%= image_tag "logo.png", style:"width: 45px", class:"float-left" %>
   <% end %>
   <span class="blue-dark text-semi-bold text-small"><%= team.name %>
-  <br>
-  <span class="grey-dark text-normal"> <%= team.city %> </span></span>
+    <br>
+    <span class="grey-dark text-normal"> <%= team.city %> </span>
+  </span>
 </div>

@@ -1,0 +1,51 @@
+<div id="member-<%= member.id %>" class="team_member_infos hidden">
+  <div class="card-image-untitle-large">
+    <div class="text-center">
+      <br>
+      <br>
+      <% if member.user.avatar? %>
+        <%= cl_image_tag member.user.avatar.path, class: "avatar-xl", width: 160, height: 160, crop: :fill %>
+      <% else %>
+        <%= image_tag "user.png", class: "avatar-large"%>
+      <% end %>
+      <br>
+      <br>
+      <% if current_user.first_name && current_user.last_name %>
+        <h4><%= member.user.first_name.capitalize %> <%= member.user.last_name.upcase %></h4>
+      <% else %>
+        <h4>Prénom Nom</h4>
+      <% end %>
+      <% if member.user.position %>
+        <h5><%= member.user.position.capitalize %></h5>
+      <% else %>
+        <h5>Position</h5>
+      <% end %>
+      <% if member.user.city == nil || member.user.city == "" %>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
+      <% else %>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= member.user.city.capitalize %></p>
+      <% end %>
+      <br>
+      <div class="text-center">
+        <%= link_to "#", class: "btn btn-primary text-small" do %>
+          Contacter <i class="fa fa-envelope white margin-left"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="title-card text-center">
+      <h6>INFOS</h6>
+    </div>
+    <br>
+    <br>
+    <% if current_user.birthdate %>
+      <p class="blue-dark text-small">Année : <span class="grey-dark text-small"><%= member.user.birthdate.year %></span></p>
+    <% else %>
+      <p class="blue-dark text-small">Année : <span class="grey-dark text-small"></span></p>
+    <% end %>
+    <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
+    <p class="blue-dark text-small">Homme du match : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-male text-large blue"></i></p>
+  </div>
+</div>

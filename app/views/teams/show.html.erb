@@ -1,8 +1,17 @@
 <div class="wrapper">
   <div class="left-container">
+    <% if @team.members.where("pending = ?", true).size > 0 %>
+      <%= render 'cards/pending-members-card', team: @team %>
+      <br>
+    <% end %>
     <div class="card-image">
       <div class="title-card text-center">
         <h6 class="uppercase">l'équipe</h6>
+        <% if policy(Event).create? %>
+          <%= link_to new_event_path, class: "link-unstyled" do %>
+            <i class="fa fa-plus-circle text-xl blue title-card-icon"></i>
+          <% end %>
+        <% end %>
         <% if current_user.has_team == false || current_user.members.first.team != @team %>
           <% if current_user.has_relationship?(@team) %>
             <%= link_to relationship_path(current_user.relationships.where(team: @team).first), method: :delete do %>
@@ -19,14 +28,23 @@
       <%= render 'cards/team-list', team: @team %>
     </div>
     <br>
-    <% if @team.members.where("pending = ?", true).size > 0 %>
-      <%= render 'cards/pending-members-card', team: @team %>
+    <div class="card">
+      <div class="title-card text-center">
+        <h6>INFOS</h6>
+      </div>
       <br>
-    <% end %>
-    <%= render "/cards/members-card" %>
+      <br>
+      <p class="blue-dark text-small">Date de création : <span class="grey-dark text-small icon"> <%= @team.created_at.strftime("%Y") %> </span></p>
+      <p class="blue-dark text-small">Nombre de membres : <span class="grey-dark text-small icon"> <%= @team.members.size %> </span> <i class="fa fa-male text-large blue"></i></p>
+      <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
+      <p class="blue-dark text-small">Centre favori : </p>
+      <% if @team.location %>
+        <%= image_tag @team.location.image, style:"width: 63px" %>
+      <% end %>
+    </div>
   </div>
   <div class="center-container">
-    <div class="card-image-untitle-large">
+    <div id="team-show" class="card-image-untitle-large team_member_infos">
       <% if @team.photo? %>
         <%= cl_image_tag @team.photo.path, class: "image-team-untitle-large", width: 1000, height: 600, crop: :fill %>
       <% else %>
@@ -34,17 +52,17 @@
       <% end %>
       <div class="logo-inside-untitle-large">
         <% if @team.logo %>
-          <%= image_tag @team.logo.image, style:"width: 50px" %>
+          <%= image_tag @team.logo.image, style:"width: 60px" %>
         <% else %>
-          <%= image_tag "logo.png", style:"width: 50px" %>
+          <%= image_tag "logo.png", style:"width: 60px" %>
         <% end %>
       </div>
       <br>
       <br>
       <div class="text-center">
         <br>
-        <p class="blue-dark text-large text-semi-bold"><%= @team.name %></p>
-        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
+        <p class="blue-dark text-xl text-semi-bold"><%= @team.name %></p>
+        <p class="grey-dark text-large"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
         <!-- <div class="bottom-left-icon">
           <%= link_to "#", class: "btn btn-default text-small" do %>
             Contacter <i class="fa fa-envelope blue margin-left"></i>
@@ -72,30 +90,13 @@
         </div>
       <% end %>
     </div>
+    <% @members.each do |member| %>
+      <%= render 'cards/team-member-infos', member: member %>
+    <% end %>
     <br>
-    <div class="card">
-      <div class="title-card">
-        <h6 class="uppercase text-center">infos</h6>
-      </div>
-      <br>
-      <br>
-      <div class="float-left">
-        <p class="blue-dark text-small">Date de création : <span class="grey-dark text-small icon"> <%= @team.created_at.strftime("%Y") %> </span></p>
-        <p class="blue-dark text-small">Nombre de membres : <span class="grey-dark text-small icon"> <%= @team.members.size %> </span> <i class="fa fa-male text-large blue"></i></p>
-        <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
-        <p class="blue-dark text-small">Compétition actuelle : </p>
-      </div>
-      <div class="float-right text-center">
-        <p class="blue-dark text-small">Centre de Foot 5 favori : </p>
-        <% if @team.location %>
-          <%= image_tag @team.location.image, style:"width: 80px" %>
-        <% end %>
-      </div>
-    </div>
-
   </div>
   <div class="right-container">
-    <%= render "/cards/next-match-card" %>
+    <%= render "/cards/members-card" %>
   </div>
 </div>
 <!-- Modal Invitations-->

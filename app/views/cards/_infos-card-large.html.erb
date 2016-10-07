@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="title-card">
+    <h6 class="uppercase text-center">infos</h6>
+  </div>
+  <br>
+  <br>
+  <div class="float-left">
+    <p class="blue-dark text-small">Date de création : <span class="grey-dark text-small icon"> <%= @team.created_at.strftime("%Y") %> </span></p>
+    <p class="blue-dark text-small">Nombre de membres : <span class="grey-dark text-small icon"> <%= @team.members.size %> </span> <i class="fa fa-male text-large blue"></i></p>
+    <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
+    <p class="blue-dark text-small">Compétition actuelle : </p>
+  </div>
+  <div class="float-right text-center">
+    <p class="blue-dark text-small">Centre de Foot 5 favori : </p>
+    <% if @team.location %>
+      <%= image_tag @team.location.image, style:"width: 80px" %>
+    <% end %>
+  </div>
+</div>
