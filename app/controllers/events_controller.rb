@@ -3,8 +3,11 @@ class EventsController < ApplicationController
   before_action :set_locations, only: [:new, :create, :edit, :update]
 
   def index
-    @events = policy_scope(Event).order(created_at: :desc)
     @team = current_user.members.first.team
+    @user_events = policy_scope(Event).where(team: current_user.members.first.team)
+    @next_events = @user_events.where("datetime >= ?", DateTime.now.beginning_of_day).order(datetime: :asc)
+    @next_event = @next_events.first
+    @last_events = @user_events.where("datetime < ?", DateTime.now.beginning_of_day).order(datetime: :asc)
   end
 
   def show

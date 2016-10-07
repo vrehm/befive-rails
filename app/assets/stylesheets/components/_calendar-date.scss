@@ -81,3 +81,43 @@
   font-weight: 300;
   font-size: 15px;
 }
+
+// Calendar date small
+.calendar-date-xs {
+  width: 40px;
+  height: 47px;
+  text-align: center;
+  box-shadow: 0 1px 2px $grey;
+  border-radius: 3px;
+  padding: 0px;
+  margin-right: 10px;
+  float: left;
+  font-size: 15px;
+}
+.month-xs {
+  background: $blue;
+  width: 40px;
+  border-top-left-radius: 3px;
+  border-radius: 3px 3px 0px 0px;
+  overflow: hidden;
+  padding: 1px 0px;
+  color: $white-light;
+  font-size: 11px;
+  border: 1px solid #2f9be7;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.day-xs {
+  border: 1px solid #d8d8d8;
+  border-radius: 0px 0px 3px 3px;
+  padding: 5px;
+  margin: 0px;
+  border-bottom-width: 3px;
+  border-top-width: 0px;
+  font-size: 14px;
+}
+.time-xs {
+  color: $grey-dark;
+  font-weight: 300;
+  font-size: 15px;
+}

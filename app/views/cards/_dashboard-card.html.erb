@@ -9,19 +9,19 @@
   </div>
   <br>
   <br>
-  <span class= "time-dashboard"><%= Date.today.strftime("%l:%M") %></span>
-  <p class="uppercase blue-dark text-xl text-normal"> <%= Date.today.strftime("%a") %> <span class="text-light"><%= Date.today.strftime("%e %b") %></span></p>
+  <span class= "time-dashboard"><%= DateTime.now.strftime("%l:%M") %></span>
+  <p class="uppercase blue-dark text-xl text-normal"> <%= l(Date.today, format: '%a') %> <span class="text-light"><%= Date.today.strftime("%e %b") %></span></p>
   <p class="grey-medium text-small"><i class="fa fa-calendar blue margin-right"></i> <%= pluralize(@today_user_events.count, 'Evenement') %> aujourd'hui</p>
   <hr>
   <% @today_user_events.each do |event| %>
-    <%= image_tag event.location.image, class: "float-right", style:"width: 50px" %>
-    <div class="float-left">
-      <%= link_to event_path(event), class: "link-unstyled" do %>
-        <p class="blue-dark text-small margin-right"><%= event.category %> <span class="time-s margin-left"> <%= event.datetime.strftime("%l:%M") %></span ></p>
+    <%= link_to event_path(event), class: "link-unstyled" do %>
+      <%= image_tag event.location.image, class: "float-right", style:"width: 50px" %>
+      <div class="float-left">
+        <p class="blue-dark text-small margin-right"><span class="underline"><%= event.category %></span> <span class="time-s margin-left"> <%= event.datetime.strftime("%l:%M") %></span ></p>
         <p class="blue-dark text-small">Lieu: <span class="grey-medium text-small margin-left"> <%= event.location.name %></span ></p>
-      <% end %>
-    </div>
-    <div class="clear"></div>
-    <hr>
+      </div>
+      <div class="clear"></div>
+      <hr>
+    <% end %>
   <% end %>
 </div>

@@ -1,0 +1,34 @@
+<div class="card">
+  <%= link_to event_path(event), class: "link-unstyled" do %>
+    <div class="calendar-date-s">
+      <div class="month-s">
+        <%= event.datetime.strftime("%b") %>.
+      </div>
+      <h5 class="day-s"><%= event.datetime.strftime("%e") %></h5>
+    </div>
+    <%= image_tag event.location.image, class: "float-right", style:"width: 60px" %>
+    <div class="event-info-s">
+      <h5 class="uppercase"><%= event.category %></h5>
+      <p class="time-s"><%= event.datetime.strftime("%l h %M") %></p>
+      <br>
+      <p class="grey-medium text-small">
+        <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
+         Lieu: </span> <%= event.location.name.capitalize %>
+      </p>
+      <hr>
+      <p class="grey-medium text-small">
+        <span class="margin-right grey-dark"><i class="fa fa-calendar text-large icon margin-left" aria-hidden="true"></i>
+         Date: </span><%= event.datetime.strftime("%e %b %Y à %lh%M ") %>
+      </p>
+      <hr>
+      <p class="grey-medium text-small">
+        <span class="margin-right grey-dark"><i class="fa fa-bullhorn text-large icon" aria-hidden="true"></i>
+         Réponses: </span>
+         0 <i class="fa fa-check-circle green text-large icon margin-left" aria-hidden="true"></i>
+         0 <i class="fa fa-minus-circle red text-large icon margin-left" aria-hidden="true"></i>
+         0 <i class="fa fa-question-circle grey-normal text-large icon margin-left" aria-hidden="true"></i>
+      </p>
+      <hr>
+    </div>
+  <% end %>
+</div>

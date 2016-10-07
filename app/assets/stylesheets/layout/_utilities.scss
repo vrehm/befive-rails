@@ -65,6 +65,9 @@ hr {
   padding-top: 5em;
   padding-bottom: 5em;
 }
+.padded-xs {
+  padding: 10px 0px;
+}
 .margin-left {
 	margin-left: 5px;
 }
@@ -158,7 +161,12 @@ hr {
 	text-decoration: none;
 	}
 }
-
+.underline {
+	border-bottom: 3px solid $blue;
+}
+.line-height-s {
+	line-height: 4px;
+}
 // Logos
 .logo-s {
 	width: 25px;
