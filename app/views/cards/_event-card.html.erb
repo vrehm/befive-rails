@@ -15,7 +15,17 @@
     </div>
     <%= image_tag @event.location.image, class: "float-right", style:"width: 80px" %>
     <div class="event-info">
-      <h4 class="uppercase"><%= @event.category %></h4>
+      <h4 class="uppercase">
+        <%= @event.category %>
+        <% if policy(@event).update? %>
+          <%= link_to edit_event_path(@event), class: "link-unstyled" do %>
+            <i class="fa fa-pencil text-large margin-left"></i>
+          <% end %>
+          <%= link_to event_path(@event), class: "link-unstyled", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cet évenement ?" } do %>
+            <i class="fa fa-ban text-large red margin-left"></i>
+          <% end %>
+        <% end %>
+      </h4>
       <p class="time"><%= @event.time.strftime("%l h %M") %></p>
       <br>
       <p class="grey-medium text-small">

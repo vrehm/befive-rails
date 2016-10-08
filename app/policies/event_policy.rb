@@ -19,4 +19,21 @@ class EventPolicy < ApplicationPolicy
     user.manager
   end
 
+  def edit?
+    update?
+  end
+
+  def update?
+    user_is_team_manager?
+  end
+
+  def destroy?
+    user_is_team_manager?
+  end
+
+  private
+
+  def user_is_team_manager?
+    record.user == user
+  end
 end

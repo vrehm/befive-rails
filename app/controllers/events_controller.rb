@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   before_action :set_locations, only: [:new, :create, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @team = current_user.members.first.team
@@ -12,6 +13,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @team = current_user.members.first.team
     authorize(@event)
   end
 
@@ -30,6 +32,28 @@ class EventsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    authorize(@event)
+  end
+
+  def update
+    authorize(@event)
+    @event.update(event_params)
+    if @event.save
+      flash[:notice] = "L'évenement à bien été mis à jour !"
+      redirect_to @event
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    authorize(@event)
+    @event.destroy
+    flash[:notice] = "L'évenement à bien été annulé !"
+    redirect_to events_path
   end
 
   private
