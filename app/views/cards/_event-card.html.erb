@@ -26,7 +26,7 @@
           <% end %>
         <% end %>
       </h4>
-      <p class="time"><%= @event.time.strftime("%l h %M") %></p>
+      <p class="time"><%= @event.time.strftime("%H h %M") %></p>
       <br>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
@@ -35,7 +35,7 @@
       <hr>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-calendar text-large icon margin-left" aria-hidden="true"></i>
-         Date: </span><%= @event.date.strftime("%e %b %Y") %>
+         Date: </span><%= @event.date.strftime("%e %b %Y") %> à <%= @event.time.strftime("%H:%M") %>
       </p>
       <hr>
       <p class="grey-medium text-small">

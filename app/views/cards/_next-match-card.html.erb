@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="margin-left">
-    <p class="blue-dark text-small margin-right"> <%= @next_event.category %> à <%= @next_event.time.strftime("%l:%M") %></p>
+    <p class="blue-dark text-small margin-right"> <%= @next_event.category %> à <%= @next_event.time.strftime("%H:%M") %></p>
     <p class="grey-dark text-small line-height-s margin-right"> <%= @next_event.location.name.capitalize %> - <%= @next_event.address.capitalize %></p>
   </div>
   <% else %>
