@@ -14,7 +14,7 @@
         <div class="form-inputs">
           <%= f.input :first_name, label: "Prénom" %>
           <%= f.input :last_name, label: "Nom" %>
-          <%= f.input :position %>
+          <%= f.input :position, collection: ["Gardien de but", "Défenseur", "Milieu de terrain", "Attaquant", "Multi-postes"], label: "Position", prompt: "Selectionner uune position"%>
           <%= f.input :city, label: "Ville" %>
           <%= f.input :birthdate, label: "Date de naissance", as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 12, order: [:day, :month, :year] %>
           <%= f.input :avatar, as: :attachinary, label: "Photo de profil" %>
