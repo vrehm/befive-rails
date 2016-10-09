@@ -13,6 +13,7 @@ class PagesController < ApplicationController
         @today_user_events = @user_events.where('date = ?', Date.today)
         @next_events = @user_events.where("date >= ?", Date.today).order(date: :asc)
         @next_event = @next_events.first
+        @activities = Activity.where(team: current_user.members.first.team).order("created_at desc")
       end
     end
   end

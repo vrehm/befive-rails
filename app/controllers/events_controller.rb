@@ -27,6 +27,9 @@ class EventsController < ApplicationController
     @event.team = current_user.teams.first
     authorize(@event)
     if @event.save
+      # Create Activity "new event"
+      activity = Activity.new(user: @event.user, team: @event.team, event: @event, category: "new_event")
+      activity.save
       flash[:notice] = "Félicitations #{current_user.first_name}, vous avez crée un nouvel évenement pour #{@event.team.name} !"
       redirect_to @event
     else

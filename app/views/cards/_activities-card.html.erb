@@ -1,0 +1,53 @@
+<p class="grey-dark text-small text-light activity-date"> Il y a <%= distance_of_time_in_words(Time.now, activity.created_at) %> </p>
+<div class="card">
+  <% if activity.category == "new_event" %>
+    <% if activity.user.avatar? %>
+      <%= cl_image_tag activity.user.avatar.path, class: "avatar", width: 80, height: 80, crop: :fill %>
+    <% else %>
+        <%= image_tag "user.png", class:"avatar" %>
+    <% end %>
+    <span class="blue-dark text-small margin-left"><%= activity.user.first_name %> <%= activity.user.last_name %></span>
+    <span class="grey-dark text-small margin-left">"Nouvel évenement"</span>
+    <br>
+    <br>
+    <%= link_to event_path(activity.event), class: "link-unstyled" do %>
+      <div class="activity-content">
+        <div class="float-left">
+          <div class="calendar-date-xxs">
+            <div class="month-xxs">
+              <%= activity.event.date.strftime("%b") %>.
+            </div>
+            <h5 class="day-xxs"><%= activity.event.date.strftime("%e") %></h5>
+          </div>
+        </div>
+        <div class="margin-left">
+          <p class="blue-dark text-small margin-right"> <%= activity.event.category %> à <%= activity.event.time.strftime("%H:%M") %></p>
+          <p class="grey-dark text-small line-height-s margin-right"> <%= activity.event.location.name.capitalize %> - <%= activity.event.address.capitalize %></p>
+        </div>
+      </div>
+    <% end %>
+  <% elsif activity.category == "new_member" %>
+    <% if activity.team.logo %>
+      <%= image_tag activity.team.logo.image, style:"width: 30px" %>
+    <% else %>
+      <%= image_tag "logo.png", style:"width: 30px" %>
+    <% end %>
+    <span class="blue-dark text-small margin-left"><%= activity.team.name %></span>
+    <span class="grey-dark text-small margin-left">"Nouveau membre"</span>
+    <br>
+    <br>
+    <%= link_to team_path(current_user.members.first.team), class: "link-unstyled" do %>
+      <div class="activity-content">
+        <% if activity.member.user.avatar? %>
+          <%= cl_image_tag activity.member.user.avatar.path, class: "avatar", width: 80, height: 80, crop: :fill %>
+        <% else %>
+            <%= image_tag "user.png", class:"avatar" %>
+        <% end %>
+        <span class="blue-dark text-small margin-left"><%= activity.member.user.first_name %> <%= activity.member.user.last_name %>
+        <span class="grey-dark text-small margin-left"> est membre de l'équipe </span>
+        </span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<br>

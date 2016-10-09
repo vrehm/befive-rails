@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007160914) do
+ActiveRecord::Schema.define(version: 20161009143908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.integer  "event_id"
+    t.integer  "member_id"
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_activities_on_event_id", using: :btree
+    t.index ["member_id"], name: "index_activities_on_member_id", using: :btree
+    t.index ["team_id"], name: "index_activities_on_team_id", using: :btree
+    t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  end
 
   create_table "attachinary_files", force: :cascade do |t|
     t.string   "attachinariable_type"
@@ -129,6 +143,10 @@ ActiveRecord::Schema.define(version: 20161007160914) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "activities", "events"
+  add_foreign_key "activities", "members"
+  add_foreign_key "activities", "teams"
+  add_foreign_key "activities", "users"
   add_foreign_key "events", "locations"
   add_foreign_key "events", "teams"
   add_foreign_key "events", "users"

@@ -21,6 +21,9 @@
     <div class="center-container">
       <%= render "/cards/progress-card" %>
       <%= render "/cards/dashboard-card" %>
+      <% @activities.each do |activity| %>
+        <%= render "/cards/activities-card", activity: activity %>
+      <% end %>
     </div>
     <div class="right-container">
       <%= render "/cards/next-match-card" %>

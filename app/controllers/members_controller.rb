@@ -20,6 +20,9 @@ class MembersController < ApplicationController
     member.user.has_team = true
     member.update(validated: true, pending: false)
     if member.save && member.user.save
+      # Create Activity "new member"
+      activity = Activity.new(user: member.team.user, team: member.team, member: member, category: "new_member")
+      activity.save
       flash[:notice] = "La demande à bien été validé, #{member.user.first_name} est maintenant membre de votre équipe !"
     else
       flash[:alert] = "Action impossible, La demande n'a pas pu être validé !"
