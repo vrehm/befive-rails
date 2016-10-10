@@ -1,3 +1,4 @@
+// Participations
 .participations-card {
   background-color: $background;
   padding: 20px 0px 15px 0px;
@@ -49,6 +50,7 @@
   }
 }
 
+// Convocations
 .convocations-members-info {
   flex: 1 1 auto;
   width: 240px;
@@ -56,4 +58,18 @@
 .convocations-buttons {
   flex: 1 1 auto;
   width: 30px;
+}
+.participations-content-waiting-list {
+  padding: 10px 10px;
+  min-height: 120px;
+  margin: 0 20px 0 0px;
+  width: 50%;
+}
+
+// Empty Messages
+.convocations-empty-message {
+  padding: 4px;
+}
+.waiting-list-empty-message {
+  padding: 5px;
 }

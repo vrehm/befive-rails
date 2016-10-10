@@ -59,25 +59,25 @@
 </div>
 <div class="participations-card">
   <div class="participations-content-available float-left">
-    <h5 class="uppercase text-center"><em>disponibilité</em></h5>
+    <h5 class="uppercase text-center"><em>disponibilités</em></h5>
     <br>
     <hr>
-    <% @event.team.members.each do |member| %>
+    <% @selectionnable_participations.each do |participation| %>
       <div class="participations-members">
         <div class="participations-members-info">
-          <% if member.user.avatar? %>
-            <%= cl_image_tag member.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
+          <% if participation.user.avatar? %>
+            <%= cl_image_tag participation.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
           <% else %>
               <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
           <% end %>
-          <span class="blue-dark text-semi-bold text-small margin-left"> <%= member.user.first_name %> <%= member.user.last_name %>
-          <% if member.user.manager? %>
+          <span class="blue-dark text-semi-bold text-small margin-left"> <%= participation.user.first_name %> <%= participation.user.last_name %>
+          <% if participation.user.manager? %>
             <i class="fa fa-star blue text-normal margin-left"></i>
           <% end %>
           <br>
           <span class="grey-dark text-normal margin-left">
-            <% if member.user.position? %>
-              <%= member.user.position.capitalize %>
+            <% if participation.user.position? %>
+              <%= participation.user.position.capitalize %>
             <% else %>
              Position
             <% end %>
@@ -86,7 +86,9 @@
         <div class="participations-buttons">
             <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
             <span class="border-right"></span>
+          <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
             <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
+          <% end %>
         </div>
       </div>
       <hr>
@@ -95,30 +97,40 @@
   <div class="participations-content-composition float-right">
     <h5 class="uppercase text-center"><em>composition</em> <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i></h5>
     <br>
+    <% if @selected_participations.empty? %>
+      <hr>
+      <div class="convocations-empty-message text-center">
+        <span class="grey-medium text-normal text-small"><em>Ajoutez vos membres</em>
+          <br>
+          <i class="fa fa-share text-normal blue margin-left"></i> </span>
+      </div>
+    <% end %>
     <hr>
-    <% @event.team.members.each do |member| %>
+    <% @selected_participations.each do |participation| %>
       <div class="participations-members">
         <div class="convocations-members-info">
-          <% if member.user.avatar? %>
-            <%= cl_image_tag member.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
+          <% if participation.user.avatar? %>
+            <%= cl_image_tag participation.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
           <% else %>
               <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
           <% end %>
-          <span class="blue-dark text-semi-bold text-small margin-left"> <%= member.user.first_name %> <%= member.user.last_name %>
-          <% if member.user.manager? %>
+          <span class="blue-dark text-semi-bold text-small margin-left"> <%= participation.user.first_name %> <%= participation.user.last_name %>
+          <% if participation.user.manager? %>
             <i class="fa fa-star blue text-normal margin-left"></i>
           <% end %>
           <br>
           <span class="grey-dark text-normal margin-left">
-            <% if member.user.position? %>
-              <%= member.user.position.capitalize %>
+            <% if participation.user.position? %>
+              <%= participation.user.position.capitalize %>
             <% else %>
              Position
             <% end %>
           </span>
         </div>
         <div class="convocations-buttons">
-          <i class="fa fa-undo text-small grey-normal margin-right" aria-hidden="true"></i>
+          <%= link_to unselect_path(participation), class: "link-unstyled", method: :patch do %>
+            <i class="fa fa-undo text-small grey-normal margin-right" aria-hidden="true"></i>
+          <% end %>
           <i class="fa fa-file-text-o red text-small margin-left" aria-hidden="true"></i>
         </div>
       </div>
@@ -131,5 +143,17 @@
     <% end %>
     <br>
     <br>
+  </div>
+  <div class="participations-content-waiting-list float-right">
+    <h5 class="uppercase text-center"><em>liste d'attente</em> <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i></h5>
+    <br>
+    <hr>
+    <div class="waiting-list-empty-message text-center">
+      <span class="grey-medium text-normal text-small">
+        <em>Les membres de cette liste seront informés automatiquement si un membre de votre équipe refuse d'être présent à l'événement</em>
+        <br>
+        <i class="fa fa-share text-normal red margin-left"></i> </span>
+    </div>
+    <hr>
   </div>
 </div>

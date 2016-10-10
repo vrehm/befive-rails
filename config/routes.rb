@@ -12,12 +12,11 @@ Rails.application.routes.draw do
       resources :invitations, only: [ :create, :new ]
     end
 
-    resources :events do
-      resources :participations, only: [ :index, :create, :update, :destroy ]
-    end
-
+    resources :events
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
+    put 'participation/:id', to: 'participations#select', as: :select
+    patch 'participation/:id', to: 'participations#unselect', as: :unselect
     root to: 'pages#home'
   end
 end

@@ -15,6 +15,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @team = current_user.members.first.team
     authorize(@event)
+    @selectionnable_participations = policy_scope(Participation).where(event: @event, status: "selectionnable")
+    @selected_participations = policy_scope(Participation).where(event: @event, status: "selected")
   end
 
   def new
@@ -27,6 +29,11 @@ class EventsController < ApplicationController
     @event.team = current_user.teams.first
     authorize(@event)
     if @event.save
+      # Create participations for selectionnable members
+      @event.team.members.each do |member|
+        participation = Participation.new(event: @event, user: member.user, status: "selectionnable")
+        participation.save
+      end
       # Create Activity "new event"
       activity = Activity.new(user: @event.user, team: @event.team, event: @event, category: "new_event")
       activity.save
