@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     authorize(relationship)
     relationship.save
     flash[:notice] = "#{team.name} à bien été ajouté à votre réseau !"
-    redirect_to teams_path
+    redirect_to(:back)
   end
 
   def destroy
@@ -14,6 +14,6 @@ class RelationshipsController < ApplicationController
     authorize(relationship)
     relationship.destroy
     flash[:notice] = "#{team.name} à bien été supprimé de votre réseau !"
-    redirect_to teams_path
+    redirect_to(:back)
   end
 end

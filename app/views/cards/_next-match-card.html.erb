@@ -10,18 +10,20 @@
   <br>
   <br>
   <% if @next_event %>
-  <div class="float-left">
-    <div class="calendar-date-xs">
-      <div class="month-xs">
-        <%= @next_event.date.strftime("%b") %>.
+    <%= link_to event_path(@next_event), class: "link-unstyled" do %>
+      <div class="float-left">
+        <div class="calendar-date-xs">
+          <div class="month-xs">
+            <%= @next_event.date.strftime("%b") %>.
+          </div>
+          <h5 class="day-xs"><%= @next_event.date.strftime("%e") %></h5>
+        </div>
       </div>
-      <h5 class="day-xs"><%= @next_event.date.strftime("%e") %></h5>
-    </div>
-  </div>
-  <div class="margin-left">
-    <p class="blue-dark text-small margin-right"> <%= @next_event.category %> à <%= @next_event.time.strftime("%H:%M") %></p>
-    <p class="grey-dark text-small line-height-s margin-right"> <%= @next_event.location.name.capitalize %> - <%= @next_event.address.capitalize %></p>
-  </div>
+      <div class="margin-left">
+        <p class="blue-dark text-small margin-right"> <%= @next_event.category %> à <%= @next_event.time.strftime("%H:%M") %></p>
+        <p class="grey-dark text-small line-height-s margin-right"> <%= @next_event.location.name.capitalize %> - <%= @next_event.address.capitalize[0..20] %></p>
+      </div>
+    <% end %>
   <% else %>
     <p class="blue-dark text-small text-center"><i class="fa fa-calendar icon blue text-large"></i> Aucun match de planifié</p>
   <% end %>

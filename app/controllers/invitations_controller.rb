@@ -9,7 +9,7 @@ class InvitationsController < ApplicationController
     if @invitation.save
       InvitationMailer.team_member(@invitation.id).deliver_now
       flash[:notice] = "L'invitation a bien été envoyée par mail à #{@invitation.first_name} #{@invitation.last_name}"
-      redirect_to team_path(@team)
+      redirect_to(:back)
     else
       flash[:notice] = "L'invitation n'a pas pu être envoyée"
       redirect_to team_path(@team)
