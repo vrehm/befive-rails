@@ -1,0 +1,59 @@
+.participations-card {
+  background-color: $background;
+  padding: 20px 0px 15px 0px;
+  min-height: 120px;
+  width: 95%;
+  border-radius: 0px 0px 3px 3px;
+  margin: -2px auto;
+  border: 1px solid $grey;
+  h1, h2, h3, h4, h5, h6 {
+    color: $blue-dark
+  }
+}
+.participations-content-available {
+  padding: 10px 10px;
+  min-height: 120px;
+  margin: 0 auto;
+  width: 45%;
+}
+.participations-content-composition {
+  background: white;
+  padding: 10px 10px;
+  min-height: 120px;
+  margin: 0 20px 0 0px;
+  width: 50%;
+  border-radius: 3px;
+  border: 1px solid $grey;
+}
+.participations-members {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 15px;
+}
+.participations-members-info {
+  flex: 1 1 auto;
+  width: 182px;
+}
+
+.participations-buttons {
+  flex: 1 1 auto;
+  width: 30px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid $grey;
+  .border-right {
+    border-right: 1px solid $grey-normal;
+    margin: 0 2px;
+  }
+}
+
+.convocations-members-info {
+  flex: 1 1 auto;
+  width: 240px;
+}
+.convocations-buttons {
+  flex: 1 1 auto;
+  width: 30px;
+}

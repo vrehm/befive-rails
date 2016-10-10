@@ -13,16 +13,11 @@ Rails.application.routes.draw do
     end
 
     resources :events do
-      collection do
-        resources :participations, only: [ :create, :update, :destroy ]
-      end
+      resources :participations, only: [ :index, :create, :update, :destroy ]
     end
 
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
-    
-    end
     root to: 'pages#home'
-
   end
 end

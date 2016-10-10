@@ -10,25 +10,25 @@
   <br>
   <% @members.each do |member| %>
     <% if current_page?(root_path) %>
-    <%= link_to team_path(current_user.members.first.team), class: "link-unstyled" do %>
-      <div class="list-card-m" data-target="#member-<%= member.id %>">
-        <% if member.user.avatar? %>
-          <%= cl_image_tag member.user.avatar.path, class: "avatar-m float-left", width: 100, height: 100, crop: :fill %>
-        <% else %>
-            <%= image_tag "user.png", class:"avatar-m float-left" %>
-        <% end %>
-        <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
-        <% if member.user.manager? %>
-          <i class="fa fa-star blue text-normal margin-left"></i>
-        <% end %>
-        <br>
-        <span class="grey-dark text-normal">
-          <% if member.user.position? %>
-            <%= member.user.position.capitalize %>
+      <%= link_to team_path(current_user.members.first.team), class: "link-unstyled" do %>
+        <div class="list-card-m" data-target="#member-<%= member.id %>">
+          <% if member.user.avatar? %>
+            <%= cl_image_tag member.user.avatar.path, class: "avatar-m float-left", width: 100, height: 100, crop: :fill %>
           <% else %>
-           Position
+              <%= image_tag "user.png", class:"avatar-m float-left" %>
           <% end %>
-         </span>
+          <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
+          <% if member.user.manager? %>
+            <i class="fa fa-star blue text-normal margin-left"></i>
+          <% end %>
+          <br>
+          <span class="grey-dark text-normal">
+            <% if member.user.position? %>
+              <%= member.user.position.capitalize %>
+            <% else %>
+             Position
+            <% end %>
+           </span>
         </div>
       <% end %>
     <% else %>

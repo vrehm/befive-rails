@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card no-bottom-radius">
   <div class="title-card ">
     <%= link_to events_path, class: "btn btn-default text-small margin-left" do %>
       Tous les events <i class="fa fa-calendar blue margin-left" aria-hidden="true"></i>
@@ -55,5 +55,81 @@
         Accepter <i class="fa fa-check-circle white text-large margin-left" aria-hidden="true"></i>
       <% end %>
     </div>
+  </div>
+</div>
+<div class="participations-card">
+  <div class="participations-content-available float-left">
+    <h5 class="uppercase text-center"><em>disponibilité</em></h5>
+    <br>
+    <hr>
+    <% @event.team.members.each do |member| %>
+      <div class="participations-members">
+        <div class="participations-members-info">
+          <% if member.user.avatar? %>
+            <%= cl_image_tag member.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
+          <% else %>
+              <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
+          <% end %>
+          <span class="blue-dark text-semi-bold text-small margin-left"> <%= member.user.first_name %> <%= member.user.last_name %>
+          <% if member.user.manager? %>
+            <i class="fa fa-star blue text-normal margin-left"></i>
+          <% end %>
+          <br>
+          <span class="grey-dark text-normal margin-left">
+            <% if member.user.position? %>
+              <%= member.user.position.capitalize %>
+            <% else %>
+             Position
+            <% end %>
+          </span>
+        </div>
+        <div class="participations-buttons">
+            <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
+            <span class="border-right"></span>
+            <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+  <div class="participations-content-composition float-right">
+    <h5 class="uppercase text-center"><em>composition</em> <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i></h5>
+    <br>
+    <hr>
+    <% @event.team.members.each do |member| %>
+      <div class="participations-members">
+        <div class="convocations-members-info">
+          <% if member.user.avatar? %>
+            <%= cl_image_tag member.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
+          <% else %>
+              <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
+          <% end %>
+          <span class="blue-dark text-semi-bold text-small margin-left"> <%= member.user.first_name %> <%= member.user.last_name %>
+          <% if member.user.manager? %>
+            <i class="fa fa-star blue text-normal margin-left"></i>
+          <% end %>
+          <br>
+          <span class="grey-dark text-normal margin-left">
+            <% if member.user.position? %>
+              <%= member.user.position.capitalize %>
+            <% else %>
+             Position
+            <% end %>
+          </span>
+        </div>
+        <div class="convocations-buttons">
+          <i class="fa fa-undo text-small grey-normal margin-right" aria-hidden="true"></i>
+          <i class="fa fa-file-text-o red text-small margin-left" aria-hidden="true"></i>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+    <br>
+    <br>
+    <%= link_to "#", class: "btn btn-primary text-small float-right margin-right" do %>
+      Envoyer les covocs <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
+    <% end %>
+    <br>
+    <br>
   </div>
 </div>
