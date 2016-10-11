@@ -47,103 +47,25 @@
       </p>
       <hr>
       <br>
-      <h6 class="uppercase">serez vous présent ?</h6>
-      <%= link_to "#", class: "btn btn-default text-small margin-right" do %>
-        Refuser <i class="fa fa-minus-circle red text-large margin-left" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to "#", class: "btn btn-success text-small" do %>
-        Accepter <i class="fa fa-check-circle white text-large margin-left" aria-hidden="true"></i>
+      <% if @user_pending_participation %>
+        <h6 class="uppercase">serez vous présent ?</h6>
+        <%= link_to refused_path(@user_pending_participation), class: "btn btn-default text-small margin-right" do %>
+          Refuser <i class="fa fa-minus-circle red text-large margin-left" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to validated_path(@user_pending_participation), class: "btn btn-success text-small" do %>
+          Accepter <i class="fa fa-check-circle white text-large margin-left" aria-hidden="true"></i>
+        <% end %>
+      <% elsif @user_validated_participation %>
+        <p class="text-large green"><i class="fa fa-check-circle green text-large margin-right" aria-hidden="true"></i> Vous avez accepté</p>
+      <% elsif @user_refused_participation %>
+        <p class="text-large red"><i class="fa fa-minus-circle red text-large margin-right" aria-hidden="true"></i> Vous avez refusé</p>
       <% end %>
     </div>
   </div>
 </div>
 <div class="participations-card">
-  <div class="participations-content-available float-left">
-    <h5 class="uppercase text-center"><em>disponibilités</em></h5>
-    <br>
-    <hr>
-    <% @selectionnable_participations.each do |participation| %>
-      <div class="participations-members">
-        <div class="participations-members-info">
-          <% if participation.user.avatar? %>
-            <%= cl_image_tag participation.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
-          <% else %>
-              <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
-          <% end %>
-          <span class="blue-dark text-semi-bold text-small margin-left"> <%= participation.user.first_name %> <%= participation.user.last_name %>
-          <% if participation.user.manager? %>
-            <i class="fa fa-star blue text-normal margin-left"></i>
-          <% end %>
-          <br>
-          <span class="grey-dark text-normal margin-left">
-            <% if participation.user.position? %>
-              <%= participation.user.position.capitalize %>
-            <% else %>
-             Position
-            <% end %>
-          </span>
-        </div>
-        <div class="participations-buttons">
-            <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
-            <span class="border-right"></span>
-          <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
-            <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
-          <% end %>
-        </div>
-      </div>
-      <hr>
-    <% end %>
-  </div>
-  <div class="participations-content-composition float-right">
-    <h5 class="uppercase text-center"><em>composition</em> <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i></h5>
-    <br>
-    <% if @selected_participations.empty? %>
-      <hr>
-      <div class="convocations-empty-message text-center">
-        <span class="grey-medium text-normal text-small"><em>Ajoutez vos membres</em>
-          <br>
-          <i class="fa fa-share text-normal blue margin-left"></i> </span>
-      </div>
-    <% end %>
-    <hr>
-    <% @selected_participations.each do |participation| %>
-      <div class="participations-members">
-        <div class="convocations-members-info">
-          <% if participation.user.avatar? %>
-            <%= cl_image_tag participation.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
-          <% else %>
-              <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
-          <% end %>
-          <span class="blue-dark text-semi-bold text-small margin-left"> <%= participation.user.first_name %> <%= participation.user.last_name %>
-          <% if participation.user.manager? %>
-            <i class="fa fa-star blue text-normal margin-left"></i>
-          <% end %>
-          <br>
-          <span class="grey-dark text-normal margin-left">
-            <% if participation.user.position? %>
-              <%= participation.user.position.capitalize %>
-            <% else %>
-             Position
-            <% end %>
-          </span>
-        </div>
-        <div class="convocations-buttons">
-          <%= link_to unselect_path(participation), class: "link-unstyled", method: :patch do %>
-            <i class="fa fa-undo text-small grey-normal margin-right" aria-hidden="true"></i>
-          <% end %>
-          <i class="fa fa-file-text-o red text-small margin-left" aria-hidden="true"></i>
-        </div>
-      </div>
-      <hr>
-    <% end %>
-    <br>
-    <br>
-    <%= link_to "#", class: "btn btn-primary text-small float-right margin-right" do %>
-      Envoyer les covocs <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
-    <% end %>
-    <br>
-    <br>
-  </div>
+  <%= render 'cards/event-disponibilities' %>
+  <%= render 'cards/event-composition' %>
   <div class="participations-content-waiting-list float-right">
     <h5 class="uppercase text-center"><em>liste d'attente</em> <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i></h5>
     <br>

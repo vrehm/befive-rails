@@ -12,11 +12,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @team = current_user.members.first.team
     authorize(@event)
     @selectionnable_participations = policy_scope(Participation).where(event: @event, status: "selectionnable")
     @selected_participations = policy_scope(Participation).where(event: @event, status: "selected")
+    @user_pending_participation = current_user.participations.where(event_id: @event, pending: true).first
+    @user_validated_participation = current_user.participations.where(event_id: @event, validated: true).first
+    @user_refused_participation = current_user.participations.where(event_id: @event, refused: true).first
   end
 
   def new

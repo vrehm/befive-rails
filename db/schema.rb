@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010090100) do
+ActiveRecord::Schema.define(version: 20161011101211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,8 +101,12 @@ ActiveRecord::Schema.define(version: 20161010090100) do
     t.integer  "event_id"
     t.integer  "user_id"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "sent",       default: false
+    t.boolean  "pending",    default: false
+    t.boolean  "validated",  default: false
+    t.boolean  "refused",    default: false
     t.index ["event_id"], name: "index_participations_on_event_id", using: :btree
     t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
   end

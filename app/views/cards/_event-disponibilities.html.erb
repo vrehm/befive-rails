@@ -1,0 +1,38 @@
+<div class="participations-content-available float-left">
+  <h5 class="uppercase text-center"><em>disponibilités</em></h5>
+  <br>
+  <hr>
+  <% @selectionnable_participations.each do |participation| %>
+    <div class="participations-members">
+      <div class="participations-members-info">
+        <% if participation.user.avatar? %>
+          <%= cl_image_tag participation.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
+        <% else %>
+            <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
+        <% end %>
+        <span class="blue-dark text-semi-bold text-small margin-left"> <%= participation.user.first_name %> <%= participation.user.last_name %>
+        <% if participation.user.manager? %>
+          <i class="fa fa-star blue text-normal margin-left"></i>
+        <% end %>
+        <br>
+        <span class="grey-dark text-normal margin-left">
+          <% if participation.user.position? %>
+            <%= participation.user.position.capitalize %>
+          <% else %>
+           Position
+          <% end %>
+        </span>
+      </div>
+      <% if policy(participation).select? %>
+        <div class="participations-buttons">
+          <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
+          <span class="border-right"></span>
+          <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
+            <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+</div>

@@ -22,6 +22,7 @@
       <% end %>
       <hr>
     </div>
+    <br>
     <% elsif current_user.teams.first.invitations.count == 0 && current_user.events.size > 0 %>
     <div class="card">
       <div class="progress progress-bar-custom">
@@ -41,6 +42,7 @@
       <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle grey-normal text-large icon" aria-hidden="true"></i> Créez un nouvel évenement</p>
       <hr>
     </div>
+    <br>
     <% elsif current_user.teams.first.invitations.count == 0 && current_user.events.size == 0 %>
     <div class="card">
       <div class="progress progress-bar-custom">
@@ -64,6 +66,7 @@
       <% end %>
       <hr>
     </div>
+    <br>
   <% end %>
 <% else %>
   <% if current_user.city == nil || current_user.avatar == nil || current_user.position == nil %>
@@ -84,4 +87,3 @@
     <br>
   <% end %>
 <% end %>
-<br>
