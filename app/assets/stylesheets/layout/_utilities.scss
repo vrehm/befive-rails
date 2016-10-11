@@ -121,6 +121,9 @@ hr {
 .grey-medium {
 	color: $grey-medium;
 }
+.grey-m {
+	color: #C9CCCD;
+}
 .grey {
 	color: $grey;
 }
@@ -143,6 +146,9 @@ hr {
 }
 .text-small {
 	font-size: 13px;
+}
+.text-xs {
+	font-size: 11px;
 }
 .text-marged {
 	margin: 15px;
@@ -188,4 +194,10 @@ hr {
 }
 .step {
 	color: $blue-dark
+}
+
+
+// Dropdown
+.dropdown {
+	cursor: pointer;
 }

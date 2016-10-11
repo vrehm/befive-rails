@@ -12,7 +12,7 @@ class ParticipationsController < ApplicationController
   def unselect
     participation = Participation.find(params[:id])
     authorize(participation)
-    participation.update(status: "selectionnable")
+    participation.update(status: "selectionnable", pending: false, validated: false, refused: false, sent: false)
     if participation.save
       redirect_to(:back)
     end

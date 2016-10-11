@@ -33,18 +33,33 @@
       </div>
       <div class="convocations-buttons">
         <% if participation.pending == true %>
-          <i class="fa fa-question-circle text-large grey-dark margin-left" aria-hidden="true"></i>
+          <i class="fa fa-question-circle text-large grey-dark margin-right-m" aria-hidden="true"></i>
         <% elsif participation.validated == true %>
-          <i class="fa fa-check-circle text-large green margin-left" aria-hidden="true"></i>
+          <i class="fa fa-check-circle text-large green margin-right-m" aria-hidden="true"></i>
         <% elsif participation.refused == true %>
-          <i class="fa fa-minus-circle text-large red margin-left" aria-hidden="true"></i>
-        <% else %>
-          <% if policy(participation).unselect? %>
-            <%= link_to unselect_path(participation), class: "link-unstyled", method: :patch do %>
-              <i class="fa fa-undo text-small grey-normal margin-right" aria-hidden="true"></i>
-            <% end %>
-            <i class="fa fa-file-text-o red text-small margin-left" aria-hidden="true"></i>
-          <% end %>
+          <i class="fa fa-minus-circle text-large red margin-right-m" aria-hidden="true"></i>
+        <% elsif participation.sent == false %>
+          <i class="fa fa-envelope text-small grey-m margin-right-m" aria-hidden="true"></i>
+        <% end %>
+        <% if policy(participation).unselect? %>
+          <span class="dropdown">
+            <i class="fa fa-cog text-large dropdown-toggle grey-m margin" data-toggle="dropdown"></i>
+            <i class="fa fa-caret-down text-small dropdown-toggle grey-m" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu dropdown-menu-right navbar-user-dropdown-menu">
+              <li>
+                <%= link_to unselect_path(participation), method: :patch do %>
+                  <i class="fa fa-undo text-small grey-medium margin-right" aria-hidden="true"></i>
+                  <span class="grey-medium"> Retour au peloton</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to unselect_path(participation), method: :patch do %>
+                  <i class="fa fa-file-text-o red text-small margin-left" aria-hidden="true"></i>
+                  <span class="red"> Liste d'attente</span>
+                <% end %>
+              </li>
+            </ul>
+          </span>
         <% end %>
       </div>
     </div>

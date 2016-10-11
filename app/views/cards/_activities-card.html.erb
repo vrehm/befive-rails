@@ -25,13 +25,16 @@
           <p class="grey-dark text-small line-height-s margin-right"> <%= activity.event.location.name.capitalize %> - <%= activity.event.address.capitalize %></p>
           <% if activity.event.participations.where(user: current_user, pending: true).first %>
             <br>
-            <span class="text-small green"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> En attente de réponse</span>
+            <span class="text-small grey-dark"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> En attente de réponse</span>
           <% elsif activity.event.participations.where(user: current_user, validated: true).first %>
             <br>
             <span class="text-small green"><i class="fa fa-check-circle green text-large margin-right" aria-hidden="true"></i> Vous avez accepté</span>
           <% elsif activity.event.participations.where(user: current_user, refused: true).first %>
             <br>
             <span class="text-small red"><i class="fa fa-minus-circle red text-large margin-right" aria-hidden="true"></i> Vous avez refusé</span>
+          <% else %>
+          <br>
+            <span class="text-small grey-medium"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</span>
           <% end %>
         </div>
       </div>

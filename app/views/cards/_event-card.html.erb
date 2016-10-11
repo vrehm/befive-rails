@@ -43,7 +43,7 @@
          Réponses: </span>
         <%= @event.participations.where(validated: true).count %> <i class="fa fa-check-circle green text-large margin-right-m" aria-hidden="true"></i>
         <%= @event.participations.where(refused: true).count %> <i class="fa fa-minus-circle red text-large margin-right-m" aria-hidden="true"></i>
-        <%= @event.participations.where(pending: true).count %> <i class="fa fa-question-circle grey-normal text-large margin-right-m" aria-hidden="true"></i>
+        <%= @event.participations.where(pending: true).count %> <i class="fa fa-question-circle grey-dark text-large margin-right-m" aria-hidden="true"></i>
       </p>
       <hr>
       <br>
@@ -59,6 +59,8 @@
         <p class="text-large green"><i class="fa fa-check-circle green text-large margin-right" aria-hidden="true"></i> Vous avez accepté</p>
       <% elsif @user_refused_participation %>
         <p class="text-large red"><i class="fa fa-minus-circle red text-large margin-right" aria-hidden="true"></i> Vous avez refusé</p>
+      <% else %>
+        <p class="text-small grey-medium"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</p>
       <% end %>
     </div>
   </div>
