@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     resources :events
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
-    put 'participation/:id', to: 'participations#select', as: :select
-    patch 'participation/:id', to: 'participations#unselect', as: :unselect
+    put 'participation/:id/select', to: 'participations#select', as: :select
+    patch 'participation/:id/unselect/', to: 'participations#unselect', as: :unselect
     patch 'participations/:event_id', to: 'participations#sent', as: :sent
-    get 'participation/:id', to: 'participations#validated', as: :validated
-    get 'participation/:id', to: 'participations#refused', as: :refused
+    get 'participation/:id/refused', to: 'participations#refused', as: :refused
+    get 'participation/:id/validated', to: 'participations#validated', as: :validated
     root to: 'pages#home'
   end
 end

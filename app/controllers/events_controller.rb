@@ -14,11 +14,15 @@ class EventsController < ApplicationController
   def show
     @team = current_user.members.first.team
     authorize(@event)
+    # Participation Selections
     @selectionnable_participations = policy_scope(Participation).where(event: @event, status: "selectionnable")
     @selected_participations = policy_scope(Participation).where(event: @event, status: "selected")
+    @not_sending_participations = policy_scope(Participation).where(event: @event, status: "selected", sent: false)
+    # User Participation
     @user_pending_participation = current_user.participations.where(event_id: @event, pending: true).first
     @user_validated_participation = current_user.participations.where(event_id: @event, validated: true).first
     @user_refused_participation = current_user.participations.where(event_id: @event, refused: true).first
+
   end
 
   def new

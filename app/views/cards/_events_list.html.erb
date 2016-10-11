@@ -24,11 +24,18 @@
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-bullhorn text-large icon" aria-hidden="true"></i>
          Réponses: </span>
-         0 <i class="fa fa-check-circle green text-large icon margin-left" aria-hidden="true"></i>
-         0 <i class="fa fa-minus-circle red text-large icon margin-left" aria-hidden="true"></i>
-         0 <i class="fa fa-question-circle grey-normal text-large icon margin-left" aria-hidden="true"></i>
+         <%= event.participations.where(validated: true).count %> <i class="fa fa-check-circle green text-large margin-right-m" aria-hidden="true"></i>
+         <%= event.participations.where(refused: true).count %> <i class="fa fa-minus-circle red text-large margin-right-m" aria-hidden="true"></i>
+         <%= event.participations.where(pending: true).count %> <i class="fa fa-question-circle grey-normal text-large margin-right-m" aria-hidden="true"></i>
       </p>
       <hr>
+      <% if event.participations.where(user: current_user, pending: true).first %>
+        <p class="text-small green"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> En attente de réponse</p>
+      <% elsif event.participations.where(user: current_user, validated: true).first %>
+        <p class="text-small green"><i class="fa fa-check-circle green text-large margin-right" aria-hidden="true"></i> Vous avez accepté</p>
+      <% elsif event.participations.where(user: current_user, refused: true).first %>
+        <p class="text-small red"><i class="fa fa-minus-circle red text-large margin-right" aria-hidden="true"></i> Vous avez refusé</p>
+      <% end %>
     </div>
   <% end %>
 </div>

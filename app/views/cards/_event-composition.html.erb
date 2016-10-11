@@ -50,10 +50,14 @@
     </div>
     <hr>
   <% end %>
-  <br>
-  <br>
-  <%= link_to sent_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>
-    Envoyer les covocs <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
+  <% if policy(Participation).sent? %>
+    <% if @not_sending_participations.size > 0 %>
+      <br>
+      <br>
+      <%= link_to sent_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>
+        Envoyer les covocs <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
   <% end %>
   <br>
   <br>
