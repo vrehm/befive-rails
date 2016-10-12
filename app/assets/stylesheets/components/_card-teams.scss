@@ -21,10 +21,14 @@
 .logo-inside {
   background: white;
   padding: 13px;
+  width: 76px;
+  border-radius: 3px;
   position: absolute;
   top: 188px;
-  left: 105px;
-  border-radius: 3px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Team Cards untitle
@@ -51,7 +55,11 @@
   padding: 13px;
   position: absolute;
   top: 148px;
-  left: 105px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 76px;
   border-radius: 3px;
 }
 // Team Cards untitle large
@@ -78,7 +86,11 @@
   padding: 18px;
   position: absolute;
   top: 54%;
-  left: 40%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95px;
   border-radius: 3px;
 }
 
@@ -120,7 +132,11 @@
   padding: 11px;
   position: absolute;
   top: 135px;
-  left: 90px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 62px;
   border-radius: 3px;
   img {
     width: 40px;
