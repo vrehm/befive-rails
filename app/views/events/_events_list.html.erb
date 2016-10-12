@@ -38,7 +38,7 @@
       <% elsif event.participations.where(user: current_user, waiting_list: true).first %>
         <p class="text-small red"><i class="fa fa-file-text-o red text-small margin-right" aria-hidden="true"></i> Vous êtes sur la liste d'attente</p>
       <% else %>
-        <p class="text-small red"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</p>
+        <p class="text-small grey-medium"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</p>
       <% end %>
     </div>
   <% end %>
