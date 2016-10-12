@@ -34,7 +34,9 @@ class ParticipationsController < ApplicationController
     selected_participations.each do |participation|
       participation.update(sent: true, pending: true)
       participation.save
-      if participation.waiting_list == false
+      if participation.waiting_list
+        EventMailer.waiting_list(participation.id).deliver_now
+      else
         EventMailer.participation(participation.id).deliver_now
       end
     end
