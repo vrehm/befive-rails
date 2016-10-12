@@ -34,8 +34,11 @@ class ParticipationsController < ApplicationController
     selected_participations.each do |participation|
       participation.update(sent: true, pending: true)
       participation.save
+      if participation.waiting_list == false
+        EventMailer.participation(participation.id).deliver_now
+      end
     end
-    flash[:notice] = "Les convocations ont bien été envoyées !"
+    flash[:notice] = "Les convocations ont bien été envoyées par mail!"
     redirect_to(:back)
   end
 
