@@ -14,7 +14,7 @@ class EventMailer < ApplicationMailer
 
     mail(
       to:       @participation.user.email,
-      subject:  "Vous êtes sur la liste d'attente un #{@participation.event.category} avec #{@participation.event.team.name}!"
+      subject:  "Vous êtes sur la liste d'attente pour un #{@participation.event.category} avec #{@participation.event.team.name}!"
     )
   end
 end

@@ -4,27 +4,21 @@ class ParticipationsController < ApplicationController
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(status: "selected", waiting_list: false, sent: false, pending: false)
-    if participation.save
-      redirect_to(:back)
-    end
+    redirect_to(:back)
   end
 
   def waiting_list
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(status: "selected", waiting_list: true, validated: false, refused: false, pending: false, sent: false)
-    if participation.save
-      redirect_to(:back)
-    end
+    redirect_to(:back)
   end
 
   def unselect
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(status: "selectionnable", pending: false, validated: false, refused: false, sent: false, waiting_list: false)
-    if participation.save
-      redirect_to(:back)
-    end
+    redirect_to(:back)
   end
 
   def send_all
@@ -33,7 +27,6 @@ class ParticipationsController < ApplicationController
     authorize(selected_participations)
     selected_participations.each do |participation|
       participation.update(sent: true, pending: true)
-      participation.save
       if participation.waiting_list
         EventMailer.waiting_list(participation.id).deliver_now
       else
@@ -48,20 +41,21 @@ class ParticipationsController < ApplicationController
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(pending: false, validated: true, refused: false)
-    if participation.save
-      flash[:notice] = "Vous venez d'accepter de participer à cet évenement "
-      redirect_to(:back)
-    end
+    flash[:notice] = "Vous venez d'accepter de participer à cet évenement "
+    redirect_to(:back)
   end
 
   def refuse
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(pending: false, refused: true, validated: false)
-    if participation.save
-      flash[:notice] = "Vous venez de refuser de participer à cet évenement"
-      redirect_to(:back)
+    # Move first members from waiting_list to participations
+    waiting_list_participations = policy_scope(Participation).where(event: participation.event, status: "selected", waiting_list: true)
+    if waiting_list_participations.any?
+      waiting_list_participations.first.update(status: "selected", waiting_list: false, sent: true, pending: true)
+      EventMailer.participation(waiting_list_participations.first.id).deliver_now
     end
+    flash[:notice] = "Vous venez de refuser de participer à cet évenement"
+    redirect_to(:back)
   end
-
 end

@@ -10,7 +10,7 @@
                 <h3>Bonjour <%= @participation.user.first_name %> !</h3>
                 <p>Vous êtes sur liste d'attente pour un <%= @participation.event.category %> avec votre équipe <%= @participation.event.team.name %></p>
                 <p>Il se déroulera au centre <%= @participation.event.location.name %> à <%= @participation.event.address %> le <%= @participation.event.date.strftime("%e %b %Y") %> à <%= @participation.event.time.strftime("%Hh%M") %></p>
-                <p>Tenez vous prêt, si un de vos membres annule, vous receverez un mail de convocation pour cet évenement.  <%= link_to "Voir la fiche", "http://be-five.com/events/#{@participation.event.id}" %></p>
+                <p>Tenez vous prêt, si un de vos membres refuse de participer, vous receverez un mail de convocation pour cet évenement.  <%= link_to "Voir la fiche", "http://be-five.com/events/#{@participation.event.id}" %></p>
               </div>
             </div>
           </div>
