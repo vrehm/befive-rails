@@ -13,16 +13,20 @@ class ParticipationPolicy < ApplicationPolicy
     user_is_team_manager?
   end
 
-  def sent?
+  def send_all?
     record.first.event.team.user == user
   end
 
-  def validated?
-    true
+  def validate?
+    user_is_participation_user?
   end
 
-  def refused?
-    true
+  def refuse?
+    user_is_participation_user?
+  end
+
+  def waiting_list?
+    user_is_team_manager?
   end
 
   private

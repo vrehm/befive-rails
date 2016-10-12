@@ -3,7 +3,16 @@ class ParticipationsController < ApplicationController
   def select
     participation = Participation.find(params[:id])
     authorize(participation)
-    participation.update(status: "selected")
+    participation.update(status: "selected", waiting_list: false, sent: false, pending: false)
+    if participation.save
+      redirect_to(:back)
+    end
+  end
+
+  def waiting_list
+    participation = Participation.find(params[:id])
+    authorize(participation)
+    participation.update(status: "selected", waiting_list: true, validated: false, refused: false, pending: false, sent: false)
     if participation.save
       redirect_to(:back)
     end
@@ -12,13 +21,13 @@ class ParticipationsController < ApplicationController
   def unselect
     participation = Participation.find(params[:id])
     authorize(participation)
-    participation.update(status: "selectionnable", pending: false, validated: false, refused: false, sent: false)
+    participation.update(status: "selectionnable", pending: false, validated: false, refused: false, sent: false, waiting_list: false)
     if participation.save
       redirect_to(:back)
     end
   end
 
-  def sent
+  def send_all
     event = Event.find(params[:event_id])
     selected_participations = policy_scope(Participation).where(event: event, status: "selected", pending: false, validated: false, refused: false)
     authorize(selected_participations)
@@ -30,7 +39,7 @@ class ParticipationsController < ApplicationController
     redirect_to(:back)
   end
 
-  def validated
+  def validate
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(pending: false, validated: true, refused: false)
@@ -40,7 +49,7 @@ class ParticipationsController < ApplicationController
     end
   end
 
-  def refused
+  def refuse
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(pending: false, refused: true, validated: false)
@@ -49,4 +58,5 @@ class ParticipationsController < ApplicationController
       redirect_to(:back)
     end
   end
+
 end

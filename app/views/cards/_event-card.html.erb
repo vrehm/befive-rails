@@ -47,18 +47,22 @@
       </p>
       <hr>
       <br>
-      <% if @user_pending_participation %>
+      <% if @event.participations.where(user: current_user, pending: true, waiting_list: false).first %>
         <h6 class="uppercase">serez vous présent ?</h6>
-        <%= link_to refused_path(@user_pending_participation), class: "btn btn-default text-small margin-right" do %>
-          Refuser <i class="fa fa-minus-circle red text-large margin-left" aria-hidden="true"></i>
+        <% if policy(@user_pending_participation).validate? %>
+          <%= link_to refuse_path(@user_pending_participation), class: "btn btn-default text-small margin-right" do %>
+            Refuser <i class="fa fa-minus-circle red text-large margin-left" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to validate_path(@user_pending_participation), class: "btn btn-success text-small" do %>
+            Accepter <i class="fa fa-check-circle white text-large margin-left" aria-hidden="true"></i>
+          <% end %>
         <% end %>
-        <%= link_to validated_path(@user_pending_participation), class: "btn btn-success text-small" do %>
-          Accepter <i class="fa fa-check-circle white text-large margin-left" aria-hidden="true"></i>
-        <% end %>
-      <% elsif @user_validated_participation %>
+      <% elsif @event.participations.where(user: current_user, validated: true).first %>
         <p class="text-large green"><i class="fa fa-check-circle green text-large margin-right" aria-hidden="true"></i> Vous avez accepté</p>
-      <% elsif @user_refused_participation %>
+      <% elsif @event.participations.where(user: current_user, refused: true).first %>
         <p class="text-large red"><i class="fa fa-minus-circle red text-large margin-right" aria-hidden="true"></i> Vous avez refusé</p>
+        <% elsif @event.participations.where(user: current_user, waiting_list: true).first %>
+          <p class="text-small red"><i class="fa fa-file-text-o red text-large margin-right" aria-hidden="true"></i> Vous êtes sur la liste d'attente</p>
       <% else %>
         <p class="text-small grey-medium"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</p>
       <% end %>
@@ -68,16 +72,5 @@
 <div class="participations-card">
   <%= render 'cards/event-disponibilities' %>
   <%= render 'cards/event-composition' %>
-  <div class="participations-content-waiting-list float-right">
-    <h5 class="uppercase text-center"><em>liste d'attente</em> <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i></h5>
-    <br>
-    <hr>
-    <div class="waiting-list-empty-message text-center">
-      <span class="grey-medium text-normal text-small">
-        <em>Les membres de cette liste seront informés automatiquement si un membre de votre équipe refuse d'être présent à l'événement</em>
-        <br>
-        <i class="fa fa-share text-normal red margin-left"></i> </span>
-    </div>
-    <hr>
-  </div>
+  <%= render 'cards/event-waiting-list' %>
 </div>

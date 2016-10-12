@@ -25,7 +25,9 @@
       </div>
       <% if policy(participation).select? %>
         <div class="participations-buttons">
-          <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
+          <%= link_to waiting_list_path(participation), class: "link-unstyled" do %>
+            <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
+          <% end %>
           <span class="border-right"></span>
           <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
             <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>

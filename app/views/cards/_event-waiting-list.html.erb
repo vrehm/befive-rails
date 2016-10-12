@@ -1,0 +1,63 @@
+<div class="participations-content-waiting-list float-right">
+  <h5 class="uppercase text-center"><em>liste d'attente</em> <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i></h5>
+  <br>
+  <hr>
+  <% if @waiting_list.empty? %>
+    <div class="waiting-list-empty-message text-center">
+      <span class="grey-medium text-normal text-small">
+        <em>Les membres de cette liste seront informés automatiquement si un membre de votre équipe refuse d'être présent à l'événement</em>
+        <br>
+        <i class="fa fa-share text-normal red margin-left"></i> </span>
+    </div>
+    <hr>
+  <% end %>
+  <% @waiting_list.each do |participation| %>
+    <div class="participations-members">
+      <div class="convocations-members-info">
+        <% if participation.user.avatar? %>
+          <%= cl_image_tag participation.user.avatar.path, class: "avatar-s float-left margin-right", width: 80, height: 80, crop: :fill %>
+        <% else %>
+            <%= image_tag "user.png", class:"avatar-s float-left margin-right" %>
+        <% end %>
+        <span class="blue-dark text-semi-bold text-small margin-left"> <%= participation.user.first_name %> <%= participation.user.last_name %>
+        <% if participation.user.manager? %>
+          <i class="fa fa-star blue text-normal margin-left"></i>
+        <% end %>
+        <br>
+        <span class="grey-dark text-normal margin-left">
+          <% if participation.user.position? %>
+            <%= participation.user.position.capitalize %>
+          <% else %>
+           Position
+          <% end %>
+        </span>
+      </div>
+      <div class="convocations-buttons">
+        <% if participation.sent == true %>
+          <i class="fa fa-envelope text-small grey-m margin-right-m" aria-hidden="true"></i>
+        <% end %>
+        <% if policy(participation).waiting_list? %>
+          <span class="dropdown">
+            <i class="fa fa-cog text-large dropdown-toggle grey-m margin" data-toggle="dropdown"></i>
+            <i class="fa fa-caret-down text-small dropdown-toggle grey-m" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu dropdown-menu-right navbar-user-dropdown-menu">
+              <li>
+                <%= link_to unselect_path(participation), method: :patch do %>
+                  <i class="fa fa-undo text-small grey-medium margin-right" aria-hidden="true"></i>
+                  <span class="grey-medium"> Retour au peloton</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to select_path(participation), method: :put do %>
+                  <i class="fa fa-file-text-o blue text-small margin-left" aria-hidden="true"></i>
+                  <span class="blue"> Mettre dans la compo</span>
+                <% end %>
+              </li>
+            </ul>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>

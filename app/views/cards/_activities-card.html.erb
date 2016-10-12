@@ -23,7 +23,7 @@
         <div class="margin-left">
           <p class="blue-dark text-small margin-right"> <%= activity.event.category %> à <%= activity.event.time.strftime("%H:%M") %></p>
           <p class="grey-dark text-small line-height-s margin-right"> <%= activity.event.location.name.capitalize %> - <%= activity.event.address.capitalize %></p>
-          <% if activity.event.participations.where(user: current_user, pending: true).first %>
+          <% if activity.event.participations.where(user: current_user, pending: true, waiting_list: false).first %>
             <br>
             <span class="text-small grey-dark"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> En attente de réponse</span>
           <% elsif activity.event.participations.where(user: current_user, validated: true).first %>
@@ -32,9 +32,12 @@
           <% elsif activity.event.participations.where(user: current_user, refused: true).first %>
             <br>
             <span class="text-small red"><i class="fa fa-minus-circle red text-large margin-right" aria-hidden="true"></i> Vous avez refusé</span>
+          <% elsif activity.event.participations.where(user: current_user, waiting_list: true).first %>
+            <br>
+            <span class="text-small red"><i class="fa fa-file-text-o red text-small margin-right" aria-hidden="true"></i> Vous êtes sur la liste d'attente</span>
           <% else %>
           <br>
-            <span class="text-small grey-medium"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</span>
+            <span class="text-small red"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</span>
           <% end %>
         </div>
       </div>

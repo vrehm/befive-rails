@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     resources :relationships, only: [ :create, :destroy ]
     put 'participation/:id/select', to: 'participations#select', as: :select
     patch 'participation/:id/unselect/', to: 'participations#unselect', as: :unselect
-    patch 'participations/:event_id', to: 'participations#sent', as: :sent
-    get 'participation/:id/refused', to: 'participations#refused', as: :refused
-    get 'participation/:id/validated', to: 'participations#validated', as: :validated
+    patch 'participations/:event_id', to: 'participations#send_all', as: :send_all
+    get 'participation/:id/refuse', to: 'participations#refuse', as: :refuse
+    get 'participation/:id/validate', to: 'participations#validate', as: :validate
+    get 'participation/:id/waiting_list', to: 'participations#waiting_list', as: :waiting_list
     root to: 'pages#home'
   end
 end

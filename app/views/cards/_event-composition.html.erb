@@ -38,7 +38,7 @@
           <i class="fa fa-check-circle text-large green margin-right-m" aria-hidden="true"></i>
         <% elsif participation.refused == true %>
           <i class="fa fa-minus-circle text-large red margin-right-m" aria-hidden="true"></i>
-        <% elsif participation.sent == false %>
+        <% elsif participation.sent == true %>
           <i class="fa fa-envelope text-small grey-m margin-right-m" aria-hidden="true"></i>
         <% end %>
         <% if policy(participation).unselect? %>
@@ -53,7 +53,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to unselect_path(participation), method: :patch do %>
+                <%= link_to waiting_list_path(participation) do %>
                   <i class="fa fa-file-text-o red text-small margin-left" aria-hidden="true"></i>
                   <span class="red"> Liste d'attente</span>
                 <% end %>
@@ -65,12 +65,18 @@
     </div>
     <hr>
   <% end %>
-  <% if policy(Participation).sent? %>
-    <% if @not_sending_participations.size > 0 %>
+  <% if policy(Participation).send_all? %>
+    <% if @not_sending_participations.size > 1 %>
       <br>
       <br>
-      <%= link_to sent_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>
-        Envoyer les covocs <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
+      <%= link_to send_all_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>
+        Envoyer les convocations <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
+      <% end %>
+    <% elsif @not_sending_participations.size > 0 %>
+    <br>
+    <br>
+      <%= link_to send_all_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>
+        Envoyer la convocation <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
       <% end %>
     <% end %>
   <% end %>

@@ -16,7 +16,8 @@ class EventsController < ApplicationController
     authorize(@event)
     # Participation Selections
     @selectionnable_participations = policy_scope(Participation).where(event: @event, status: "selectionnable")
-    @selected_participations = policy_scope(Participation).where(event: @event, status: "selected")
+    @selected_participations = policy_scope(Participation).where(event: @event, status: "selected", waiting_list: false)
+    @waiting_list = policy_scope(Participation).where(event: @event, status: "selected", waiting_list: true)
     @not_sending_participations = policy_scope(Participation).where(event: @event, status: "selected", sent: false)
     # User Participation
     @user_pending_participation = current_user.participations.where(event_id: @event, pending: true).first
