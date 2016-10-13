@@ -66,11 +66,26 @@
       <% else %>
         <p class="text-small grey-medium"><i class="fa fa-times-circle text-large margin-right" aria-hidden="true"></i> Vous n'êtes pas selectionné pour ce match</p>
       <% end %>
+      <br>
+      <br>
+    </div>
+    <div class="tabs">
+      <a class="tab active" data-target="#compo">
+        <p class="text-small"><i class="fa fa-file-text margin-right" aria-hidden="true"></i> Composition</p>
+      </a>
+      <a class="tab" data-target="#comments">
+        <p class="text-small"><i class="fa fa-comments text-large margin-right" aria-hidden="true"></i>Commentaires</p>
+      </a>
     </div>
   </div>
 </div>
-<div class="participations-card">
+<div class="participations-card tab-content" id="compo">
   <%= render 'events/event-disponibilities' %>
   <%= render 'events/event-composition' %>
   <%= render 'events/event-waiting-list' %>
+</div>
+<div class="comments tab-content hidden" id="comments">
+  <%= render 'events/event-comments' %>
+  <br>
+  <%= render 'comments/form', event: @event, comment: @comment %>
 </div>

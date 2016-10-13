@@ -1,0 +1,6 @@
+<div class="comment-form">
+  <%= simple_form_for([ event, comment ]) do |f| %>
+  <%= f.input :content, as: :text, label: false, placeholder: "Laisser un commentaire" %>
+  <%= f.button :submit, "Commenter", class: "btn btn-primary text-small"  %>
+  <% end %>
+</div>

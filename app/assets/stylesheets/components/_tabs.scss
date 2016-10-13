@@ -1,0 +1,42 @@
+.tabs {
+  background: white;
+  display: flex;
+  padding: 10px 0 0 0;
+  margin-bottom: -30px;
+
+}
+.tabs a {
+  color: white;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs p {
+  margin-bottom: 0;
+  color: $grey-medium;
+}
+.tab {
+  background: white;
+  flex: 0 0 23%;
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 2px 2px 0 0;
+}
+.tab:first-child {
+
+}
+.tab:last-child {
+}
+
+.tab.active {
+  background: $background;
+  color: $blue-dark;
+  border: 1px solid $grey;
+  border-bottom: none!important;
+  margin-bottom: -1px;
+}
+.tab.active p {
+  color: $blue-dark;
+}

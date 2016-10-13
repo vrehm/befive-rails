@@ -23,7 +23,8 @@ class EventsController < ApplicationController
     @user_pending_participation = current_user.participations.where(event_id: @event, pending: true).first
     @user_validated_participation = current_user.participations.where(event_id: @event, validated: true).first
     @user_refused_participation = current_user.participations.where(event_id: @event, refused: true).first
-
+    # Comments
+    @comment = Comment.new
   end
 
   def new

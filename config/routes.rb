@@ -12,7 +12,10 @@ Rails.application.routes.draw do
       resources :invitations, only: [ :create, :new ]
     end
 
-    resources :events
+    resources :events do
+      resources :comments, only: :create
+    end
+
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
     put 'participation/:id/select', to: 'participations#select', as: :select

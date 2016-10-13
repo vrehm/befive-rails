@@ -1,0 +1,22 @@
+.comments {
+  background-color: $background;
+  padding: 40px;
+  min-height: 120px;
+  width: 95%;
+  border-radius: 0px 0px 3px 3px;
+  margin: -2px auto;
+  border: 1px solid $grey;
+  .comment-username {
+    padding: 12px;
+  }
+  .comment-content {
+    padding: 0px 40px 5px 40px;
+  }
+}
+.comment-form {
+  input[type="text"], input[type="email"], input[type="password"], textarea {
+    height: 65px;
+    font-size: 13px;
+    font-weight: 300;
+  }
+}

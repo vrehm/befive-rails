@@ -5,6 +5,7 @@ class Event < ApplicationRecord
 
   has_many :activities, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :category, presence: true
   validates :date, presence: true
