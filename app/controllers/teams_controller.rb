@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
     @invitation = Invitation.new(user: current_user, team: @team)
     @members = @team.members.where("validated = ?", true)
     @members_pending = @team.members.where("pending = ?", true)
+    @last_events = @team.events.where("date < ?", Date.today).order(date: :asc)
   end
 
   def new

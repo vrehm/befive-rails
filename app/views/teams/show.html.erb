@@ -36,7 +36,7 @@
       <br>
       <p class="blue-dark text-small">Date de création : <span class="grey-dark text-small icon"> <%= @team.created_at.strftime("%Y") %> </span></p>
       <p class="blue-dark text-small">Nombre de membres : <span class="grey-dark text-small icon"> <%= @team.members.size %> </span> <i class="fa fa-male text-large blue"></i></p>
-      <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
+      <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> <%= @last_events.size %> </span> <i class="fa fa-futbol-o blue"></i></p>
       <p class="blue-dark text-small">Centre favori : </p>
       <% if @team.location %>
         <%= image_tag @team.location.image, style:"width: 63px" %>

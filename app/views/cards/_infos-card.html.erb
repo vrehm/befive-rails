@@ -9,6 +9,6 @@
   <% else %>
     <p class="blue-dark text-small">Année : <span class="grey-dark text-small"></span></p>
   <% end %>
-  <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-futbol-o blue"></i></p>
+  <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> <%= current_user.participations.where(validated: true).size %> </span> <i class="fa fa-futbol-o blue"></i></p>
   <p class="blue-dark text-small">Homme du match : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-male text-large blue"></i></p>
 </div>
