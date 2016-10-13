@@ -32,7 +32,6 @@ class TeamsController < ApplicationController
     member = current_user.members.build(team: @team, validated: true)
     if @team.save && member.save
       current_user.update(has_team: true, manager: true)
-      current_user.save
       TeamMailer.creation_confirmation(@team.id).deliver_now
       flash[:notice] = "Félicitations #{current_user.first_name}, #{@team.name} à bien été crée !"
       redirect_to root_path
@@ -55,7 +54,6 @@ class TeamsController < ApplicationController
 
   def destroy
     current_user.update(has_team: false, manager: false)
-    current_user.save
     @team.members.each do |member|
       member.user.has_team = false
       member.user.save

@@ -59,7 +59,11 @@ class EventsController < ApplicationController
     authorize(@event)
     @event.update(event_params)
     if @event.save
-      flash[:notice] = "L'évenement à bien été mis à jour !"
+      @selected_participations = policy_scope(Participation).where(event: @event, status: "selected")
+      @selected_participations.each do |participation|
+        EventMailer.edit(participation.id).deliver_now
+      end
+      flash[:notice] = "L'évenement à bien été mis à jour, vos membres ont été prévenus par mail !"
       redirect_to @event
     else
       render 'edit'
@@ -68,8 +72,12 @@ class EventsController < ApplicationController
 
   def destroy
     authorize(@event)
+    @selected_participations = policy_scope(Participation).where(event: @event, status: "selected")
+    @selected_participations.each do |participation|
+      EventMailer.cancel(participation.id).deliver_now
+    end
     @event.destroy
-    flash[:notice] = "L'évenement à bien été annulé !"
+    flash[:notice] = "L'évenement à bien été annulé, vos membres ont été prévenus par mail !"
     redirect_to events_path
   end
 

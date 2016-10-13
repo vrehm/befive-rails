@@ -8,7 +8,7 @@
   <div class="text-center">
     <br>
     <%= link_to teams_path, class: "btn btn-primary text-small margin-bottom-s" do %>
-      <% if current_user.members.where("pending = ?", true).size > 0 %>
+      <% if current_user.members.where("pending = ?", true).any? %>
         Voir les équipes <i class="fa fa-share white margin-left"></i>
       <% else %>
         Rejoindre une équipe <i class="fa fa-share white margin-left"></i>

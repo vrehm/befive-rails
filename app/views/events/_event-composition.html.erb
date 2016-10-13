@@ -72,7 +72,7 @@
       <%= link_to send_all_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>
         Envoyer les convocations <i class="fa fa-envelope white margin-left" aria-hidden="true"></i>
       <% end %>
-    <% elsif @not_sending_participations.size > 0 %>
+    <% elsif @not_sending_participations.any? %>
     <br>
     <br>
       <%= link_to send_all_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>

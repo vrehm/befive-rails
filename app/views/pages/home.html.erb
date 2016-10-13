@@ -43,7 +43,7 @@
       <%= render "cards/infos-card" %>
     </div>
     <div class="center-container">
-      <% if current_user.members.where("pending = ?", true).size > 0 %>
+      <% if current_user.members.where("pending = ?", true).any? %>
         <p class="grey-dark text-small text-center">Vous avez une demande en cours...</p>
         <%= render 'cards/team-card-large', team: @team %>
       <% else %>

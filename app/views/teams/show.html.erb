@@ -68,7 +68,7 @@
             Contacter <i class="fa fa-envelope blue margin-left"></i>
           <% end %>
         </div> -->
-        <% if current_user.members.where("pending = ?", true).size > 0 && current_user.members.first.team == @team %>
+        <% if current_user.members.where("pending = ?", true).any? && current_user.members.first.team == @team %>
           <div class="bottom-right-icon">
             <%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
               <span class="red">Annuler la demande <i class="fa fa-times"></i></span>
