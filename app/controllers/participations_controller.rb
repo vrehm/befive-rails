@@ -7,6 +7,16 @@ class ParticipationsController < ApplicationController
     redirect_to(:back)
   end
 
+  def select_all
+    event = Event.find(params[:event_id])
+    selectionnable_participations = policy_scope(Participation).where(event: event, status: "selectionnable")
+    authorize(selectionnable_participations)
+    selectionnable_participations.each do |participation|
+      participation.update(status: "selected", waiting_list: false, sent: false, pending: false)
+    end
+    redirect_to(:back)
+  end
+
   def waiting_list
     participation = Participation.find(params[:id])
     authorize(participation)

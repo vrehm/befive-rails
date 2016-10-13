@@ -13,6 +13,10 @@ class ParticipationPolicy < ApplicationPolicy
     user_is_team_manager?
   end
 
+  def select_all?
+    record.first.event.team.user == user
+  end
+
   def send_all?
     record.first.event.team.user == user
   end

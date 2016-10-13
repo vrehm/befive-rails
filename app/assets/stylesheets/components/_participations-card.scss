@@ -50,6 +50,20 @@
   }
 }
 
+.all-participation-button {
+  width: 20px;
+  margin-left: 10px;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid $grey;
+  .border-right {
+    border-right: 1px solid $grey-normal;
+    margin: 0 2px;
+  }
+}
+
+
 // Convocations
 .convocations-members-info {
   flex: 1 1 auto;

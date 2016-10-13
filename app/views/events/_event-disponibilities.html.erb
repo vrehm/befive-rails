@@ -1,5 +1,14 @@
 <div class="participations-content-available float-left">
-  <h5 class="uppercase text-center"><em>disponibilités</em></h5>
+  <h5 class="uppercase text-center margin-right">
+  <em>disponibilités</em>
+  <span class="all-participation-button">
+    <% if policy(Participation).select_all? %>
+      <%= link_to select_all_path(event_id: @event), class: "link-unstyled" do %>
+        <i class="fa fa-file-text blue" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </span>
+  </h5>
   <br>
   <hr>
   <% @selectionnable_participations.each do |participation| %>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [ :create, :destroy ]
     put 'participation/:id/select', to: 'participations#select', as: :select
     patch 'participation/:id/unselect/', to: 'participations#unselect', as: :unselect
+    get 'participations/:event_id', to: 'participations#select_all', as: :select_all
     patch 'participations/:event_id', to: 'participations#send_all', as: :send_all
     get 'participation/:id/refuse', to: 'participations#refuse', as: :refuse
     get 'participation/:id/validate', to: 'participations#validate', as: :validate
