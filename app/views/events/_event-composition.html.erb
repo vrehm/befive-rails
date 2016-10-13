@@ -41,7 +41,7 @@
         <% elsif participation.sent == true %>
           <i class="fa fa-envelope text-small grey-m margin-right-m" aria-hidden="true"></i>
         <% end %>
-        <% if policy(participation).unselect? %>
+        <% if policy(participation).unselect? && @event.date >= Date.today %>
           <span class="dropdown">
             <i class="fa fa-cog text-large dropdown-toggle grey-m margin" data-toggle="dropdown"></i>
             <i class="fa fa-caret-down text-small dropdown-toggle grey-m" data-toggle="dropdown"></i>
@@ -65,7 +65,7 @@
     </div>
     <hr>
   <% end %>
-  <% if policy(Participation).send_all? %>
+  <% if policy(Participation).send_all? && @event.date >= Date.today %>
     <% if @not_sending_participations.size > 1 %>
       <br>
       <%= link_to send_all_path(event_id: @event), class: "btn btn-primary text-small float-right margin-right", method: :patch do %>

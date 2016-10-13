@@ -36,7 +36,7 @@
         <% if participation.sent == true %>
           <i class="fa fa-envelope text-small grey-m margin-right-m" aria-hidden="true"></i>
         <% end %>
-        <% if policy(participation).waiting_list? %>
+        <% if policy(participation).waiting_list? && @event.date >= Date.today %>
           <span class="dropdown">
             <i class="fa fa-cog text-large dropdown-toggle grey-m margin" data-toggle="dropdown"></i>
             <i class="fa fa-caret-down text-small dropdown-toggle grey-m" data-toggle="dropdown"></i>

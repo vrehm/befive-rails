@@ -30,7 +30,11 @@
       </p>
       <hr>
       <% if event.participations.where(user: current_user, pending: true, waiting_list: false).first %>
-        <p class="text-small grey-dark"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> En attente de réponse</p>
+        <% if event.date >= Date.today %>
+          <p class="text-small grey-dark"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> En attente de réponse</p>
+        <% else %>
+        <p class="text-small grey-dark"><i class="fa fa-question-circle grey-dark text-large margin-right" aria-hidden="true"></i> Vous n'avez pas donné de reponse</p>
+        <% end %>
       <% elsif event.participations.where(user: current_user, validated: true).first %>
         <p class="text-small green"><i class="fa fa-check-circle green text-large margin-right" aria-hidden="true"></i> Vous avez accepté</p>
       <% elsif event.participations.where(user: current_user, refused: true).first %>
