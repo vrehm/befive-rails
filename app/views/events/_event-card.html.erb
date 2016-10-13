@@ -73,7 +73,7 @@
       <a class="tab active" data-target="#compo">
         <p class="text-small"><i class="fa fa-file-text margin-right" aria-hidden="true"></i> Composition</p>
       </a>
-      <a class="tab" data-target="#comments">
+      <a class="tab" data-target="#all_comments">
         <p class="text-small"><i class="fa fa-comments text-large margin-right" aria-hidden="true"></i>Commentaires</p>
       </a>
     </div>
@@ -84,8 +84,22 @@
   <%= render 'events/event-composition' %>
   <%= render 'events/event-waiting-list' %>
 </div>
-<div class="comments tab-content hidden" id="comments">
-  <%= render 'events/event-comments' %>
+<div class="comments tab-content hidden" id="all_comments">
+  <div id="comments_count">
+    <%= render 'comments/comments_count', event: @event %>
+  </div>
   <br>
+  <div id="comments">
+    <% if @event.comments.blank? %>
+    <div id="no_comment">
+      <p class="text-small grey-medium text-center">"Soyez le premier à laisser un commentaire pour cet évenement."</p>
+      <br>
+    </div>
+    <% else %>
+      <% @event.comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+      <% end %>
+    <% end %>
+  </div>
   <%= render 'comments/form', event: @event, comment: @comment %>
 </div>

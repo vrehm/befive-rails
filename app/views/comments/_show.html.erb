@@ -1,0 +1,10 @@
+<div class="comment">
+  <%= cl_image_tag comment.user.avatar.path, width: 90, height: 90, crop: :fill, class: "avatar-s float-left margin-right" %>
+  <p class="text-small blue-dark text-semi-bold comment-username margin-left"> <%= comment.user.first_name %>
+  </p>
+  <div class="clear"></div>
+  <p class="text-small grey-medium comment-content">"<%= comment.content %>"</p>
+  <span class="text-small grey-medium text-light"> Il y a <%= distance_of_time_in_words(Time.now, comment.created_at) %></span>
+  <hr>
+  <br>
+</div>

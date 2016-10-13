@@ -6,8 +6,12 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize(@comment)
     if @comment.save
-      redirect_to event_path(@event)
+      respond_to do |format|
+        format.html { redirect_to event_path(@event) }
+        format.js
+      end
     else
+      flash[:alert] = "Le commentaire n'as pas pu être posté"
       redirect_to event_path(@event)
     end
   end
