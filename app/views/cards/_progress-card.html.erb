@@ -10,9 +10,9 @@
       <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Créez votre équipe</p>
       <hr>
       <% if policy(@invitation).create? %>
-        <%= link_to team_path(current_user.teams.first), class: "link-unstyled" do %>
+        <a href="", src="", class="link-unstyled" data-toggle="modal" data-target="#modalInvitations">
           <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Invitez vos membres</p>
-        <% end %>
+        </a>
       <% end %>
       <hr>
       <% if policy(Event).create? %>
@@ -34,16 +34,16 @@
       <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Créez votre équipe</p>
       <hr>
       <% if policy(@invitation).create? %>
-        <%= link_to team_path(current_user.teams.first), class: "link-unstyled" do %>
-          <p class="step text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Invitez vos membres</p>
-        <% end %>
+         <a href="", src="", class="link-unstyled" data-toggle="modal" data-target="#modalInvitations">
+           <p class="step text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Invitez vos membres</p>
+         </a>
       <% end %>
       <hr>
       <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle grey-normal text-large icon" aria-hidden="true"></i> Créez un nouvel évenement</p>
       <hr>
     </div>
     <br>
-    <% elsif current_user.teams.first.invitations.empty? && current_user.events.any? %>
+    <% elsif current_user.teams.first.invitations.empty? && current_user.events.empty? %>
     <div class="card">
       <div class="progress progress-bar-custom">
         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
@@ -54,9 +54,9 @@
       <p class="step-done text-small text-semi-bold"> <i class="fa fa-check-circle green text-large icon" aria-hidden="true"></i> Créez votre équipe</p>
       <hr>
       <% if policy(@invitation).create? %>
-        <%= link_to team_path(current_user.teams.first), class: "link-unstyled" do %>
+        <a href="", src="", class="link-unstyled" data-toggle="modal" data-target="#modalInvitations">
           <p class="step text-small text-semi-bold"> <i class="fa fa-check-circle grey-normal text-large icon" aria-hidden="true"></i> Invitez vos membres</p>
-        <% end %>
+        </a>
       <% end %>
       <hr>
       <% if policy(Event).create? %>
