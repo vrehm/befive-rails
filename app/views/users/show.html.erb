@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <div class="left-container">
+    <div class="card text-center">
+      <% if @user.avatar? %>
+        <%= cl_image_tag @user.avatar.path, class: "avatar-large", width: 160, height: 160, crop: :fill %>
+      <% else %>
+        <%= image_tag "user.png", class: "avatar-large"%>
+      <% end %>
+      <% if @user.first_name && @user.last_name %>
+        <h5><%= @user.first_name.capitalize %> <%= @user.last_name.upcase %></h5>
+      <% else %>
+        <h5>Prénom Nom</h5>
+      <% end %>
+      <% if @user.position %>
+        <h6><%= @user.position.capitalize %></h6>
+      <% else %>
+        <h6>Position</h6>
+      <% end %>
+      <% if @user.has_team && @user.members.first.team.logo %>
+        <%= image_tag @user.members.first.team.logo.image, class: "text-marged logo-s"%>
+      <% else %>
+        <%= image_tag "logo.png", class: "text-marged logo-s"%>
+      <% end %>
+      <% if @user.has_team %>
+        <p class="blue-dark text-large text-semi-bold"><%= @user.members.first.team.name %></p>
+        <% else %>
+        <p class="blue-dark text-large text-semi-bold">Joueur libre</p>
+      <% end %>
+      <% if @user.city == nil || @user.city == "" %>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
+      <% else %>
+        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @user.city.capitalize %></p>
+      <% end %>
+      <% if @user == current_user %>
+        <div class="bottom-right-icon">
+          <%= link_to edit_user_registration_path(@user) do %>
+            <i class="fa fa-cog grey-dark text-large"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="center-container">
+    <div class="card">
+      <div class="title-card text-center">
+        <h6>INFOS</h6>
+      </div>
+      <br>
+      <br>
+      <% if @user.birthdate %>
+        <p class="blue-dark text-small">Année : <span class="grey-dark text-small"><%= @user.birthdate.year %></span></p>
+      <% else %>
+        <p class="blue-dark text-small">Année : <span class="grey-dark text-small"></span></p>
+      <% end %>
+      <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> <%= @user.participations.where(validated: true).size %> </span> <i class="fa fa-futbol-o blue"></i></p>
+      <p class="blue-dark text-small">Homme du match : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-male text-large blue"></i></p>
+    </div>
+  </div>
+  <div class="right-container">
+  </div>
+</div>

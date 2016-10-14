@@ -34,7 +34,7 @@
       </div>
       <% else %>
         <div class="text-center">
-          <%= link_to "#", class: "btn btn-primary text-small" do %>
+          <%= link_to user_path(member.user), class: "btn btn-primary text-small" do %>
             Voir Profil <i class="fa fa-user white margin-left"></i>
           <% end %>
         </div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
       resources :comments, only: :create
     end
 
+    resources :users, only: [ :show ]
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
     put 'participation/:id/select', to: 'participations#select', as: :select
