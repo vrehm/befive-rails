@@ -63,11 +63,11 @@
         <br>
         <p class="blue-dark text-xl text-semi-bold"><%= @team.name %></p>
         <p class="grey-dark text-large"><i class="fa fa-map-marker"></i> <%= @team.city %></p>
-        <!-- <div class="bottom-left-icon">
-          <%= link_to "#", class: "btn btn-default text-small" do %>
-            Contacter <i class="fa fa-envelope blue margin-left"></i>
-          <% end %>
-        </div> -->
+        <div class="bottom-left-icon">
+          <button type="button" class="btn btn-primary text-small" data-toggle="modal" data-target="#modalMessages">
+            Contacter <i class="fa fa-envelope white margin-left"></i>
+          </button>
+        </div>
         <% if current_user.members.where("pending = ?", true).any? && current_user.members.first.team == @team %>
           <div class="bottom-right-icon">
             <%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
@@ -101,3 +101,5 @@
 </div>
 <!-- Modal Invitations-->
 <%= render 'modal-invitation' %>
+<!-- Modal Messages-->
+<%= render 'modals/modals-messages' %>

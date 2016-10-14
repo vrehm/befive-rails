@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013103456) do
+ActiveRecord::Schema.define(version: 20161014120649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,16 @@ ActiveRecord::Schema.define(version: 20161013103456) do
     t.index ["user_id"], name: "index_members_on_user_id", using: :btree
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "recipient_email"
+    t.text     "content"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "recipient_first_name"
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
   create_table "participations", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "user_id"
@@ -181,6 +191,7 @@ ActiveRecord::Schema.define(version: 20161013103456) do
   add_foreign_key "invitations", "users"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
   add_foreign_key "relationships", "teams"

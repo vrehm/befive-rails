@@ -13,3 +13,18 @@
     font-size: 14px;
   }
 }
+// Invitations modal
+.modal-message-content {
+  margin: 20px 100px;
+  p {
+    font-size: 14px;
+  }
+  label {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  textarea {
+    height: 90px;
+    font-size: 14px;
+  }
+}

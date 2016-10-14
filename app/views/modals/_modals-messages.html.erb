@@ -1,0 +1,25 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="modalMessages">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title text-center"><%= image_tag "logo.png", style:"width: 30px", class:"margin-right" %> Contact</h5>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [ @team, @message ] do |f| %>
+          <div class="modal-message-content">
+            <p class="text-center grey-dark">Envoyer un message par mail <br>à l'organisateur de <%= @team.name %> </p>
+            <br>
+            <%= f.input :content, label: "Message" %>
+          </div>
+          <div class="text-center">
+            <br>
+            <%= f.button :submit, "Envoyer", class: "btn btn-primary" %>
+            <br>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

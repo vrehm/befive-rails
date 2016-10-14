@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         get 'search', to: "teams#search"
       end
       resources :invitations, only: [ :create, :new ]
+      resources :messages, only: [ :create, :new ]
     end
 
     resources :events do
