@@ -1,8 +1,12 @@
 <div class="card text-center">
   <% if current_user.avatar? %>
-    <%= cl_image_tag current_user.avatar.path, class: "avatar-large", width: 160, height: 160, crop: :fill %>
+    <%= link_to user_path(current_user), class: "link-unstyled" do %>
+      <%= cl_image_tag current_user.avatar.path, class: "avatar-large", width: 160, height: 160, crop: :fill %>
+    <% end %>
   <% else %>
-    <%= image_tag "user.png", class: "avatar-large"%>
+    <%= link_to user_path(current_user), class: "link-unstyled" do %>
+      <%= image_tag "user.png", class: "avatar-large"%>
+    <% end %>
   <% end %>
   <% if current_user.first_name && current_user.last_name %>
     <h5><%= current_user.first_name.capitalize %> <%= current_user.last_name.upcase %></h5>

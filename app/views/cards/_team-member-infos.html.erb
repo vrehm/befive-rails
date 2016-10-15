@@ -26,19 +26,11 @@
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= member.user.city.capitalize %></p>
       <% end %>
       <br>
-      <% if current_user == member.user %>
       <div class="text-center">
-        <%= link_to edit_user_registration_path(current_user), class: "btn btn-primary text-small" do %>
-          Editer <i class="fa fa-cog white margin-left"></i>
+        <%= link_to user_path(member.user), class: "btn btn-primary text-small" do %>
+          Voir Profil <i class="fa fa-user white margin-left"></i>
         <% end %>
       </div>
-      <% else %>
-        <div class="text-center">
-          <%= link_to user_path(member.user), class: "btn btn-primary text-small" do %>
-            Voir Profil <i class="fa fa-user white margin-left"></i>
-          <% end %>
-        </div>
-      <% end %>
       <br>
       <p class="blue-dark text-small"><i class="fa fa-envelope blue margin-right"></i> <%= member.user.email %></p>
     </div>

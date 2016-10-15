@@ -1,6 +1,11 @@
 <div class="wrapper">
   <div class="left-container">
     <div class="card text-center">
+      <div class="title-card">
+        <h6>PROFIL</h6>
+      </div>
+      <br>
+      <br>
       <% if @user.avatar? %>
         <%= cl_image_tag @user.avatar.path, class: "avatar-large", width: 160, height: 160, crop: :fill %>
       <% else %>
@@ -31,19 +36,17 @@
       <% else %>
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @user.city.capitalize %></p>
       <% end %>
-      <% if @user == current_user %>
-        <div class="bottom-right-icon">
-          <%= link_to edit_user_registration_path(@user) do %>
-            <i class="fa fa-cog grey-dark text-large"></i>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
   <div class="center-container">
     <div class="card">
       <div class="title-card text-center">
         <h6>INFOS</h6>
+        <% if @user == current_user %>
+          <%= link_to edit_user_registration_path(@user), class: "title-card-btn btn btn-primary text-small" do %>
+            Editer <i class="fa fa-cog white margin-left"></i>
+          <% end %>
+        <% end %>
       </div>
       <br>
       <br>

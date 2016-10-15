@@ -10,7 +10,7 @@
   <br>
   <% @members.each do |member| %>
     <% if current_page?(root_path) %>
-      <%= link_to team_path(current_user.members.first.team), class: "link-unstyled" do %>
+      <%= link_to user_path(member.user), class: "link-unstyled" do %>
         <div class="list-card-m" data-target="#member-<%= member.id %>">
           <% if member.user.avatar? %>
             <%= cl_image_tag member.user.avatar.path, class: "avatar-m float-left", width: 100, height: 100, crop: :fill %>
