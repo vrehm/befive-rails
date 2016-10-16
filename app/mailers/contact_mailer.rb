@@ -1,11 +1,6 @@
 class ContactMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.contact_mailer.team_contact.subject
-  #
-  def team_contact(message_id)
+  def user_contact(message_id)
     @message = Message.find(message_id)
 
     mail(

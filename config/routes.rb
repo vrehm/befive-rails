@@ -12,14 +12,18 @@ Rails.application.routes.draw do
         get 'search', to: "teams#search"
       end
       resources :invitations, only: [ :create, :new ]
-      resources :messages, only: [ :create, :new ]
+      resources :messages, only: [ :create ]
+    end
+
+    resources :users, only: [ :show ] do
+      resources :messages, only: [ :create ]
     end
 
     resources :events do
       resources :comments, only: :create
     end
 
-    resources :users, only: [ :show ]
+    resources :messages, only: [ :create ]
     resources :members, only: [ :create, :update, :destroy ]
     resources :relationships, only: [ :create, :destroy ]
     put 'participation/:id/select', to: 'participations#select', as: :select

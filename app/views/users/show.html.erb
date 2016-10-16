@@ -36,6 +36,11 @@
       <% else %>
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @user.city.capitalize %></p>
       <% end %>
+      <% if @user != current_user %>
+        <button type="button" class="btn btn-primary text-small" data-toggle="modal" data-target="#modalUserMessages">
+          Contacter <i class="fa fa-envelope white margin-left"></i>
+        </button>
+      <% end %>
     </div>
   </div>
   <div class="center-container">
@@ -62,3 +67,5 @@
   <div class="right-container">
   </div>
 </div>
+<!-- Modal UserMessages-->
+<%= render 'modals/modals-user-messages' %>
