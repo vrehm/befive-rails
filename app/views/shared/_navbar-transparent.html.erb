@@ -5,7 +5,7 @@
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-transparent-right hidden-xs hidden-sm">
+  <div class="navbar-transparent-right hidden-xs">
 
     <!-- Text link -->
     <%= link_to "#", class: "navbar-transparent-item navbar-transparent-link" do %>
@@ -17,12 +17,15 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-transparent-item hidden-md hidden-lg">
+  <div class="navbar-transparent-item hidden-sm hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle white" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-transparent-dropdown-menu">
-        <li><a href="#">Connexion</a></li>
-        <li><a href="#">Inscription</a></li>
+        <li>
+          <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-transparent-item navbar-transparent-link" %>
+        </li>
+        <li>
+        </li>
       </ul>
     </div>
   </div>

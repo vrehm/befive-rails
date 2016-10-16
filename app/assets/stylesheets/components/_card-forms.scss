@@ -3,6 +3,7 @@
   background: transparent;
   padding: 10px 100px;
   margin: 140px 50px 40px 50px;
+  width: 450px;
   h3 {
     text-align: center;
     text-transform: uppercase;
@@ -42,5 +43,46 @@
   input[type="text"], input[type="email"], input[type="password"], select, textarea {
     height: 30px;
     font-size: 15px;
+  }
+}
+
+// Media-queries
+@media only screen and (max-width: 768px){
+  .card-form {
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 15px;
+    }
+    label {
+      font-weight: 500;
+      font-size: 14px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+      height: 33px;
+      font-size: 14px;
+    }
+  }
+}
+@media only screen and (max-width: 575px){
+  .card-form {
+    margin: 140px 0px 40px 0px;
+    h3 {
+      font-size: 18px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 14px;
+    }
+    label {
+      font-weight: 500;
+      font-size: 13px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+      height: 31px;
+      font-size: 13px;
+    }
   }
 }

@@ -59,9 +59,28 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle white" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+            <i class="fa fa-user blue-grey icon"></i> <%= t(".profile", default: "Mon profil") %>
+          <% end %>
+        </li>
+        <% if current_user.has_team %>
+          <li>
+            <%= link_to team_path(current_user.members.first.team) do %>
+              <i class="fa fa-users" aria-hidden="true"></i> Membres
+            <% end %>
+          </li>
+          <li>
+            <%= link_to events_path do %>
+              <i class="fa fa-calendar" aria-hidden="true"></i> Evénements
+            <% end %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to destroy_user_session_path do %>
+            <i class="fa fa-sign-out icon red"></i>  <%= t(".sign_out", default: "Déconnexion") %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
