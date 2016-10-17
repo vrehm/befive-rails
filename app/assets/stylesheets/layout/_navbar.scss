@@ -115,3 +115,20 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+// Media-queries
+@media only screen and (max-width: 991px){
+  .navbar-blue {
+    padding: 0 100px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .navbar-blue {
+    padding: 0 70px;
+  }
+}
+@media only screen and (max-width: 575px){
+  .navbar-blue {
+    padding: 0 30px;
+  }
+}

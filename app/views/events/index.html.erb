@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <div class="left-container">
+<div class="events-wrapper">
+  <div class="events-left-container">
     <div class="card card-no-padding">
       <div class="title-card text-center">
         <h6 class="uppercase">évenements</h6>
@@ -19,7 +19,27 @@
     </div>
     <br>
   </div>
-  <div class="center-container">
+  <div class="events-center-container">
+    <div class="hidden-sm hidden-md hidden-lg">
+      <div class="card card-no-padding">
+        <div class="title-card text-center">
+          <h6 class="uppercase">évenements</h6>
+          <% if policy(Event).create? %>
+            <%= link_to new_event_path, class: "link-unstyled" do %>
+              <i class="fa fa-plus-circle text-xl blue title-card-icon"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <br>
+        <div class="list-card-s list-active border-left-blue" data-target="#next">
+          <p class="blue-dark text-large">A venir </p class="grey-dark text-large">
+        </div>
+        <div class="list-card-s border-left-red" data-target="#last">
+          <p class="blue-dark text-large">Passé</p class="grey-dark text-large">
+        </div>
+      </div>
+      <br>
+    </div>
     <div id="next" class="events_list">
       <% @next_events.each do |event| %>
         <%= render 'events/events_list', event: event %>
@@ -33,7 +53,7 @@
       <% end %>
     </div>
   </div>
-  <div class="right-container">
+  <div class="events-right-container">
     <%= render 'cards/next-match-card' %>
     <br>
     <%= render 'cards/team-card' %>

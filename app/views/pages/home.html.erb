@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.has_team %>
-  <div class="wrapper">
-    <div class="left-container">
+  <div class="home-wrapper">
+    <div class="home-left-container">
       <%= render "/cards/profile-card" %>
       <br>
       <%= render "/cards/infos-card" %>
@@ -18,14 +18,14 @@
         <% end %>
       </div>
     </div>
-    <div class="center-container">
+    <div class="home-center-container">
       <%= render "/cards/progress-card" %>
       <%= render "/cards/dashboard-card" %>
       <% @activities.each do |activity| %>
         <%= render "/cards/activities-card", activity: activity %>
       <% end %>
     </div>
-    <div class="right-container">
+    <div class="home-right-container">
       <%= render "/cards/next-match-card" %>
       <br>
       <%= render "/cards/team-card" %>

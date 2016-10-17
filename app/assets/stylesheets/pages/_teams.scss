@@ -1,0 +1,58 @@
+.teams-wrapper {
+ width: 100%;
+ margin: 0px auto;
+ padding: 0px 80px 60px 80px;
+ display: flex;
+ flex-wrap: wrap;
+  justify-content: center;
+}
+.teams-left-container {
+ display: flex;
+ flex-direction: column;
+ margin: 0px auto;
+  width: 27%;
+}
+.teams-center-container {
+ display: flex;
+ flex-direction: column;
+ margin: 0px auto;
+  width: 46%;
+}
+.teams-right-container {
+ display: flex;
+ flex-direction: column;
+ margin: 0px auto;
+  width: 27%;
+}
+// Media-queries
+@media only screen and (max-width: 991px){
+ .teams-left-container {
+    width: 35%;
+  }
+ .teams-center-container {
+    width: 65%;
+  }
+ .teams-right-container {
+   display: none;
+  }
+}
+@media only screen and (max-width: 768px){
+ .teams-center-container {
+    display: none;
+  }
+  .teams-left-container {
+    width: 90%;
+   }
+}
+@media only screen and (max-width: 575px){
+  .teams-center-container {
+    display: none;
+  }
+  .teams-left-container {
+    width: 90%;
+  }
+  .teams-wrapper {
+   width: 100%;
+   padding: 0px 20px 60px 20px;
+  }
+}

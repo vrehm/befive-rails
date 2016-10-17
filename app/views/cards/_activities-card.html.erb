@@ -1,5 +1,5 @@
 <p class="grey-dark text-small text-light activity-date"> Il y a <%= distance_of_time_in_words(Time.now, activity.created_at) %> </p>
-<div class="card">
+<div class="activity-card">
   <% if activity.category == "new_event" %>
     <% if activity.user.avatar? %>
       <%= cl_image_tag activity.user.avatar.path, class: "avatar", width: 80, height: 80, crop: :fill %>

@@ -2,7 +2,7 @@
   <div class="title-card text-center">
     <h6>PROCHAIN MATCH</h6>
     <% if policy(Event).create? %>
-      <%= link_to new_event_path, class: "link-unstyled" do %>
+      <%= link_to new_event_path, class: "link-unstyled hidden-lg-infos" do %>
         <i class="fa fa-plus-circle text-xl blue title-card-icon"></i>
       <% end %>
     <% end %>
@@ -34,7 +34,9 @@
             <span><i class="fa fa-times-circle grey-medium text-large margin-left" aria-hidden="true"></i></span>
           <% end %>
         </p>
-        <p class="grey-dark text-small line-height-s margin-right"> <%= @next_event.location.name.capitalize %> - <%= @next_event.address.capitalize[0..20] %></p>
+        <div class="hidden-lg-infos">
+          <p class="grey-dark text-small line-height-s margin-right hidden-lg-infos"> <%= @next_event.location.name.capitalize %> - <%= @next_event.address.capitalize[0..20] %></p>
+        </div>
       </div>
     <% end %>
   <% else %>

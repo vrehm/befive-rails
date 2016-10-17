@@ -1,0 +1,33 @@
+.activity-card {
+  background-color: white;
+  padding: 30px 20px;
+  min-height: 120px;
+  width: 95%;
+  border-radius: 3px;
+  margin: 0px auto;
+  position: relative;
+  border: 1px solid $grey;
+  h1, h2, h3, h4, h5, h6 {
+    color: $blue-dark
+  }
+}
+.activity-content {
+  margin-left: 40px;
+}
+.activity-date {
+  margin-left: 20px;
+}
+
+
+@media only screen and (max-width: 575px){
+  .activity-card {
+    padding: 30px 10px;
+    width: 100%;
+  }
+  .activity-content {
+    margin-left: 20px;
+  }
+  .activity-date {
+    margin-left: 20px;
+  }
+}

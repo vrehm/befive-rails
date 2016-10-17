@@ -2,3 +2,79 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+ .home-wrapper {
+ 	width: 100%;
+ 	margin: 0px auto;
+ 	padding: 0px 80px 60px 80px;
+ 	display: flex;
+ 	flex-wrap: wrap;
+   justify-content: center;
+ }
+ .home-left-container {
+ 	display: flex;
+ 	flex-direction: column;
+ 	margin: 0px auto;
+   width: 27%;
+ }
+ .home-center-container {
+ 	display: flex;
+ 	flex-direction: column;
+ 	margin: 0px auto;
+   width: 46%;
+ }
+ .home-right-container {
+ 	display: flex;
+ 	flex-direction: column;
+ 	margin: 0px auto;
+   width: 27%;
+ }
+
+ // Dashboard time
+ .time-dashboard {
+   color: $grey-dark;
+   font-weight: 300;
+   font-size: 35px;
+   float: right;
+   text-align: right;
+ }
+
+ // Media-queries
+ @media only screen and (max-width: 991px){
+ 	.home-left-container {
+     width: 35%;
+   }
+ 	.home-center-container {
+     width: 65%;
+   }
+  .home-right-container {
+    display: none;
+   }
+ }
+ @media only screen and (max-width: 768px){
+ 	.home-center-container {
+     width: 95%;
+   }
+   .home-left-container {
+     display: none;
+    }
+ }
+ @media only screen and (max-width: 575px){
+   .home-center-container {
+      width: 95%;
+   }
+   .home-left-container {
+     display: none;
+   }
+   .home-wrapper {
+   	width: 100%;
+   	padding: 0px 20px 60px 20px;
+
+   }
+   .time-dashboard {
+     font-size: 25px;
+     margin-top: -5px;
+   }
+   #events-number {
+     font-size: 12px;
+   }
+ }

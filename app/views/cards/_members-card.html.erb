@@ -22,7 +22,7 @@
             <i class="fa fa-star blue text-normal margin-left"></i>
           <% end %>
           <br>
-          <span class="grey-dark text-normal">
+          <span class="grey-dark text-normal hidden-lg-infos">
             <% if member.user.position? %>
               <%= member.user.position.capitalize %>
             <% else %>
@@ -32,25 +32,48 @@
         </div>
       <% end %>
     <% else %>
-      <div class="list-card-m" data-target="#member-<%= member.id %>">
+      <div class="list-card-m hidden-xs" data-target="#member-<%= member.id %>">
         <% if member.user.avatar? %>
           <%= cl_image_tag member.user.avatar.path, class: "avatar-m float-left", width: 100, height: 100, crop: :fill %>
         <% else %>
             <%= image_tag "user.png", class:"avatar-m float-left" %>
         <% end %>
         <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
-        <% if member.user.manager? %>
-          <i class="fa fa-star blue text-normal margin-left"></i>
-        <% end %>
-        <br>
-        <span class="grey-dark text-normal">
-          <% if member.user.position? %>
-            <%= member.user.position.capitalize %>
-          <% else %>
-           Position
+          <% if member.user.manager? %>
+            <i class="fa fa-star blue text-normal margin-left"></i>
           <% end %>
+          <br>
+          <span class="grey-dark text-normal hidden-lg-infos">
+            <% if member.user.position? %>
+              <%= member.user.position.capitalize %>
+            <% else %>
+             Position
+            <% end %>
+           </span>
          </span>
       </div>
+      <%= link_to user_path(member.user), class: "link-unstyled hidden-sm hidden-md hidden-lg" do %>
+        <div class="list-card-m">
+          <% if member.user.avatar? %>
+            <%= cl_image_tag member.user.avatar.path, class: "avatar-m float-left", width: 100, height: 100, crop: :fill %>
+          <% else %>
+              <%= image_tag "user.png", class:"avatar-m float-left" %>
+          <% end %>
+          <span class="blue-dark text-semi-bold text-small"><%= member.user.first_name %> <%= member.user.last_name %>
+            <% if member.user.manager? %>
+              <i class="fa fa-star blue text-normal margin-left"></i>
+            <% end %>
+            <br>
+            <span class="grey-dark text-normal hidden-lg-infos">
+              <% if member.user.position? %>
+                <%= member.user.position.capitalize %>
+              <% else %>
+               Position
+              <% end %>
+            </span>
+          </span>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

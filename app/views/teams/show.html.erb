@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <div class="left-container">
+<div class="teams-wrapper">
+  <div class="teams-left-container">
     <% if @team.members.where("pending = ?", true).size > 0 %>
       <%= render 'cards/pending-members-card', team: @team %>
       <br>
@@ -35,15 +35,19 @@
       <br>
       <br>
       <p class="blue-dark text-small">Date de création : <span class="grey-dark text-small icon"> <%= @team.created_at.strftime("%Y") %> </span></p>
-      <p class="blue-dark text-small">Nombre de membres : <span class="grey-dark text-small icon"> <%= @team.members.size %> </span> <i class="fa fa-male text-large blue"></i></p>
+      <p class="blue-dark text-small">Nb membres : <span class="grey-dark text-small icon"> <%= @team.members.size %> </span> <i class="fa fa-male text-large blue"></i></p>
       <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> <%= @last_events.size %> </span> <i class="fa fa-futbol-o blue"></i></p>
       <p class="blue-dark text-small">Centre favori : </p>
       <% if @team.location %>
         <%= image_tag @team.location.image, style:"width: 63px" %>
       <% end %>
     </div>
+    <br>
+    <div class="hidden-md hidden-lg">
+      <%= render "/cards/members-card" %>
+    </div>
   </div>
-  <div class="center-container">
+  <div class="teams-center-container">
     <div id="team-show" class="card-image-untitle-large team_member_infos">
       <% if @team.photo? %>
         <%= cl_image_tag @team.photo.path, class: "image-team-untitle-large", width: 1000, height: 600, crop: :fill %>
@@ -95,7 +99,7 @@
     <% end %>
     <br>
   </div>
-  <div class="right-container">
+  <div class="teams-right-container">
     <%= render "/cards/members-card" %>
   </div>
 </div>

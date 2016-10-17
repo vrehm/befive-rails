@@ -49,6 +49,7 @@
 // Media-queries
 @media only screen and (max-width: 768px){
   .card-form {
+    width: 450px;
     h3 {
       font-size: 20px;
     }
@@ -68,7 +69,9 @@
 }
 @media only screen and (max-width: 575px){
   .card-form {
+    width: 450px;
     margin: 140px 0px 40px 0px;
+    padding: 10px 70px;
     h3 {
       font-size: 18px;
     }

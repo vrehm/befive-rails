@@ -6,7 +6,7 @@
       </div>
       <h5 class="day-s"><%= event.date.strftime("%e") %></h5>
     </div>
-    <%= image_tag event.location.image, class: "float-right", style:"width: 60px" %>
+    <%= image_tag event.location.image, class: "float-right hidden-xs", style:"width: 60px" %>
     <div class="event-info-s">
       <h5 class="uppercase"><%= event.category %></h5>
       <p class="time-s"><%= event.time.strftime("%H h %M") %></p>

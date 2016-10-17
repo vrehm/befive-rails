@@ -1,10 +1,10 @@
-<div class="wrapper">
-  <div class="left-container">
+<div class="network-wrapper">
+  <div class="network-left-container">
     <%= render "/cards/profile-card" %>
     <br>
     <%= render "/cards/infos-card" %>
   </div>
-  <div class="center-container">
+  <div class="network-center-container">
     <form action="/teams/search" class="search">
       <input type="text" name="query" class="search-input" placeholder="Rechercher une équipe par nom, ville, centre...">
       <button type="submit" class="btn btn-primary text-small">
@@ -16,7 +16,7 @@
       <br>
     <% end %>
   </div>
-  <div class="right-container">
+  <div class="network-right-container">
     <div class="card-image">
       <div class="title-card text-center">
         <h6 class="uppercase">réseau (<%= @relationships.count %>)</h6>

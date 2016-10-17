@@ -77,7 +77,7 @@
           </li>
         <% end %>
         <li>
-          <%= link_to destroy_user_session_path do %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa fa-sign-out icon red"></i>  <%= t(".sign_out", default: "Déconnexion") %>
           <% end %>
         </li>

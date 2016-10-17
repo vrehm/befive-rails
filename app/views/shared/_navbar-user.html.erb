@@ -20,12 +20,6 @@
           <i class="fa fa-calendar" aria-hidden="true"></i> Evénements
         <% end %>
       </div>
-      <div>
-        <!-- Text link -->
-        <%= link_to "#", class: "navbar-user-item navbar-user-link" do %>
-          <i class="fa fa-comments" aria-hidden="true"></i> Teamtalk
-        <% end %>
-      </div>
     <% end %>
     <div class="<%= 'link-active' if current_page?(teams_path) || current_page?(search_teams_path) %>">
       <!-- Text link -->

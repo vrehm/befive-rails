@@ -1,8 +1,8 @@
-<div class="card">
+<div class="dashboard card">
   <div class="title-card">
     <h6 class="uppercase">tableau de bord</h6>
     <% if policy(Event).create? %>
-      <%= link_to new_event_path, class: "title-card-btn btn btn-primary text-small" do %>
+      <%= link_to new_event_path, class: "title-card-btn btn btn-primary text-small hidden-xs" do %>
         Ajouter un évenement <i class="fa fa-plus-circle white margin-left"></i>
       <% end %>
     <% end %>
@@ -11,7 +11,8 @@
   <br>
   <span class= "time-dashboard"><%= Time.now.strftime("%H:%M") %></span>
   <p class="uppercase blue-dark text-xl text-normal"> <%= l(Date.today, format: '%a') %> <span class="text-light"><%= Date.today.strftime("%e %b") %></span></p>
-  <p class="grey-medium text-small"><i class="fa fa-calendar blue margin-right"></i> <%= pluralize(@today_user_events.count, 'Evenement') %> aujourd'hui</p>
+  <div class="clear"></div>
+  <p id="events-number" class="grey-medium text-small"><i class="fa fa-calendar blue margin-right"></i> <%= pluralize(@today_user_events.count, 'Evenement') %> aujourd'hui</p>
   <hr>
   <% @today_user_events.each do |event| %>
     <%= link_to event_path(event), class: "link-unstyled" do %>
