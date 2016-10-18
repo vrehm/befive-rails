@@ -1,8 +1,16 @@
-<div class="wrapper">
-  <div class="left-container">
+<div class="profile-wrapper">
+  <div class="profile-left-container">
     <%= render 'cards/profile-card' %>
+    <br>
+    <div class="hidden-sm hidden-md hidden-lg">
+      <%= render 'form-profile' %>
+    </div>
+    <br>
+    <div class="hidden-sm hidden-md hidden-lg">
+      <%= render 'form-account' %>
+    </div>
   </div>
-  <div class="center-container-m">
+  <div class="profile-center-container-m">
     <div class="card-form-white">
       <div class="title-card text-center">
         <h6>EDITER PROFIL</h6>
@@ -31,6 +39,10 @@
         </div>
       <% end %>
     </div>
+    <div class="hidden-md hidden-lg">
+      <br>
+      <%= render 'form-account' %>
+    </div>
     <div class="text-center">
       <br>
       <h6>Supprimer mon compte</h6>
@@ -40,7 +52,7 @@
       <%= link_to "Retour", :back %>
     </div>
   </div>
-  <div class="right-container-m">
+  <div class="profile-right-container-m">
     <div class="card-form-white">
       <div class="title-card text-center">
         <h6>EDITER COMPTE</h6>

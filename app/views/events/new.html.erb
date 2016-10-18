@@ -1,8 +1,12 @@
-<div class="wrapper">
-  <div class="left-container">
+<div class="new-event-wrapper">
+  <div class="new-event-left-container">
     <%= render 'cards/profile-card' %>
   </div>
-  <div class="center-container">
+  <div class="new-event-center-container">
+    <div class="hidden-sm hidden-md hidden-lg">
+      <%= render 'cards/profile-card' %>
+      <br>
+    </div>
     <div class="card-form-white">
       <div class="title-card text-center">
         <h6 class="uppercase">nouvel évenement</h6>
@@ -12,6 +16,6 @@
       <%= render 'form' %>
     </div>
   </div>
-  <div class="right-container">
+  <div class="new-event-right-container">
   </div>
 </div>

@@ -1,0 +1,30 @@
+<div class="card-form-white">
+  <div class="title-card text-center">
+    <h6>EDITER PROFIL</h6>
+  </div>
+  <br>
+  <br>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :first_name, label: "Prénom" %>
+      <%= f.input :last_name, label: "Nom" %>
+      <%= f.input :position, collection: ["Gardien de but", "Défenseur", "Milieu de terrain", "Attaquant", "Multi-postes"], label: "Position", prompt: "Selectionner une position"%>
+      <%= f.input :city, label: "Ville" %>
+      <%= f.input :birthdate, label: "Date de naissance", as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 12, order: [:day, :month, :year] %>
+      <div class="hidden-xs">
+        <%= f.input :avatar, as: :attachinary, label: "Photo de profil"  %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <%= f.input :current_password, required: true %>
+    </div>
+
+    <div class="form-actions text-center">
+      <%= f.button :submit, "Editer", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

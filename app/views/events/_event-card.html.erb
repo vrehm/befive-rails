@@ -6,23 +6,23 @@
   </div>
   <br>
   <br>
-  <div class="event">
+  <div class="event-show">
     <div class="calendar-date">
       <div class="month">
         <%= @event.date.strftime("%b") %>.
       </div>
       <h4 class="day"><%= @event.date.strftime("%e") %></h4>
     </div>
-    <%= image_tag @event.location.image, class: "float-right", style:"width: 80px" %>
-    <div class="event-info">
+    <%= image_tag @event.location.image, class: "float-right" %>
+    <div class="event-show-info">
       <h4 class="uppercase">
         <%= @event.category %>
         <% if policy(@event).update? %>
-          <%= link_to edit_event_path(@event), class: "link-unstyled" do %>
-            <i class="fa fa-pencil text-large margin-left"></i>
+          <%= link_to edit_event_path(@event), class: "link-unstyled hidden-xs text-large" do %>
+            <i class="fa fa-pencil margin-left"></i>
           <% end %>
-          <%= link_to event_path(@event), class: "link-unstyled", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cet évenement ?" } do %>
-            <i class="fa fa-ban text-large red margin-left"></i>
+          <%= link_to event_path(@event), class: "link-unstyled hidden-xs text-large", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cet évenement ?" } do %>
+            <i class="fa fa-ban red margin-left"></i>
           <% end %>
         <% end %>
       </h4>

@@ -20,3 +20,25 @@
     font-weight: 300;
   }
 }
+// Media-queries
+@media only screen and (max-width: 575px){
+  .comments {
+    padding: 30px;
+    p {
+      font-size: 12px;
+    }
+    span {
+      font-size: 12px;
+    }
+    .comment-username {
+      padding: 8px;
+    }
+    img {
+      width: 35px;
+      height: 35px;
+    }
+    .comment-content {
+      padding: 0px 15px 5px 15px;
+    }
+  }
+}

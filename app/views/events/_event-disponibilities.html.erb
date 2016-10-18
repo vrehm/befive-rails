@@ -24,7 +24,7 @@
           <i class="fa fa-star blue text-normal margin-left"></i>
         <% end %>
         <br>
-        <span class="grey-dark text-normal margin-left">
+        <span class="grey-dark text-normal margin-left hidden-xs">
           <% if participation.user.position? %>
             <%= participation.user.position.capitalize %>
           <% else %>
@@ -34,13 +34,15 @@
       </div>
       <% if policy(participation).select? && @event.date >= Date.today %>
         <div class="participations-buttons">
-          <%= link_to waiting_list_path(participation), class: "link-unstyled" do %>
-            <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
-          <% end %>
-          <span class="border-right"></span>
-          <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
-            <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
-          <% end %>
+          <div class="participations-buttons-card">
+            <%= link_to waiting_list_path(participation), class: "link-unstyled" do %>
+              <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
+            <% end %>
+            <span class="border-right"></span>
+            <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
+              <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>

@@ -4,6 +4,7 @@
   padding: 10px 100px;
   margin: 140px 50px 40px 50px;
   width: 450px;
+  overflow: hidden;
   h3 {
     text-align: center;
     text-transform: uppercase;
@@ -22,6 +23,10 @@
     font-size: 15px;
   }
 }
+.form-inputs {
+  overflow: hidden;
+}
+
 // Devise Forms Edit
 .card-form-white {
   background-color: white;

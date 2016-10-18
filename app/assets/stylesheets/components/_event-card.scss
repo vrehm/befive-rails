@@ -1,0 +1,140 @@
+// Event show view
+.event-show {
+  padding: 0px 20px;
+  img {
+    width: 80px;
+  }
+}
+.event-show-info {
+  padding: 0 90px;
+}
+.event-info-s {
+  padding: 0 70px;
+}
+
+// Tabs Events
+.tabs {
+  background: white;
+  display: flex;
+  padding: 10px 0 0 0;
+  margin-bottom: -30px;
+
+}
+.tabs a {
+  color: white;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs p {
+  margin-bottom: 0;
+  color: $grey-medium;
+}
+.tab {
+  background: white;
+  flex: 0 0 25%;
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 2px 2px 0 0;
+}
+.tab:first-child {
+
+}
+.tab:last-child {
+}
+
+.tab.active {
+  background: $background;
+  color: $blue-dark;
+  border: 1px solid $grey;
+  border-bottom: none!important;
+  margin-bottom: -1px;
+}
+.tab.active p {
+  color: $blue-dark;
+}
+
+// Media-queries
+@media only screen and (max-width: 768px){
+  .event-show {
+    padding: 0px 20px;
+    img {
+      width: 70px;
+      margin-top: -5px;
+    }
+    .calendar-date {
+      width: 50px;
+      height: 55px;
+      h4 {
+        font-size: 15px;
+      }
+    }
+    .month {
+      width: 50px;
+      padding: 2px 0px;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .day {
+      padding: 8px;
+      margin: 0px;
+    }
+  }
+  .event-show-info {
+    padding: 0 70px;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  .tab {
+    flex: 0 0 35%;
+  }
+}
+@media only screen and (max-width: 575px){
+  .event-show {
+    padding: 0px;
+    img {
+      width: 50px;
+      margin-top: -5px;
+    }
+    .calendar-date {
+      width: 40px;
+      height: 47px;
+      h4 {
+        font-size: 13px;
+      }
+    }
+    .month {
+      width: 40px;
+      padding: 1px 0px;
+      font-size: 10px;
+    }
+    .day {
+      padding: 7px;
+      margin: 0px;
+    }
+    .time {
+      font-size: 15px;
+    }
+  }
+  .event-show-info {
+    padding: 0 10px;
+    p {
+      font-size: 12px;
+    }
+  }
+  h4 {
+    font-size: 13px;
+    line-height: 15px;
+    margin-bottom: 3px;
+  }
+  .tab {
+    flex: 0 0 50%;
+  }
+  .tabs p {
+    font-size: 11px;
+  }
+}
