@@ -71,6 +71,22 @@
       font-size: 14px;
     }
   }
+  .card-form-white {
+    padding: 30px 40px;
+    width: 95%;
+    label {
+      font-weight: 500;
+      color: $blue-dark;
+      font-size: 14px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], select, textarea {
+      height: 30px;
+      font-size: 14px;
+    }
+    select {
+      margin: 10px 0;
+    }
+  }
 }
 @media only screen and (max-width: 575px){
   .card-form {
@@ -91,6 +107,22 @@
     input[type="text"], input[type="email"], input[type="password"], textarea {
       height: 31px;
       font-size: 13px;
+    }
+  }
+  .card-form-white {
+    padding: 30px 30px;
+    width: 95%;
+    label {
+      font-weight: 500;
+      color: $blue-dark;
+      font-size: 13px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], select, textarea {
+      height: 30px;
+      font-size: 13px;
+    }
+    select {
+      margin: 10px 0;
     }
   }
 }

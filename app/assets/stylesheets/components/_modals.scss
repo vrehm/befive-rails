@@ -28,3 +28,32 @@
     font-size: 14px;
   }
 }
+
+// Media-queries
+@media only screen and (max-width: 575px){
+  .modal-invitation-content {
+    margin: 20px 40px;
+    p {
+      font-size: 13px;
+    }
+    label {
+      font-size: 13px;
+    }
+    input[type="text"], input[type="email"] {
+      height: 30px;
+      font-size: 13px;
+    }
+  }
+  .modal-message-content {
+    margin: 20px 40px;
+    p {
+      font-size: 13px;
+    }
+    label {
+      font-size: 13px;
+    }
+    textarea {
+      font-size: 13px;
+    }
+  }
+}
