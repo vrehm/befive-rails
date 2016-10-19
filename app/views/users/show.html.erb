@@ -120,6 +120,15 @@
     </div>
   </div>
   <div class="users-right-container">
+    <div class="card-image">
+      <div class="title-card text-center">
+        <h6 class="uppercase">équipe actuelle</h6>
+      </div>
+      <br>
+      <%= link_to team_path(@team), class: "link-unstyled" do %>
+        <%= render 'cards/team-list', team: @team %>
+      <% end %>
+    </div>
   </div>
 </div>
 <!-- Modal UserMessages-->

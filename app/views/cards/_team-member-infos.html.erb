@@ -21,10 +21,11 @@
         <h5>Position</h5>
       <% end %>
       <% if member.user.city == nil || member.user.city == "" %>
-        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</p>
+        <span class="grey-dark text-small"><i class="fa fa-map-marker"></i> Ville</span>
       <% else %>
-        <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= member.user.city.capitalize %></p>
+        <span class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= member.user.city.capitalize %></span>
       <% end %>
+      <br>
       <br>
       <div class="text-center">
         <%= link_to user_path(member.user), class: "btn btn-primary text-small" do %>
@@ -34,20 +35,5 @@
       <br>
       <p class="blue-dark text-small"><i class="fa fa-envelope blue margin-right"></i> <%= member.user.email %></p>
     </div>
-  </div>
-  <br>
-  <div class="card">
-    <div class="title-card text-center">
-      <h6>INFOS</h6>
-    </div>
-    <br>
-    <br>
-    <% if member.user.birthdate %>
-      <p class="blue-dark text-small">Année : <span class="grey-dark text-small"><%= member.user.birthdate.year %></span></p>
-    <% else %>
-      <p class="blue-dark text-small">Année : <span class="grey-dark text-small"></span></p>
-    <% end %>
-    <p class="blue-dark text-small">Matchs joués : <span class="grey-dark text-small icon"> <%= member.user.participations.where(validated: true).size %> </span> <i class="fa fa-futbol-o blue"></i></p>
-    <p class="blue-dark text-small">Homme du match : <span class="grey-dark text-small icon"> 0 </span> <i class="fa fa-male text-large blue"></i></p>
   </div>
 </div>
