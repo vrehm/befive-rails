@@ -11,6 +11,13 @@
       <h5 class="uppercase"><%= event.category %></h5>
       <p class="time-s"><%= event.time.strftime("%H h %M") %></p>
       <br>
+      <% if event.opponent %>
+        <p class="grey-medium text-small">
+          <span class="margin-right grey-dark"><i class="fa fa-users icon margin-left" aria-hidden="true"></i>
+           Adversaires: </span> <%= event.opponent.capitalize %>
+        </p>
+        <hr>
+      <% end %>
       <p class="grey-medium text-small">
         <span class="margin-right grey-dark"><i class="fa fa-map-marker text-large icon margin-left" aria-hidden="true"></i>
          Lieu: </span> <%= event.location.name.capitalize %>

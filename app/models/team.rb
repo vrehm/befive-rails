@@ -20,6 +20,6 @@ class Team < ApplicationRecord
   belongs_to :logo
   belongs_to :location
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :city, presence: true
 end

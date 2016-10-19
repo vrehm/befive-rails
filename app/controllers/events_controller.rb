@@ -89,7 +89,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:category, :date, :time, :address, :location_id)
+    params.require(:event).permit(:category, :date, :time, :address, :location_id, :opponent)
   end
 
   def set_locations
