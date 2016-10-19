@@ -22,6 +22,21 @@
       <p class="blue-dark text-large"><%= team.name %> </br >
         <span class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= team.city %></span>
       </p>
+      <div class="button-action-hidden">
+        <% if current_user.members.where("pending = ?", true).first && current_user.members.where("pending = ?", true).first.team == team %>
+          <%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
+            <span class="red">Annuler <i class="fa fa-times margin-left"></i></span>
+          <% end %>
+        <% elsif policy(Member).create? %>
+          <%= link_to members_path(team_id: team.id), class: "btn btn-default text-small", method: :post do %>
+          Rejoindre <i class="fa fa-plus-circle blue"></i>
+          <% end %>
+        <% else %>
+          <%= link_to "#", class: "btn btn-default text-small" do %>
+          Contacter <i class="fa fa-envelope blue margin-left"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="card-team-right">
@@ -50,30 +65,26 @@
       <% end %>
     </div>
     <div class="bottom-card-s">
-      <div class="float-right btn-hidden-l">
+      <div class="button-link">
         <%= link_to team_path(team), class: "btn btn-primary text-small" do %>
           Voir <i class="fa fa-arrow-right margin-left"></i>
         <% end %>
       </div>
-      <% if current_user.members.where("pending = ?", true).first && current_user.members.where("pending = ?", true).first.team == team %>
-        <div class="float-left">
+      <div class="button-action">
+        <% if current_user.members.where("pending = ?", true).first && current_user.members.where("pending = ?", true).first.team == team %>
           <%= link_to member_path(current_user.members.first.id), class: "btn btn-default text-small", method: :delete, data: { confirm: "Etes vous sur de vouloir annuler cette demande ?"} do %>
             <span class="red">Annuler <i class="fa fa-times margin-left"></i></span>
           <% end %>
-        </div>
-      <% elsif policy(Member).create? %>
-        <div class="float-left">
+        <% elsif policy(Member).create? %>
           <%= link_to members_path(team_id: team.id), class: "btn btn-default text-small", method: :post do %>
-            Rejoindre <i class="fa fa-plus-circle blue"></i>
+          Rejoindre <i class="fa fa-plus-circle blue"></i>
           <% end %>
-        </div>
-      <% else %>
-        <div class="float-left">
+        <% else %>
           <%= link_to "#", class: "btn btn-default text-small" do %>
-            Contacter <i class="fa fa-envelope blue margin-left"></i>
+          Contacter <i class="fa fa-envelope blue margin-left"></i>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

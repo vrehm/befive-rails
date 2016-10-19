@@ -29,52 +29,48 @@
    width: 27%;
  }
 
- // Dashboard time
- .time-dashboard {
-   color: $grey-dark;
-   font-weight: 300;
-   font-size: 35px;
-   float: right;
-   text-align: right;
- }
-
  // Media-queries
  @media only screen and (max-width: 991px){
+   .home-wrapper {
+   	width: 80%;
+    padding: 0px 50px 60px 50px;
+   }
  	.home-left-container {
-     width: 35%;
+     width: 45%;
    }
  	.home-center-container {
-     width: 65%;
+     width: 55%;
    }
   .home-right-container {
     display: none;
    }
  }
  @media only screen and (max-width: 768px){
+   .home-wrapper {
+   	width: 80%;
+   }
  	.home-center-container {
-     width: 95%;
+     width: 80%;
    }
    .home-left-container {
      display: none;
-    }
+   }
+   .home-right-container {
+     display: none;
+   }
  }
  @media only screen and (max-width: 575px){
-   .home-center-container {
-      width: 95%;
-   }
-   .home-left-container {
-     display: none;
-   }
    .home-wrapper {
    	width: 100%;
-   	padding: 0px 20px 60px 20px;
-
+    padding: 0px 20px 60px 20px;
    }
-   .time-dashboard {
-     font-size: 25px;
-     margin-top: -5px;
-   }
-   #events-number {
-     font-size: 12px;
-   }
+   .home-center-container {
+      width: 100%;
+    }
+    .home-left-container {
+      display: none;
+    }
+    .home-right-container {
+      display: none;
+    }
  }

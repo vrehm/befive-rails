@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.has_team %>
-  <div class="home-wrapper">
-    <div class="home-left-container">
+  <div class="dashboard-wrapper">
+    <div class="dashboard-left-container">
       <%= render "/cards/profile-card" %>
       <br>
       <%= render "/cards/infos-card" %>
@@ -18,14 +18,14 @@
         <% end %>
       </div>
     </div>
-    <div class="home-center-container">
+    <div class="dashboard-center-container">
       <%= render "/cards/progress-card" %>
       <%= render "/cards/dashboard-card" %>
       <% @activities.each do |activity| %>
         <%= render "/cards/activities-card", activity: activity %>
       <% end %>
     </div>
-    <div class="home-right-container">
+    <div class="dashboard-right-container">
       <%= render "/cards/next-match-card" %>
       <br>
       <%= render "/cards/team-card" %>
@@ -33,16 +33,24 @@
       <%= render "/cards/members-card" %>
     </div>
     <!-- Modal Invitations-->
-    <%= render 'teams/modal-invitation' %>
+    <%= render 'modals/modal-invitation' %>
   </div>
   <% else %>
-  <div class="wrapper">
-    <div class="left-container">
+  <div class="home-wrapper">
+    <div class="home-left-container">
       <%= render "cards/profile-card" %>
       <br>
       <%= render "cards/infos-card" %>
     </div>
-    <div class="center-container">
+    <div class="home-center-container">
+      <div class="hidden-sm hidden-md hidden-lg">
+        <%= render "cards/profile-card" %>
+        <br>
+      </div>
+      <div class="hidden-md hidden-lg">
+        <%= render 'cards/join-team-card' %>
+        <br>
+      </div>
       <% if current_user.members.where("pending = ?", true).any? %>
         <p class="grey-dark text-small text-center">Vous avez une demande en cours...</p>
         <%= render 'cards/team-card-large', team: @team %>
@@ -50,7 +58,7 @@
         <%= render 'cards/empty-card' %>
       <% end %>
     </div>
-    <div class="right-container">
+    <div class="home-right-container">
       <%= render 'cards/join-team-card' %>
     </div>
   </div>

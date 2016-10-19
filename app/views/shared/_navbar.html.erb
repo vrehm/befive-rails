@@ -49,9 +49,7 @@
           </ul>
         </div>
       </div>
-
     <% end %>
-
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
@@ -76,6 +74,11 @@
             <% end %>
           </li>
         <% end %>
+        <li>
+          <%= link_to teams_path, class: "navbar-user-item navbar-user-link" do %>
+            <i class="fa fa-globe" aria-hidden="true"></i> Réseau
+          <% end %>
+        </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa fa-sign-out icon red"></i>  <%= t(".sign_out", default: "Déconnexion") %>

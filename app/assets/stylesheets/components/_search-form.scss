@@ -6,6 +6,9 @@
   position: relative;
   padding: 0 12px;
   margin-bottom: 18px;
+  i {
+    margin-right: 5px;
+  }
 }
 .search-input {
   flex: 0 1 73%;
@@ -26,4 +29,18 @@
 }
 .search-results {
   margin-left: 20px;
+}
+@media only screen and (max-width: 575px){
+  .search {
+    span {
+      display: none;
+    }
+    i {
+      margin-right: 0px;
+    }
+  }
+  .search-input {
+    flex: 0 1 87%;
+    font-size: 11px;
+  }
 }
