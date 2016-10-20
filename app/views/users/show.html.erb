@@ -123,8 +123,10 @@
         <h6 class="uppercase">équipe actuelle</h6>
       </div>
       <br>
-      <%= link_to team_path(@team), class: "link-unstyled" do %>
-        <%= render 'cards/team-list', team: @team %>
+      <% if @user.members.any? %>
+        <%= link_to team_path(@team), class: "link-unstyled" do %>
+          <%= render 'cards/team-list', team: @team %>
+        <% end %>
       <% end %>
     </div>
   </div>
