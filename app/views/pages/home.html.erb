@@ -71,7 +71,7 @@
     <p>Gérer un groupe et réunir des joueurs devient <span>un jeu d’enfant !</span></p>
     <br>
     <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "btn btn-lg btn-success hidden-xs" %>
-    <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "btn btn-success hidden-sm hidden-md hidden-lg" %>
+    <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "text-small btn btn-primary hidden-sm hidden-md hidden-lg" %>
   </div>
 </div>
 <% end %>

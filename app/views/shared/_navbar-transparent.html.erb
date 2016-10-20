@@ -7,11 +7,6 @@
   <!-- Right Navigation -->
   <div class="navbar-transparent-right hidden-xs">
 
-    <!-- Text link -->
-    <%= link_to "#", class: "navbar-transparent-item navbar-transparent-link" do %>
-      Blog
-    <% end %>
-
     <!-- Login text link -->
     <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-transparent-item navbar-transparent-link" %>
   </div>
@@ -25,6 +20,7 @@
           <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-transparent-item navbar-transparent-link" %>
         </li>
         <li>
+          <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "navbar-transparent-item navbar-transparent-link" %>
         </li>
       </ul>
     </div>
