@@ -14,8 +14,8 @@
         <br>
       </div>
       <div class="form-actions">
-        <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "btn btn-lg btn-success hidden-xs" %>
-        <%= link_to t(".sign_up", default: "Inscription"), new_user_registration_path, class: "btn btn-success hidden-sm hidden-md hidden-lg" %>
+        <%= f.button :submit, "Inscription", class: "btn btn-lg btn-success hidden-xs" %>
+        <%= f.button :submit, "Inscription", class: "btn btn-success hidden-sm hidden-md hidden-lg" %>
       </div>
     <% end %>
   </div>
