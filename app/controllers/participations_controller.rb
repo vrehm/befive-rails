@@ -59,11 +59,12 @@ class ParticipationsController < ApplicationController
     participation = Participation.find(params[:id])
     authorize(participation)
     participation.update(pending: false, refused: true, validated: false)
-    # Move first members from waiting_list to participations
-    waiting_list_participations = policy_scope(Participation).where(event: participation.event, status: "selected", waiting_list: true)
+    # Move last member from waiting_list to participations
+    waiting_list_participations = policy_scope(Participation).where(event: participation.event, status: "selected", waiting_list: true).order("updated_at asc")
     if waiting_list_participations.any?
-      waiting_list_participations.first.update(status: "selected", waiting_list: false, sent: true, pending: true)
-      EventMailer.participation(waiting_list_participations.first.id).deliver_now
+      first_on_list_participation = waiting_list_participations.first
+      first_on_list_participation.update(status: "selected", waiting_list: false, sent: true, pending: true)
+      EventMailer.participation(first_on_list_participation.id).deliver_now
     end
     flash[:notice] = "Vous venez de refuser de participer à cet évenement"
     redirect_to(:back)
