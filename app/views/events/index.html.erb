@@ -5,7 +5,7 @@
         <h6 class="uppercase">évenements</h6>
         <% if policy(Event).create? %>
           <%= link_to new_event_path, class: "link-unstyled" do %>
-            <i class="fa fa-plus-circle text-xl blue title-card-icon"></i>
+            <i class="fa fa-plus-circle text-xl blue title-card-icon top-popover" data-content="Ajouter un évenement"></i>
           <% end %>
         <% end %>
       </div>

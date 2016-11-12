@@ -2,8 +2,8 @@
   <div class="title-card text-center">
     <h6>PROCHAIN MATCH</h6>
     <% if policy(Event).create? %>
-      <%= link_to new_event_path, class: "link-unstyled hidden-lg-infos" do %>
-        <i class="fa fa-plus-circle text-xl blue title-card-icon"></i>
+      <%= link_to new_event_path, class: "link-unstyled hidden-lg-infos"  do %>
+        <i class="fa fa-plus-circle text-xl blue title-card-icon top-popover" data-content="Ajouter un évenement"></i>
       <% end %>
     <% end %>
   </div>

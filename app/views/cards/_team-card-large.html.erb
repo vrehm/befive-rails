@@ -42,11 +42,11 @@
     <% if current_user.has_team == false || current_user.members.first.team != team %>
       <% if current_user.has_relationship?(team) %>
         <%= link_to relationship_path(current_user.relationships.where(team: team).first), method: :delete, class: "float-right" do %>
-          <i class="fa fa-minus-circle text-xl blue margin-left"></i>
+          <i class="fa fa-minus-circle text-xl blue margin-left bottom-popover" data-content="Retirer de mon réseau"></i>
         <% end %>
       <% else %>
         <%= link_to relationships_path(team_id: team.id), method: :post, class: "float-right" do %>
-          <i class="fa fa-plus-circle text-xl blue margin-left"></i>
+          <i class="fa fa-plus-circle text-xl blue margin-left bottom-popover" data-content="Ajouter à mon réseau"></i>
         <% end %>
       <% end %>
     <% end %>

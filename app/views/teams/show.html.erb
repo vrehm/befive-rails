@@ -9,7 +9,7 @@
         <h6 class="uppercase">l'équipe</h6>
         <% if policy(Event).create? %>
           <%= link_to new_event_path, class: "link-unstyled" do %>
-            <i class="fa fa-plus-circle text-xl blue title-card-icon"></i>
+            <i class="fa fa-plus-circle text-xl blue title-card-icon top-popover" data-content="Ajouter un événement"></i>
           <% end %>
         <% end %>
         <% if current_user.has_team == false || current_user.members.first.team != @team %>
@@ -95,7 +95,7 @@
       <% if policy(@team).update? %>
         <div class="bottom-right-icon">
           <%= link_to edit_team_path(@team) do %>
-            <i class="fa fa-cog grey-dark text-large"></i>
+            <i class="fa fa-cog grey-dark text-large bottom-popover" data-content="Editer mon équipe"></i>
           <% end %>
         </div>
       <% end %>

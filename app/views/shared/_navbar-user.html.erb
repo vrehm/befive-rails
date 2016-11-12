@@ -1,27 +1,27 @@
 <div class="navbar-user">
   <div class="navbar-user-left hidden-xs hidden-sm">
-    <div class="<%= 'link-active' if current_page?(root_path) %>">
+    <div class="<%= 'link-active' if current_page?(root_path) %> bottom-popover" data-content="Votre Tableau de bord personnel">
       <!-- Text link -->
       <%= link_to root_path, class: "navbar-user-item navbar-user-link" do %>
         <i class="fa fa-tachometer" aria-hidden="true"></i> Tableau de Bord
       <% end %>
     </div>
     <% if current_user.has_team %>
-      <div class="<%= 'link-active' if current_page?(team_path(current_user.members.first.team)) %>">
+      <div class="<%= 'link-active' if current_page?(team_path(current_user.members.first.team)) %> bottom-popover" data-content="Toutes les infos sur les membres de votre équipe">
         <!-- Text link -->
         <%= link_to team_path(current_user.members.first.team), class: "navbar-user-item navbar-user-link" do %>
           <i class="fa fa-users" aria-hidden="true"></i> Membres
         <% end %>
       </div>
 
-      <div class="<%= 'link-active' if current_page?(events_path) %>">
+      <div class="<%= 'link-active' if current_page?(events_path) %> bottom-popover" data-content="Créez, notifiez et gérez les évenements à venir">
         <!-- Text link -->
         <%= link_to events_path, class: "navbar-user-item navbar-user-link" do %>
           <i class="fa fa-calendar" aria-hidden="true"></i> Evénements
         <% end %>
       </div>
     <% end %>
-    <div class="<%= 'link-active' if current_page?(teams_path) || current_page?(search_teams_path) %>">
+    <div class="<%= 'link-active' if current_page?(teams_path) || current_page?(search_teams_path) %> bottom-popover" data-content="Recherchez et ajoutez des équipes à votre réseau">
       <!-- Text link -->
       <%= link_to teams_path, class: "navbar-user-item navbar-user-link" do %>
         <i class="fa fa-globe" aria-hidden="true"></i> Réseau
@@ -66,15 +66,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-user-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle white" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-user-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-      </ul>
-    </div>
   </div>
 </div>

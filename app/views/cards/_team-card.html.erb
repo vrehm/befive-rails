@@ -30,7 +30,7 @@
   <div class="bottom-right-icon">
     <% if policy(@team).update? %>
       <%= link_to edit_team_path(@team) do %>
-        <i class="fa fa-cog grey-dark text-large"></i>
+        <i class="fa fa-cog grey-dark text-large bottom-popover" data-content="Editer mon équipe"></i>
       <% end %>
     <% end %>
   </div>
