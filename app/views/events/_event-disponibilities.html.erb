@@ -4,7 +4,7 @@
   <% if policy(Participation).select_all? && @event.date >= Date.today %>
     <span class="all-participation-button">
       <%= link_to select_all_path(event_id: @event), class: "link-unstyled" do %>
-        <i class="fa fa-file-text blue" aria-hidden="true"></i>
+        <i class="fa fa-file-text blue top-popover" data-content="Ajouter tous les membres à la composition d'équipe" aria-hidden="true"></i>
       <% end %>
     </span>
   <% end %>
@@ -36,11 +36,11 @@
         <div class="participations-buttons">
           <div class="participations-buttons-card">
             <%= link_to waiting_list_path(participation), class: "link-unstyled" do %>
-              <i class="fa fa-file-text-o red margin-left" aria-hidden="true"></i>
+              <i class="fa fa-file-text-o red margin-left top-popover" data-content="Ajouter à la liste d'attente" aria-hidden="true"></i>
             <% end %>
             <span class="border-right"></span>
             <%= link_to select_path(participation), class: "link-unstyled", method: :put do %>
-              <i class="fa fa-file-text-o blue margin-left" aria-hidden="true"></i>
+              <i class="fa fa-file-text-o blue margin-left top-popover" data-content="Ajouter à la composition d'équipe" aria-hidden="true"></i>
             <% end %>
           </div>
         </div>
