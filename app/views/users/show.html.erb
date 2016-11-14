@@ -37,7 +37,7 @@
         <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= @user.city.capitalize %></p>
       <% end %>
       <% if @user == current_user %>
-        <%= link_to edit_user_registration_path(@user), class: "title-card-btn btn btn-primary text-small" do %>
+        <%= link_to edit_user_registration_path, class: "title-card-btn btn btn-primary text-small" do %>
           Editer <i class="fa fa-cog white margin-left"></i>
         <% end %>
       <% else %>
