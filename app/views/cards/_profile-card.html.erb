@@ -34,7 +34,7 @@
     <p class="grey-dark text-small"><i class="fa fa-map-marker"></i> <%= current_user.city.capitalize %></p>
   <% end %>
   <div class="bottom-right-icon">
-    <%= link_to edit_user_registration_path(current_user) do %>
+    <%= link_to edit_user_registration_path do %>
       <i class="fa fa-cog grey-dark text-large bottom-popover" data-content="Editer mon profil"></i>
     <% end %>
   </div>
